@@ -44,7 +44,7 @@ namespace Intex2.Controllers
                 }
             }
 
-            ModelState.AddModelError("", "Invalid username or password");
+            ModelState.AddModelError("", "Invalid Username or Password");
             return View(login); 
         }
 
