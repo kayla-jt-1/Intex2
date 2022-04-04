@@ -1,12 +1,11 @@
-﻿<!--Form to Create/Edit a Crash-->
-@{
+﻿@{
     ViewData["Title"] = "Add Crash Record";
 }
 
 @model Intex2.Models.Crash
 
 <br />
-<h5 class="display-4 lh-1 mb-4" style="font-size:30px;">Enter Crash Details:</h5>
+<h5 class="display-4 lh-1 mb-4" style="font-size:30px;">Enter Crash Details</h5>
 
 <div>
     <fieldset style="width: 250px;">
@@ -17,29 +16,29 @@
             <input type="hidden" asp-for="CRASH_ID" />
 
             <label asp-for="CRASH_DATETIME">Date and Time:</label>
-            <input asp-for="CRASH_DATETIME" type="datetime" />
+            <input asp-for="CRASH_DATETIME" type="datetime-local" />
             <br /><br />
 
             <label asp-for="ROUTE">Route Number:</label>
-            <input asp-for="ROUTE" />
+            <input asp-for="ROUTE" min="0"/>
             <br /><br />
 
             @*Milepoint should have a minimum of 0*@
 
             <label asp-for="MILEPOINT">Milepoint:</label>
-            <input asp-for="MILEPOINT" />
+            <input asp-for="MILEPOINT" min="0"/>
             <br /><br />
 
             @*lattitude should have a minimum of 0*@
 
             <label asp-for="LAT_UTM_Y">Latitude:</label>
-            <input asp-for="LAT_UTM_Y" />
+            <input asp-for="LAT_UTM_Y" min="0"/>
             <br /><br />
 
             @*longitude should have a minimum of 0*@
 
             <label asp-for="LONG_UTM_Y">Longitude:</label>
-            <input asp-for="LONG_UTM_Y" />
+            <input asp-for="LONG_UTM_Y" min="0"/>
             <br /><br />
 
             <label asp-for="MAIN_ROAD_NAME">Address:</label>
@@ -48,24 +47,143 @@
 
             <label asp-for="CITY">City:</label>
             <select asp-for="CITY" id="CITY" name="CITY">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="fiat">Fiat</option>
-                <option value="audi">Audi</option>
+                <option value="">Select a City</option>
+                <option value="AMERICANFORK">AMERICAN FORK</option>
+                <option value="BEAVER">BEAVER</option>
+                <option value="BLANDING">BLANDING</option>
+                <option value="BOUNTIFUL">BOUNTIFUL</option>
+                <option value="BRIANHEAD">BRIAN HEAD</option>
+                <option value="BRIGHAMCITY">BRIGHAM CITY</option>
+                <option value="CEDARCITY">CEDAR CITY</option>
+                <option value="CEDARFORT">CEDAR FORT</option>
+                <option value="CENTERVILLE">CENTERVILLE</option>
+                <option value="CLEARFIELD">CLEARFIELD</option>
+                <option value="CLINTON">CLINTON</option>
+                <option value="CORINNE">CORINNE</option>
+                <option value="COTTONWOODHEIGHTS">COTTONWOOD HEIGHTS</option>
+                <option value="DRAPER">DRAPER</option>
+                <option value="EAGLEMOUNTAIN">EAGLE MOUNTAIN</option>
+                <option value="EDEN">EDEN</option>
+                <option value="ELSINORE">ELSINORE</option>
+                <option value="ELWOOD">ELWOOD</option>
+                <option value="EPHRAIM">EPHRAIM</option>
+                <option value="FARMINGTON">FARMINGTON</option>
+                <option value="FARRWEST">FARR WEST</option>
+                <option value="FRUITHEIGHTS">FRUIT HEIGHTS</option>
+                <option value="GARLAND">GARLAND</option>
+                <option value="HARRISVILLE">HARRISVILLE</option>
+                <option value="HEBERCITY">HEBER CITY</option>
+                <option value="HERRIMAN">HERRIMAN</option>
+                <option value="HIDEOUT">HIDEOUT</option>
+                <option value="HIGHLAND">HIGHLAND</option>
+                <option value="HOLLADAY">HOLLADAY</option>
+                <option value="HONEYVILLE">HONEYVILLE</option>
+                <option value="HURRICANE">HURRICANE</option>
+                <option value="HYDE">HYDE PARK</option>
+                <option value="HYRUM">HYRUM</option>
+                <option value="INDEPENDENCE">INDEPENDENCE</option>
+                <option value="KAYSVILLE">KAYSVILLE</option>
+                <option value="KEARNS">KEARNS</option>
+                <option value="KIMBALLJUNCTION">KIMBALL JUNCTION</option>
+                <option value="LAYTON">LAYTON</option>
+                <option value="LEHI">LEHI</option>
+                <option value="LEWISTON">LEWISTON</option>
+                <option value="LINDON">LINDON</option>
+                <option value="LOGAN">LOGAN</option>
+                <option value="MAGNA">MAGNA</option>
+                <option value="MANTUA">MANTUA</option>
+                <option value="MAPLETON">MAPLETON</option>
+                <option value="MARRIOTTSLATERVILLE">MARRIOTT-SLATERVILLE</option>
+                <option value="MIDVALE">MIDVALE</option>
+                <option value="MIDWAY">MIDWAY</option>
+                <option value="MILLCREEK">MILLCREEK</option>
+                <option value="MOAB">MOAB</option>
+                <option value="MONA">MONA</option>
+                <option value="MURRAY">MURRAY</option>
+                <option value="MYTON">MYTON</option>
+                <option value="NAPLES">NAPLES</option>
+                <option value="NIBLEY">NIBLEY</option>
+                <option value="NORTHLOGAN">NORTH LOGAN</option>
+                <option value="NORTHOGDEN">NORTH OGDEN</option>
+                <option value="NORTHSALTLAKE">NORTH SALT LAKE</option>
+                <option value="OGDEN">OGDEN</option>
+                <option value="OREM">OREM</option>
+                <option value="OUTSIDECITYLIMITS">OUTSIDE CITY LIMITS</option>
+                <option value="PARKCITY">PARK CITY</option>
+                <option value="PERRY">PERRY</option>
+                <option value="PLEASANTGROVE">PLEASANT GROVE</option>
+                <option value="PLEASANTVIEW">PLEASANT VIEW</option>
+                <option value="PRICE">PRICE</option>
+                <option value="PROVO">PROVO</option>
+                <option value="RICHFIELD">RICHFIELD</option>
+                <option value="RICHMOND">RICHMOND</option>
+                <option value="RIVERDALE">RIVERDALE</option>
+                <option value="RIVERTON">RIVERTON</option>
+                <option value="ROY">ROY</option>
+                <option value="SALEM">SALEM</option>
+                <option value="SALTLAKECITY">SALT LAKE CITY</option>
+                <option value="SANDY">SANDY</option>
+                <option value="SANTACLARA">SANTA CLARA</option>
+                <option value="SANTAQUIN">SANTAQUIN</option>
+                <option value="SARATOGASPRINGS">SARATOGA SPRINGS</option>
+                <option value="SMITHFIELD">SMITHFIELD</option>
+                <option value="SOUTHJORDAN">SOUTH JORDAN</option>
+                <option value="SOUTHOGDEN">SOUTH OGDEN</option>
+                <option value="SOUTHSALTLAKE">SOUTH SALT LAKE</option>
+                <option value="SOUTHWEBER">SOUTH WEBER</option>
+                <option value="SPANISHFORK">SPANISH FORK</option>
+                <option value="SPRINGVILLE">SPRINGVILLE</option>
+                <option value="STGEORGE">ST. GEORGE</option>
+                <option value="SUNSET">SUNSET</option>
+                <option value="SYRACUSE">SYRACUSE</option>
+                <option value="TAYLORSVILLE">TAYLORSVILLE</option>
+                <option value="TOOELE">TOOELE</option>
+                <option value="UINTAH">UINTAH</option>
+                <option value="VERNAL">VERNAL</option>
+                <option value="WASHINGTON">WASHINGTON</option>
+                <option value="WELLSVILLE">WELLSVILLE</option>
+                <option value="WESTBOUNTIFUL">WEST BOUNTIFUL</option>
+                <option value="WESTHAVEN">WEST HAVEN</option>
+                <option value="WESTJORDAN">WEST JORDAN</option>
+                <option value="WESTVALLEYCITY">WEST VALLEY CITY</option>
+                <option value="WILLARD">WILLARD</option>
+                <option value="WOODSCROSS">WOODS CROSS</option>
             </select>
             <br /><br />
 
             <label asp-for="COUNTY_NAME">County:</label>
             <select asp-for="COUNTY_NAME" id="COUNTY_NAME" name="COUNTY_NAME">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="fiat">Fiat</option>
-                <option value="audi">Audi</option>
+                <option value="">Select a County</option>
+                <option value="BEAVER">BEAVER</option>
+                <option value="BOXELDER">BOX ELDER</option>
+                <option value="CACHE">CACHE</option>
+                <option value="CARBON">CARBON</option>
+                <option value="DAVIS">DAVIS</option>
+                <option value="DUCHESNE">DUCHESNE</option>
+                <option value="EMERY">EMERY</option>
+                <option value="GRAND">GRAND</option>
+                <option value="IRON">IRON</option>
+                <option value="JUAB">JUAB</option>
+                <option value="KANE">KANE</option>
+                <option value="MILLARD">MILLARD</option>
+                <option value="MORGAN">MORGAN</option>
+                <option value="SALTLAKE">SALT LAKE</option>
+                <option value="SANJUAN">SAN JUAN</option>
+                <option value="SANPETE">SANPETE</option>
+                <option value="SEVIER">SEVIER</option>
+                <option value="SUMMIT">SUMMIT</option>
+                <option value="TOOELE">TOOELE</option>
+                <option value="UINTAH">UINTAH</option>
+                <option value="UTAH">UTAH</option>
+                <option value="WASATCH">WASATCH</option>
+                <option value="WASHINGTON">WASHINGTON</option>
+                <option value="WEBER">WEBER</option>
             </select>
             <br /><br />
 
             <label asp-for="CRASH_SEVERITY_ID">Crash Severity:</label>
             <select asp-for="CRASH_SEVERITY_ID" id="CRASH_SEVERITY_ID" name="CRASH_SEVERITY_ID">
+                <option value="">Select a Severity</option>
                 <option value="1">1 – No Injury</option>
                 <option value="2">2 – Possible Injury</option>
                 <option value="3">3 – Suspected Minor Injury</option>
@@ -74,137 +192,137 @@
             </select>
             <br /><br />
 
-            <label asp-for="WORK_ZONE_RELATED">Work Zone Related:</label>
+            <label asp-for="WORK_ZONE_RELATED">Work Zone Related?</label>
             <input asp-for="WORK_ZONE_RELATED" type="radio" id="yes" name="WORK_ZONE_RELATED" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>
             <input asp-for="WORK_ZONE_RELATED" type="radio" id="no" name="WORK_ZONE_RELATED" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
-            <label asp-for="PEDESTRIAN_INVOLVED">Pedestrian Involved:</label>
+            <label asp-for="PEDESTRIAN_INVOLVED">Pedestrian Involved?</label>
             <input asp-for="PEDESTRIAN_INVOLVED" type="radio" id="yes" name="PEDESTRIAN_INVOLVED" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>
             <input asp-for="PEDESTRIAN_INVOLVED" type="radio" id="no" name="PEDESTRIAN_INVOLVED" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
-            <label asp-for="BICYCLIST_INVOLVED">Bicyclist Involved:</label>
+            <label asp-for="BICYCLIST_INVOLVED">Bicyclist Involved?</label>
             <input asp-for="BICYCLIST_INVOLVED" type="radio" id="yes" name="BICYCLIST_INVOLVED" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>
             <input asp-for="BICYCLIST_INVOLVED" type="radio" id="no" name="BICYCLIST_INVOLVED" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
-            <label asp-for="MOTORCYCLE_INVOLVED">Motorcycle Involved:</label>
+            <label asp-for="MOTORCYCLE_INVOLVED">Motorcycle Involved?</label>
             <input asp-for="MOTORCYCLE_INVOLVED" type="radio" id="yes" name="MOTORCYCLE_INVOLVED" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>s
             <input asp-for="MOTORCYCLE_INVOLVED" type="radio" id="no" name="MOTORCYCLE_INVOLVED" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
-            <label asp-for="IMPROPER_RESTRAINT">Improper Restraint:</label>
+            <label asp-for="IMPROPER_RESTRAINT">Improper Restraint?</label>
             <input asp-for="IMPROPER_RESTRAINT" type="radio" id="yes" name="IMPROPER_RESTRAINT" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>
             <input asp-for="IMPROPER_RESTRAINT" type="radio" id="no" name="IMPROPER_RESTRAINT" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
-            <label asp-for="UNRESTRAINED">Unrestrained:</label>
+            <label asp-for="UNRESTRAINED">Unrestrained?</label>
             <input asp-for="UNRESTRAINED" type="radio" id="yes" name="UNRESTRAINED" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>
             <input asp-for="UNRESTRAINED" type="radio" id="no" name="UNRESTRAINED" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
-            <label asp-for="DUI">DUI:</label>
+            <label asp-for="DUI">DUI?</label>
             <input asp-for="DUI" type="radio" id="yes" name="DUI" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>
             <input asp-for="DUI" type="radio" id="no" name="DUI" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
-            <label asp-for="INTERSECTION_RELATED">Intersection Related:</label>
+            <label asp-for="INTERSECTION_RELATED">Intersection Related?</label>
             <input asp-for="INTERSECTION_RELATED" type="radio" id="yes" name="INTERSECTION_RELATED" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>
             <input asp-for="INTERSECTION_RELATED" type="radio" id="no" name="INTERSECTION_RELATED" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
-            <label asp-for="WILD_ANIMAL_RELATED">Wild Animal Related:</label>
+            <label asp-for="WILD_ANIMAL_RELATED">Wild Animal Related?</label>
             <input asp-for="WILD_ANIMAL_RELATED" type="radio" id="yes" name="WILD_ANIMAL_RELATED" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>
             <input asp-for="WILD_ANIMAL_RELATED" type="radio" id="no" name="WILD_ANIMAL_RELATED" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
-            <label asp-for="DOMESTIC_ANIMAL_RELATED">Domestic Animal Related:</label>
+            <label asp-for="DOMESTIC_ANIMAL_RELATED">Domestic Animal Related?</label>
             <input asp-for="DOMESTIC_ANIMAL_RELATED" type="radio" id="yes" name="DOMESTIC_ANIMAL_RELATED" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>
             <input asp-for="DOMESTIC_ANIMAL_RELATED" type="radio" id="no" name="DOMESTIC_ANIMAL_RELATED" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
-            <label asp-for="OVERTURN_ROLLOVER">Overturn Rollover:</label>
+            <label asp-for="OVERTURN_ROLLOVER">Overturn Rollover?</label>
             <input asp-for="OVERTURN_ROLLOVER" type="radio" id="yes" name="OVERTURN_ROLLOVER" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>
             <input asp-for="OVERTURN_ROLLOVER" type="radio" id="no" name="OVERTURN_ROLLOVER" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
-            <label asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED">Commercial Motor Vehicle Involved:</label>
+            <label asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED">Commercial Motor Vehicle Involved?</label>
             <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" type="radio" id="yes" name="COMMERCIAL_MOTOR_VEH_INVOLVED" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>
             <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" type="radio" id="no" name="COMMERCIAL_MOTOR_VEH_INVOLVED" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
-            <label asp-for="TEENAGE_DRIVER_INVOLVED">Teenage Driver Involved:</label>
+            <label asp-for="TEENAGE_DRIVER_INVOLVED">Teenage Driver Involved?</label>
             <input asp-for="TEENAGE_DRIVER_INVOLVED" type="radio" id="yes" name="TEENAGE_DRIVER_INVOLVED" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>
             <input asp-for="TEENAGE_DRIVER_INVOLVED" type="radio" id="no" name="TEENAGE_DRIVER_INVOLVED" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
-            <label asp-for="OLDER_DRIVER_INVOLVED">Older Driver Involved:</label>
+            <label asp-for="OLDER_DRIVER_INVOLVED">Older Driver Involved?</label>
             <input asp-for="OLDER_DRIVER_INVOLVED" type="radio" id="yes" name="OLDER_DRIVER_INVOLVED" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>
             <input asp-for="OLDER_DRIVER_INVOLVED" type="radio" id="no" name="OLDER_DRIVER_INVOLVED" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
-            <label asp-for="NIGHT_DARK_CONDITION">Night/Dark Condition:</label>
+            <label asp-for="NIGHT_DARK_CONDITION">Night/Dark Condition?</label>
             <input asp-for="NIGHT_DARK_CONDITION" type="radio" id="yes" name="NIGHT_DARK_CONDITION" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>
             <input asp-for="NIGHT_DARK_CONDITION" type="radio" id="no" name="NIGHT_DARK_CONDITION" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
-            <label asp-for="SINGLE_VEHICLE">Single Vehicle:</label>
+            <label asp-for="SINGLE_VEHICLE">Single Vehicle?</label>
             <input asp-for="SINGLE_VEHICLE" type="radio" id="yes" name="SINGLE_VEHICLE" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>
             <input asp-for="SINGLE_VEHICLE" type="radio" id="no" name="SINGLE_VEHICLE" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
-            <label asp-for="DISTRACTED_DRIVING">Distracted Driving:</label>
+            <label asp-for="DISTRACTED_DRIVING">Distracted Driving?</label>
             <input asp-for="DISTRACTED_DRIVING" type="radio" id="yes" name="DISTRACTED_DRIVING" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>
             <input asp-for="DISTRACTED_DRIVING" type="radio" id="no" name="DISTRACTED_DRIVING" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
-            <label asp-for="DROWSY_DRIVING">Drowsy Driving:</label>
+            <label asp-for="DROWSY_DRIVING">Drowsy Driving?</label>
             <input asp-for="DROWSY_DRIVING" type="radio" id="yes" name="DROWSY_DRIVING" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>
             <input asp-for="DROWSY_DRIVING" type="radio" id="no" name="DROWSY_DRIVING" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
-            <label asp-for="ROADWAY_DEPARTURE">Roadway Departure:</label>
+            <label asp-for="ROADWAY_DEPARTURE">Roadway Departure?</label>
             <input asp-for="ROADWAY_DEPARTURE" type="radio" id="yes" name="ROADWAY_DEPARTURE" value="yes">
-            <label for="yes">Yes</label><br>
+            <label for="yes">Yes</label>
             <input asp-for="ROADWAY_DEPARTURE" type="radio" id="no" name="ROADWAY_DEPARTURE" value="no">
-            <label for="no">No</label><br>
+            <label for="no">No</label>
             <br /><br />
 
 
