@@ -74,7 +74,7 @@ namespace Intex2.Controllers
             {
                 repo.SaveCrash(crash);
 
-                return RedirectToAction("AllCrashes"); //NEED TO MAKE THIS A PAGE IF NOT ALREADY!!!!!!!!!!!!
+                return RedirectToAction("CrashSummary");
             }
             else
             {
@@ -97,7 +97,7 @@ namespace Intex2.Controllers
         {
             repo.DeleteCrash(crash);
 
-            return View("AllCrashes");  //NEED TO MAKE THIS A PAGE IF NOT ALREADY!!!!!!!!!!!!
+            return View("CrashSummary");
         }
     }
 }
