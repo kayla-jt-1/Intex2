@@ -108,41 +108,41 @@ namespace Intex2.Controllers
         }
 
 
-        //LOGIN
-        [HttpGet]
-        public IActionResult Login(string returnUrl)
-        {
-            return View(new Login { ReturnUrl = returnUrl });
-        }
+        ////LOGIN
+        //[HttpGet]
+        //public IActionResult Login(string returnUrl)
+        //{
+        //    return View(new Login { ReturnUrl = returnUrl });
+        //}
 
-        [HttpPost]
-        public async Task<IActionResult> Login(Login login)
-        {
-            if (ModelState.IsValid)
-            {
-                IdentityUser user = await userManager.FindByNameAsync(login.Username);
+        //[HttpPost]
+        //public async Task<IActionResult> Login(Login login)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        IdentityUser user = await userManager.FindByNameAsync(login.Username);
 
-                if (user != null)
-                {
-                    await signInManager.SignOutAsync();
+        //        if (user != null)
+        //        {
+        //            await signInManager.SignOutAsync();
 
-                    if ((await signInManager.PasswordSignInAsync(user, login.Password, false, false)).Succeeded)
-                    {
-                        return Redirect(login?.ReturnUrl ?? "/Admin");
-                    }
-                }
-            }
+        //            if ((await signInManager.PasswordSignInAsync(user, login.Password, false, false)).Succeeded)
+        //            {
+        //                return Redirect(login?.ReturnUrl ?? "/Admin");
+        //            }
+        //        }
+        //    }
 
-            ModelState.AddModelError("", "Invalid Name or Password");
-            return View(login);
-        }
+        //    ModelState.AddModelError("", "Invalid Name or Password");
+        //    return View(login);
+        //}
 
-        public async Task<RedirectResult> Logout(string returnUrl = "/")
-        {
-            await signInManager.SignOutAsync();
+        //public async Task<RedirectResult> Logout(string returnUrl = "/")
+        //{
+        //    await signInManager.SignOutAsync();
 
-            return Redirect(returnUrl);
-        }
+        //    return Redirect(returnUrl);
+        //}
 
 
         //PRIVACY

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Intex2.Models
 {
-    public class Login
+    public class LoginModel
     {
         [Required(ErrorMessage = "Please Enter a Username")]
         public string Username { get; set; }

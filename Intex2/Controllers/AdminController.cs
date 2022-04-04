@@ -23,29 +23,29 @@ namespace Intex2.Controllers
         [HttpGet]
         public IActionResult Login(string returnUrl)
         {
-            return View(new Login { ReturnUrl = returnUrl }); 
+            return View(new LoginModel { ReturnUrl = returnUrl }); 
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(Login login)
+        public async Task<IActionResult> Login(LoginModel loginmodel)
         {
             if (ModelState.IsValid)
             {
-                IdentityUser user = await userManager.FindByNameAsync(login.Username);
+                IdentityUser user = await userManager.FindByNameAsync(loginmodel.Username);
 
                 if (user != null)
                 {
                     await signInManager.SignOutAsync();
 
-                    if ((await signInManager.PasswordSignInAsync(user, login.Password, false, false)).Succeeded)
+                    if ((await signInManager.PasswordSignInAsync(user, loginmodel.Password, false, false)).Succeeded)
                     {
-                        return Redirect(login?.ReturnUrl ?? "/Admin"); 
+                        return Redirect(loginmodel?.ReturnUrl ?? "/Admin"); 
                     }
                 }
             }
 
             ModelState.AddModelError("", "Invalid Username or Password");
-            return View(login); 
+            return View(loginmodel); 
         }
 
         public async Task<RedirectResult> Logout(string returnUrl = "/")
