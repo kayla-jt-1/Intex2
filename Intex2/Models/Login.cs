@@ -5,10 +5,12 @@ namespace Intex2.Models
 {
     public class LoginModel
     {
-        [Required]
+        [Required(ErrorMessage = "Please Enter a Username")]
         public string Username { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Please Enter a Password")]
         public string Password { get; set; }
+
         public string ReturnUrl { get; set; }
     }
 }
