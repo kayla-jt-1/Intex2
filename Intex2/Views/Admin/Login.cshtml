@@ -1,0 +1,107 @@
+﻿@{
+    Layout = null;
+}
+
+@model Login
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-wide" />
+    <title>UDOT Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+@*<body style="background: #000;">*@
+<body>
+
+    <div class="bg-dark text-white p-2">
+        <span class="navbar-brand m-l-2">Login</span>
+    </div>
+
+    <br /><br /><br />
+
+    <form method="post" asp-controller="Admin" asp-action="Login">
+        <div class="container mt-7">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6">
+                    <div class="card px-5 py-12" id="form1">
+                        <div class="form-data" v-if="!submitted">
+                            <br />
+                            <div class="text-danger" asp-validation-summary="All"></div>
+                            <div class="forms-inputs mb-4">
+                                <label asp-for="Username">User Name:</label>
+                                <input asp-for="Username" class="form-control" />
+                            </div>
+
+                            <div class="forms-inputs mb-4">
+                                <label asp-for="Password">Password:</label>
+                                <input asp-for="Password" class="form-control" type="password" />
+                            </div>
+
+                            <div class="mb-3"> <button class="btn btn-dark w-100" type="submit" style="text-align:center;">Login</button> </div>
+                            <br />
+
+                            <input type="hidden" asp-for="ReturnUrl" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+@*<body style="background: #000;">
+
+        <div class="text-danger" asp-validation-summary="All"></div>
+        <form method="post" asp-controller="Admin" asp-action="Login">
+
+            <section class="vh-100" style="background-color: #34568B;">
+                <div class="container py-5 h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                            <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                                <div class="card-body p-5 text-center">
+
+                                    <h3 class="mb-5">Sign In</h3>
+
+                                    <div class="form-outline mb-4">
+                                        <input asp-for="Username" class="form-control form-control-lg" />
+                                        <label asp-for="Username">Username</label>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="password" asp-for="Password" onpaste="return false" class="form-control form-control-lg" />
+                                        <label asp-for="Password">Password</label>
+                                    </div>
+
+                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+
+                                    <hr class="my-4">
+                                    <input type="hidden" asp-for="ReturnUrl" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </form>
+
+    </body>
+
+    </html>*@
