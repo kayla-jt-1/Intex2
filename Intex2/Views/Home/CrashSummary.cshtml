@@ -9,52 +9,96 @@
 }
 
 @model List<Crash>
+
+    <h3>Below are all the crashes on record for the city of Provo in 2016, 2017 and 2019.</h3>
+
+<!--Display the crashes-->
 <div class="accordian" id="crash_accordion">
+
+    <!--Iterate through all of the crashes-->
     @foreach (var c in Model)
     {
-        <div class="card card-outline-primary m-1 p-1">
-            <div class="bg-faded p-1">
-                <h4>
-                    #@c.CRASH_ID
-                </h4>
-            </div>
-            <div>@c.CRASH_DATETIME</div>
-            <div>@c.MAIN_ROAD_NAME</div>
-            <div>@c.CITY</div>
-            <div>
-                @if (c.CRASH_SEVERITY_ID == 1)
-                {
-                    <span>No Injury</span>
-                }
-                else if (c.CRASH_SEVERITY_ID == 2)
-                {
-                    <span>Possible Injury</span>
-                }
-                else if (c.CRASH_SEVERITY_ID == 3)
-                {
-                    <span>Suspected Minor Injury</span>
-                }
-                else if (c.CRASH_SEVERITY_ID == 4)
-                {
-                    <span>Suspected Major Injury</span>
-                }
-                else if (c.CRASH_SEVERITY_ID == 5)
-                {
-                    <span>Fatal</span>
-                }
-                else //this should never be the case
-                {
-                    <span>yeet</span>
-                }
-                <form method="post">
-                    <input type="hidden" asp-for="@c.CRASH_ID" />
-                    <span>
-                        
-                    </span>
-                </form>
+    <div class="card card-outline-primary m-1 p-1">
+
+        <!--display the crash id-->
+        <div>
+            <h4>
+                #@c.CRASH_ID
+            </h4>
+        </div>
+
+        <!--display the date and time-->
+        <div>@c.CRASH_DATETIME</div>
+
+        <!--display the road name-->
+        <div>@c.MAIN_ROAD_NAME</div>
+
+        <!--display the city-->
+        <div>@c.CITY</div>
+
+        <!--identify and display the severity-->
+        <div>
+            @if (c.CRASH_SEVERITY_ID == 1)
+            {
+                <span>No Injury</span>
+            }
+            else if (c.CRASH_SEVERITY_ID == 2)
+            {
+                <span>Possible Injury</span>
+            }
+            else if (c.CRASH_SEVERITY_ID == 3)
+            {
+                <span>Suspected Minor Injury</span>
+            }
+            else if (c.CRASH_SEVERITY_ID == 4)
+            {
+                <span>Suspected Major Injury</span>
+            }
+            else if (c.CRASH_SEVERITY_ID == 5)
+            {
+                <span>Fatal</span>
+            }
+            else // this should never be the case
+            {
+                <span>yeet</span>
+            }
+
+            <!--Additional Details-->
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                More Details
+            </button>
+
+        </div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="crash_accordion">
+            <div class="card-body">
+                <div>@c.ROUTE</div>
+                <div>@c.MILEPOINT</div>
+                <div>@c.LAT_UTM_Y</div>
+                <div>@c.LONG_UTM_Y</div>
+                <div>@c.COUNTY_NAME</div>
+                <div>@c.WORK_ZONE_RELATED</div>
+                <div>@c.PEDESTRIAN_INVOLVED</div>
+                <div>@c.BICYCLIST_INVOLVED</div>
+                <div>@c.MOTORCYCLE_INVOLVED</div>
+                <div>@c.IMPROPER_RESTRAINT</div>
+                <div>@c.UNRESTRAINED</div>
+                <div>@c.DUI</div>
+                <div>@c.INTERSECTION_RELATED</div>
+                <div>@c.WILD_ANIMAL_RELATED</div>
+                <div>@c.DOMESTIC_ANIMAL_RELATED</div>
+                <div>@c.OVERTURN_ROLLOVER</div>
+                <div>@c.COMMERCIAL_MOTOR_VEH_INVOLVED</div>
+                <div>@c.TEENAGE_DRIVER_INVOLVED</div>
+                <div>@c.OLDER_DRIVER_INVOLVED</div>
+                <div>@c.NIGHT_DARK_CONDITION</div>
+                <div>@c.SINGLE_VEHICLE</div>
+                <div>@c.DISTRACTED_DRIVING</div>
+                <div>@c.DROWSY_DRIVING</div>
+                <div>@c.ROADWAY_DEPARTURE</div>
             </div>
         </div>
+    </div>
     }
 </div>
 
-<h3>Below are all the crashes on record for the city of Provo in 2016, 2017 and 2019.</h3>
+
