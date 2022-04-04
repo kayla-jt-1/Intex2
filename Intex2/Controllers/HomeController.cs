@@ -11,11 +11,10 @@ namespace Intex2.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController()
         {
-            _logger = logger;
+
         }
 
         public IActionResult Index()
@@ -23,15 +22,57 @@ namespace Intex2.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+
+        // VIEW ALL CRASHES
+        [HttpGet]
+        public IActionResult AllCrashes()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+
+        //ADD CRASH
+        [HttpGet]
+        public IActionResult AddCrash()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddCrash(Crash crash)
+        {
+            return View("Index");
+        }
+
+
+        // EDIT CRASH 
+        [HttpGet]
+        public IActionResult EditCrash()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult EditCrash(Crash crash)
+        {
+            return RedirectToAction();
+        }
+
+
+        // DELETE CRASH
+        [HttpGet]
+        public IActionResult Delete()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Crash crash)
+        {
+
+            return View();
         }
     }
 }
