@@ -26,7 +26,7 @@ namespace Intex2
         {
             services.AddControllersWithViews();
 
-            //services.AddDbContext<CrashContext>();
+            services.AddDbContext<CrashContext>();
 
             //services.AddDbContext<CrashContext>(options =>
             //{
