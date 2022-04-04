@@ -72,7 +72,7 @@ namespace Intex2
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            //IdentitySeedData.EnsurePopulated(app);
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }
