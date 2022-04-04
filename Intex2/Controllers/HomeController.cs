@@ -143,5 +143,12 @@ namespace Intex2.Controllers
 
             return Redirect(returnUrl);
         }
+
+
+        //PRIVACY
+        public IActionResult Privacy()
+        {
+            return View();
+        }
     }
 }
