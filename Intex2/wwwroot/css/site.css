@@ -33,9 +33,9 @@ for details on configuring this project to bundle and minify static web assets. 
     border: 2px solid #000
 }
 
-/*.btn {
+.btn-login {
     height: 50px
-}*/
+}
 
 .success-data {
     display: flex;

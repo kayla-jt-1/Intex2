@@ -1,6 +1,6 @@
-﻿@{
+﻿@*@{
     Layout = null;
-}
+}*@
 
 @model Login
 
@@ -40,7 +40,7 @@
                                 <input asp-for="Password" class="form-control" type="password" />
                             </div>
 
-                            <div class="mb-3"> <button class="btn btn-dark w-100" type="submit" style="text-align:center;">Login</button> </div>
+                            <div class="mb-3"> <button class="btn btn-dark w-100 btn-login" type="submit" style="text-align:center;">Login</button> </div>
                             <br />
 
                             <input type="hidden" asp-for="ReturnUrl" />
