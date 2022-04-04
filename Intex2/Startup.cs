@@ -2,6 +2,8 @@ using Intex2.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,6 +29,12 @@ namespace Intex2
             services.AddControllersWithViews();
 
             services.AddDbContext<CrashContext>();
+
+            services.AddDbContext<AppIdentityDBContext>(options =>
+            options.UseSqlite(Configuration["ConnectionStrings:IdentityConnection"]));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDBContext>();
 
             //services.AddDbContext<CrashContext>(options =>
             //{
@@ -54,6 +62,7 @@ namespace Intex2
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
