@@ -20,43 +20,46 @@
     {
     <div class="card card-outline-primary m-1 p-1">
 
-        <!--display the crash id-->
+        <!--display the crash id as #id-->
         <div>
             <h4>
-                #@c.CRASH_ID
+                Accident number: @c.CRASH_ID
             </h4>
         </div>
 
         <!--display the date and time-->
-        <div>@c.CRASH_DATETIME</div>
+        <div>Date: @c.CRASH_DATETIME</div>
+
+        <!--display the date and time-->
+        <div>Time: @c.CRASH_DATETIME</div>
 
         <!--display the road name-->
-        <div>@c.MAIN_ROAD_NAME</div>
+        <div>Road: @c.MAIN_ROAD_NAME</div>
 
         <!--display the city-->
-        <div>@c.CITY</div>
+        <div>City: @c.CITY</div>
 
         <!--identify and display the severity-->
         <div>
             @if (c.CRASH_SEVERITY_ID == 1)
             {
-                <span>No Injury</span>
+                <span>Accident severity: No Injury</span>
             }
             else if (c.CRASH_SEVERITY_ID == 2)
             {
-                <span>Possible Injury</span>
+                <span>Accident severity: Possible Injury</span>
             }
             else if (c.CRASH_SEVERITY_ID == 3)
             {
-                <span>Suspected Minor Injury</span>
+                <span>Accident severity: Suspected Minor Injury</span>
             }
             else if (c.CRASH_SEVERITY_ID == 4)
             {
-                <span>Suspected Major Injury</span>
+                <span>Accident severity: Suspected Major Injury</span>
             }
             else if (c.CRASH_SEVERITY_ID == 5)
             {
-                <span>Fatal</span>
+                <span>Accident severity: Fatal</span>
             }
             else // this should never be the case
             {
@@ -71,30 +74,250 @@
         </div>
         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="crash_accordion">
             <div class="card-body">
-                <div>@c.ROUTE</div>
-                <div>@c.MILEPOINT</div>
-                <div>@c.LAT_UTM_Y</div>
-                <div>@c.LONG_UTM_Y</div>
-                <div>@c.COUNTY_NAME</div>
-                <div>@c.WORK_ZONE_RELATED</div>
-                <div>@c.PEDESTRIAN_INVOLVED</div>
-                <div>@c.BICYCLIST_INVOLVED</div>
-                <div>@c.MOTORCYCLE_INVOLVED</div>
-                <div>@c.IMPROPER_RESTRAINT</div>
-                <div>@c.UNRESTRAINED</div>
-                <div>@c.DUI</div>
-                <div>@c.INTERSECTION_RELATED</div>
-                <div>@c.WILD_ANIMAL_RELATED</div>
-                <div>@c.DOMESTIC_ANIMAL_RELATED</div>
-                <div>@c.OVERTURN_ROLLOVER</div>
-                <div>@c.COMMERCIAL_MOTOR_VEH_INVOLVED</div>
-                <div>@c.TEENAGE_DRIVER_INVOLVED</div>
-                <div>@c.OLDER_DRIVER_INVOLVED</div>
-                <div>@c.NIGHT_DARK_CONDITION</div>
-                <div>@c.SINGLE_VEHICLE</div>
-                <div>@c.DISTRACTED_DRIVING</div>
-                <div>@c.DROWSY_DRIVING</div>
-                <div>@c.ROADWAY_DEPARTURE</div>
+
+                <!--Display the Route Number-->
+                <div>Route number: @c.ROUTE</div>
+
+                <!--Display the Milepoint-->
+                <div>Milepoint: @c.MILEPOINT</div>
+
+                <!--Display the Lattitude-->
+                <div>Lattitude: @c.LAT_UTM_Y</div>
+
+                <!--Display the Longitude-->
+                <div>Longitude: @c.LONG_UTM_Y</div>
+
+                <!--Display the County-->
+                <div>County: @c.COUNTY_NAME</div>
+
+                <!--Display Work Zone Related as Yes or No-->
+                <div>
+                    @if (c.WORK_ZONE_RELATED == true)
+                    {
+                        <span>Work Zone Related: Yes</span>
+                    }
+                    else
+                    {
+                        <span> Work Zone Related: No </span>
+                    }
+                </div>
+
+                <!--Display Pedestrian Involved as Yes or No-->
+                <div>
+                    @if (c.PEDESTRIAN_INVOLVED == true)
+                    {
+                        <span>Pedestrian Involved: Yes</span>
+                    }
+                    else
+                    {
+                        <span>Pedestrian Involved:  No </span>
+                    }
+                </div>
+
+                <!--Display Bicyclist Involved as Yes or No-->
+                <div>
+
+                    @if (c.BICYCLIST_INVOLVED == true)
+                    {
+                        <span>Bicyclist Involved: Yes</span>
+                    }
+                    else
+                    {
+                        <span>Bicyclist Involved:  No </span>
+                    }
+                </div>
+
+                <!--Display Motorcycle Involved as Yes or No-->
+                <div>
+                    @if (c.MOTORCYCLE_INVOLVED == true)
+                    {
+                        <span>Motorcylce Involved: Yes</span>
+                    }
+                    else
+                    {
+                        <span>Motorcylce Involved:  No </span>
+                    }
+                </div>
+
+                <!--Display Improper Restraint as Yes or No-->
+                <div>
+                    @if (c.IMPROPER_RESTRAINT == true)
+                    {
+                        <span>Improper Restraint: Yes</span>
+                    }
+                    else
+                    {
+                        <span>Improper Restraint:  No </span>
+                    }
+                </div>
+
+                <!--Display Unrestrained as Yes or No-->
+                <div>
+                    @if (c.UNRESTRAINED == true)
+                    {
+                        <span>Unrestrained: Yes</span>
+                    }
+                    else
+                    {
+                        <span>Unrestrained:  No </span>
+                    }
+                </div>
+
+                <!--Display DUI as Yes or No-->
+                <div>
+                    @if (c.DUI == true)
+                    {
+                        <span>DUI: Yes</span>
+                    }
+                    else
+                    {
+                        <span>DUI:  No </span>
+                    }
+                </div>
+
+                <!--Display Intersection Related as Yes or No-->
+                <div>
+                    @if (c.INTERSECTION_RELATED == true)
+                    {
+                        <span>Intersection Related: Yes</span>
+                    }
+                    else
+                    {
+                        <span>Intersection Related:  No </span>
+                    }
+                </div>
+
+                <!--Display Wild Animal related as Yes or No-->
+                <div>
+                    @if (c.WILD_ANIMAL_RELATED == true)
+                    {
+                        <span>Wild Animal Related: Yes</span>
+                    }
+                    else
+                    {
+                        <span>Wild Animal Related:  No </span>
+                    }
+                </div>
+
+                <!--Display Domestic Animal related as Yes or No-->
+                <div>
+                    @if (c.DOMESTIC_ANIMAL_RELATED == true)
+                    {
+                        <span>Domestic Animal Related: Yes</span>
+                    }
+                    else
+                    {
+                        <span>Domestic Animal Related:  No </span>
+                    }
+                </div>
+
+                <!--Display Overturn Rollover as Yes or No-->
+                <div>
+                    @if (c.OVERTURN_ROLLOVER == true)
+                    {
+                        <span>Overturn Rollover: Yes</span>
+                    }
+                    else
+                    {
+                        <span>Overturn Rollover:  No </span>
+                    }
+                </div>
+
+                <!--Display Commercial Motor Vehicle Involved as Yes or No-->
+                <div>
+                    @if (c.COMMERCIAL_MOTOR_VEH_INVOLVED == true)
+                    {
+                        <span>Commercial Motor Vehicle Involved: Yes</span>
+                    }
+                    else
+                    {
+                        <span>Commercial Motor Vehicle Involved:  No </span>
+                    }
+                </div>
+
+                <!--Display Teenage Driver Involved as Yes or No-->
+                <div>
+                    @if (c.TEENAGE_DRIVER_INVOLVED == true)
+                    {
+                        <span>Teenage Driver Involved: Yes</span>
+                    }
+                    else
+                    {
+                        <span>Teendage Driver Involved:  No </span>
+                    }
+                </div>
+
+                <!--Display Older Drive Involved as Yes or No-->
+                <div>
+                    @if (c.OLDER_DRIVER_INVOLVED == true)
+                    {
+                        <span>Older Driver Involved: Yes</span>
+                    }
+                    else
+                    {
+                        <span>Older Driver Involved:  No </span>
+                    }
+                </div>
+
+                <!--Display Night Dark Condition as Yes or No-->
+                <div>
+                    @if (c.NIGHT_DARK_CONDITION == true)
+                    {
+                        <span>Night Dark Condition: Yes</span>
+                    }
+                    else
+                    {
+                        <span>Night Dark Condition:  No </span>
+                    }
+                </div>
+
+                <!--Display Single as Yes or No-->
+                <div>
+                    @if (c.SINGLE_VEHICLE == true)
+                    {
+                        <span>Single Vehicle: Yes</span>
+                    }
+                    else
+                    {
+                        <span>Single Vehicle:  No </span>
+                    }
+                </div>
+
+                <!--Display Distracted Driving as Yes or No-->
+                <div>
+                    @if (c.DISTRACTED_DRIVING == true)
+                    {
+                        <span>Distracted Driving: Yes</span>
+                    }
+                    else
+                    {
+                        <span>Distracted Driving:  No </span>
+                    }
+                </div>
+
+                <!--Display Drowsy Driving as Yes or No-->
+                <div>
+                    @if (c.DROWSY_DRIVING == true)
+                    {
+                        <span>Drowsy Driving: Yes</span>
+                    }
+                    else
+                    {
+                        <span>Drowsy Driving:  No </span>
+                    }
+                </div>
+
+                <!--Display Roadway Departure as Yes or No-->
+                <div>
+                    @if (c.ROADWAY_DEPARTURE == true)
+                    {
+                        <span>Roadway Departure: Yes</span>
+                    }
+                    else
+                    {
+                        <span>Roadway Departure:  No </span>
+                    }
+                </div>
             </div>
         </div>
     </div>
