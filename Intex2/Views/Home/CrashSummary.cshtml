@@ -1,0 +1,60 @@
+﻿@*
+    Purpose: 
+        Lists out the summary data for all accidents in the database.
+        Shows 50 accidents on each page 
+        Allows the user to filter the results displayed
+*@
+@{
+    ViewData["Title"] = "View Accidents";
+}
+
+@model List<Crash>
+<div class="accordian" id="crash_accordion">
+    @foreach (var c in Model)
+    {
+        <div class="card card-outline-primary m-1 p-1">
+            <div class="bg-faded p-1">
+                <h4>
+                    #@c.CRASH_ID
+                </h4>
+            </div>
+            <div>@c.CRASH_DATETIME</div>
+            <div>@c.MAIN_ROAD_NAME</div>
+            <div>@c.CITY</div>
+            <div>
+                @if (c.CRASH_SEVERITY_ID == 1)
+                {
+                    <span>No Injury</span>
+                }
+                else if (c.CRASH_SEVERITY_ID == 2)
+                {
+                    <span>possible injury</span>
+                }
+                else if (c.CRASH_SEVERITY_ID == 3)
+                {
+                    <span>suspected minor injury</span>
+                }
+                else if (c.CRASH_SEVERITY_ID == 4)
+                {
+                    <span>suspected major injury</span>
+                }
+                else if (c.CRASH_SEVERITY_ID == 5)
+                {
+                    <span>fatal</span>
+                }
+                else //this should never be the case
+                {
+                    <span>yeet</span>
+                }
+                <form method="post">
+                    <input type="hidden" asp-for="@c.CRASH_ID" />
+                    <span>
+                        
+                    </span>
+                </form>
+            </div>
+        </div>
+    }
+</div>
+
+<h3>Below are all the crashes on record for the city of Provo in 2016, 2017 and 2019.</h3>

@@ -35,7 +35,8 @@ namespace Intex2.Controllers
         [HttpGet]
         public IActionResult AllCrashes()
         {
-            return View();
+            var crashes = repo.Crashes.ToList();
+            return View("CrashSummary", crashes);
         }
 
 
