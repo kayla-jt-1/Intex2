@@ -1,3 +1,4 @@
+using Intex2.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,7 +26,14 @@ namespace Intex2
         {
             services.AddControllersWithViews();
 
-            //services.AddScoped<ICrashRepository, EFCrashRepository>();
+            //services.AddDbContext<CrashContext>();
+
+            //services.AddDbContext<CrashContext>(options =>
+            //{
+            //    options.UseSqlite(Configuration["ConnectionStrings:AppointmentDBConnection"]);
+            //});
+
+            services.AddScoped<ICrashRepository, EFCrashRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

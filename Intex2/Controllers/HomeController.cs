@@ -60,31 +60,44 @@ namespace Intex2.Controllers
 
         // EDIT CRASH 
         [HttpGet]
-        public IActionResult EditCrash()
+        public IActionResult EditCrash(int crashId)
         {
-            return View();
+            var crash = repo.Crashes.Single(x => x.CRASH_ID == crashId);
+
+            return View("AddCrash", crash);
         }
 
         [HttpPost]
         public IActionResult EditCrash(Crash crash)
         {
-            return RedirectToAction();
+            if (ModelState.IsValid)
+            {
+                repo.SaveCrash(crash);
+
+                return RedirectToAction("AllCrashes"); //NEED TO MAKE THIS A PAGE IF NOT ALREADY!!!!!!!!!!!!
+            }
+            else
+            {
+                return View("AddCrash", crash);
+            }
         }
 
 
         // DELETE CRASH
         [HttpGet]
-        public IActionResult Delete()
+        public IActionResult Delete(int crashId)
         {
+            var crash = repo.Crashes.Single(x => x.CRASH_ID == crashId);
 
-            return View();
+            return View(crash);
         }
 
         [HttpPost]
         public IActionResult Delete(Crash crash)
         {
+            repo.DeleteCrash(crash);
 
-            return View();
+            return View("AllCrashes");  //NEED TO MAKE THIS A PAGE IF NOT ALREADY!!!!!!!!!!!!
         }
     }
 }
