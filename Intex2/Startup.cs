@@ -1,6 +1,7 @@
 using Intex2.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -41,7 +42,11 @@ namespace Intex2
             //    options.UseSqlite(Configuration["ConnectionStrings:AppointmentDBConnection"]);
             //});
 
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
             services.AddScoped<ICrashRepository, EFCrashRepository>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,15 +56,16 @@ namespace Intex2
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            //else
+            //{
+            //    app.UseExceptionHandler("/Home/Error");
+            //    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            //    app.UseHsts();
+            //}
 
+            //app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthentication();
