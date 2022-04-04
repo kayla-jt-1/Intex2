@@ -12,9 +12,11 @@ namespace Intex2.Controllers
     public class HomeController : Controller
     {
 
-        public HomeController()
-        {
+        private ICrashRepository repo;
 
+        public HomeController(ICrashRepository temp)
+        {
+            repo = temp;
         }
 
         public IActionResult Index()
@@ -35,16 +37,26 @@ namespace Intex2.Controllers
         [HttpGet]
         public IActionResult AddCrash()
         {
-
+            ViewBag.Crashes = repo.Crashes.ToList();
             return View();
+
         }
 
         [HttpPost]
         public IActionResult AddCrash(Crash crash)
         {
-            return View("Index");
-        }
+            if (ModelState.IsValid)
+            {
+                repo.SaveCrash(crash);
 
+                return View("Confirmation", crash);
+            }
+            else
+            {
+                ViewBag.Crashes = repo.Crashes.ToList();
+                return View();
+            }
+        }
 
         // EDIT CRASH 
         [HttpGet]
