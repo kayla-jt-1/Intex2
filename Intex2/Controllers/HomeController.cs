@@ -1,4 +1,5 @@
 ﻿using Intex2.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -14,9 +15,14 @@ namespace Intex2.Controllers
 
         private ICrashRepository repo;
 
-        public HomeController(ICrashRepository temp)
+        private UserManager<IdentityUser> userManager;
+        private SignInManager<IdentityUser> signInManager;
+
+        public HomeController(ICrashRepository temp, UserManager<IdentityUser> um, SignInManager<IdentityUser> sim)
         {
             repo = temp;
+            userManager = um;
+            signInManager = sim;
         }
 
         public IActionResult Index()
@@ -25,7 +31,7 @@ namespace Intex2.Controllers
         }
 
 
-        // VIEW ALL CRASHES
+        //VIEW ALL CRASHES
         [HttpGet]
         public IActionResult AllCrashes()
         {
@@ -58,7 +64,7 @@ namespace Intex2.Controllers
             }
         }
 
-        // EDIT CRASH 
+        //EDIT CRASH 
         [HttpGet]
         public IActionResult EditCrash(int crashId)
         {
@@ -83,7 +89,7 @@ namespace Intex2.Controllers
         }
 
 
-        // DELETE CRASH
+        //DELETE CRASH
         [HttpGet]
         public IActionResult Delete(int crashId)
         {
@@ -98,6 +104,43 @@ namespace Intex2.Controllers
             repo.DeleteCrash(crash);
 
             return View("CrashSummary");
+        }
+
+
+        //LOGIN
+        [HttpGet]
+        public IActionResult Login(string returnUrl)
+        {
+            return View(new Login { ReturnUrl = returnUrl });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(Login login)
+        {
+            if (ModelState.IsValid)
+            {
+                IdentityUser user = await userManager.FindByNameAsync(login.Username);
+
+                if (user != null)
+                {
+                    await signInManager.SignOutAsync();
+
+                    if ((await signInManager.PasswordSignInAsync(user, login.Password, false, false)).Succeeded)
+                    {
+                        return Redirect(login?.ReturnUrl ?? "/Admin");
+                    }
+                }
+            }
+
+            ModelState.AddModelError("", "Invalid Name or Password");
+            return View(login);
+        }
+
+        public async Task<RedirectResult> Logout(string returnUrl = "/")
+        {
+            await signInManager.SignOutAsync();
+
+            return Redirect(returnUrl);
         }
     }
 }
