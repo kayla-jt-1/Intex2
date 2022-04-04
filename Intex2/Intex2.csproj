@@ -6,8 +6,10 @@
 
   <ItemGroup>
     <None Remove="Models\" />
+    <None Remove="Views\Home\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Views\Home\Admin\" />
   </ItemGroup>
 </Project>
