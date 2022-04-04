@@ -7,12 +7,10 @@
   <ItemGroup>
     <None Remove="Models\" />
     <None Remove="Views\Home\Admin\" />
+    <None Remove="Microsoft.EntityFrameworkCore" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Views\Home\Admin\" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.23" />
   </ItemGroup>
 </Project>
