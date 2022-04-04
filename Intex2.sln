@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intex2", "Intex2\Intex2.csproj", "{0F7FED38-17F5-4D61-98DC-67DB0ACA3EBE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F7FED38-17F5-4D61-98DC-67DB0ACA3EBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F7FED38-17F5-4D61-98DC-67DB0ACA3EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F7FED38-17F5-4D61-98DC-67DB0ACA3EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F7FED38-17F5-4D61-98DC-67DB0ACA3EBE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {785A1A26-0EC4-4453-96B8-8DE3CD3100DB}
+	EndGlobalSection
+EndGlobal
