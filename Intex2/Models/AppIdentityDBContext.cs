@@ -10,5 +10,6 @@ namespace Intex2.Models
         public AppIdentityDBContext(DbContextOptions options) : base(options)
         {
         }
+
     }
 }
