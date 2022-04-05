@@ -55,5 +55,12 @@ namespace Intex2.Controllers
             return Redirect(returnUrl); 
         }
 
+
+        //public IActionResult Test()
+        //{
+
+        //    return View();
+        //}
+
     }
 }
