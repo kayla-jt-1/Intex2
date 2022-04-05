@@ -85,7 +85,32 @@ namespace Intex2.Controllers
         }
 
 
+        //EDIT CRASH 
+        [HttpGet]
+        public IActionResult EditCrash(int crashId)
+        {
+            var crash = repo.Crashes.Single(x => x.CRASH_ID == crashId);
 
+            return View("AddCrash", crash);
+        }
+
+        [HttpPost]
+        public IActionResult EditCrash(Crash crash)
+        {
+            if (ModelState.IsValid)
+            {
+                repo.SaveCrash(crash);
+
+                return RedirectToAction("CrashSummary");
+            }
+            else
+            {
+                return View("AddCrash", crash);
+            }
+        }
+
+
+        //LOOKUP CRASH FOR ADMINS
         [HttpGet]
         public IActionResult AdminLookup()
         {
