@@ -1,42 +1,434 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+//Layout = "";
 }
 
+@model CrashData
 
+<link href="~/css/style.css" rel="stylesheet" />
+<link href="~/css/site.css" rel="stylesheet" />
 
 <h3>Am I at risk of a fatal car crash?</h3>
 
-<form method="post">
+<form method="post" asp-controller="Home">
     <div class="form-group">
-        <label for="=">City</label>
-        <input type="text" class="form-control" id="">
+        @* CITY *@
+        <div class="form-check">
+            I currently live in (city) <br />
+            <input class="form-check-input" asp-for="city_SaltLakeCity" type="radio" name="location" id="location" value="1">
+            <label class="form-check-label" asp-for="city_SaltLakeCity">Salk Lake City</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" asp-for="city_WestValleyCity" type="radio" name="location" id="location" value="1">
+            <label class="form-check-label" asp-for="city_WestValleyCity">West Valley</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" asp-for="city_OutsideCityLimits" type="radio" name="location" id="location" value="1">
+            <label class="form-check-label" asp-for="city_OutsideCityLimits">Outside City Limits</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" asp-for="city_Other" type="radio" name="location" id="location" value="1">
+            <label class="form-check-label" asp-for="city_Other">Other</label>
+        </div>
         <br />
-        <label for="">County</label>
-        <input type="text" class="form-control" id="">
+        @* COUNTY *@
+        <div class="form-check">
+            I currently live in (county)<br />
+            <input class="form-check-input" asp-for="county_name_Davis" type="radio" name="county" id="location" value="1">
+            <label class="form-check-label" asp-for="county_name_Davis">Davis County</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" asp-for="county_name_SaltLake" type="radio" name="county" id="location" value="1">
+            <label class="form-check-label" asp-for="county_name_SaltLake">Salt Lake County</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" asp-for="county_name_Utah" type="radio" name="county" id="location" value="1">
+            <label class="form-check-label" asp-for="county_name_Utah">Utah County</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" asp-for="county_name_Weber" type="radio" name="county" id="location" value="1">
+            <label class="form-check-label" asp-for="county_name_Weber">Weber County</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" asp-for="county_name_Other" type="radio" name="county" id="location" value="1">
+            <label class="form-check-label" asp-for="county_name_Other">Other</label>
+        </div>
         <br />
+        @* ROADS *@
+        <div class="form-check">
+            I often drive on (select as many as apply)<br />
+            <input class="form-check-input" asp-for="route_15"type="radio" name="road1" id="road" value="1">
+            <label class="form-check-label" asp-for="route_15">I-15</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" asp-for="route_89"type="radio" name="road2" id="road" value="1">
+            <label class="form-check-label" asp-for="route_89">Route 89</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" asp-for="roadway_departure"type="radio" name="raod3" id="road" value="1">
+            <label class="form-check-label" asp-for="roadway_departure">Entrance/Exit Ramps</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" asp-for="route_Other" type="radio" name="road4" id="road" value="1">
+            <label class="form-check-label" asp-for="route_Other">Other</label>
+        </div>
 
-        <label for="formControlRange">I'm usually tired when I drive</label>
-        <input type="range" class="form-control-range" id="formControlRange">
-        <br />
+        <input type="hidden" asp-for="main_road_name_I_15" value="1" />
 
-        <label for="formControlRange">I actively notice bike riders while I drive</label>
-        <input type="range" class="form-control-range" id="formControlRange">
-        <br />
+        @* AGE *@
+        <div class="form-check">
+            I am ____ years old<br />
+            <input class="form-check-input" asp-for="teenage_driver_involved" type="radio" name="age" id="location" value="0">
+            <label class="form-check-label" asp-for="teenage_driver_involved">15-17</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="age" id="location">
+            <label class="form-check-label">18-25</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="age" id="location">
+            <label class="form-check-label">26-40</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="age" id="location">
+            <label class="form-check-label">41-55</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" asp-for="older_driver_involved" type="radio" name="age" id="location" value="0">
+            <label class="form-check-label" asp-for="older_driver_involved">55+</label>
+        </div>
 
-        <label for="formControlRange">I actively notice pedestrians while I drive</label>
-        <input type="range" class="form-control-range" id="formControlRange" value="30">
-        <br />
+        <table class="table table-striped text-wrap">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="1" style="width: 8rem;"></th>
+                    <th scope="col" colspan="1" style="width: 6rem;">Strongly Disagree</th>
+                    <th scope="col" colspan="1" style="width: 6rem;">Disagree</th>
+                    <th scope="col" colspan="1" style="width: 6rem;">Neither Agree nor Disagree</th>
+                    <th scope="col" colspan="1" style="width: 6rem;">Agree</th>
+                    <th scope="col" colspan="1" style="width: 6rem;">Strongly Agree</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">I'm often tired when I drive.</th>
+                    <td>
+                        <div class="form-check form-check-inline" style="position: absolute; align-content:center;">
+                            <input class="form-check-input" type="radio" name="drowsy_driving" asp-for="drowsy_driving" id="stronglydisagree" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="drowsy_driving" asp-for="drowsy_driving" id="disagree" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="drowsy_driving" asp-for="drowsy_driving" id="neither" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="drowsy_driving" asp-for="drowsy_driving" id="agree" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="drowsy_driving" asp-for="drowsy_driving" id="stronglyagree" value="1">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">I actively notice pedestrians while I drive.</th>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="pedestrian_involved" asp-for="pedestrian_involved" id="stronglydisagree" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="pedestrian_involved" asp-for="pedestrian_involved" id="disagree" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="pedestrian_involved" asp-for="pedestrian_involved" id="neither" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="pedestrian_involved" asp-for="pedestrian_involved" id="agree" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="pedestrian_involved" asp-for="pedestrian_involved" id="stronglyagree" value="0">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">I actively notice bike riders while I drive.</th>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="bicyclist_involved" asp-for="bicyclist_involved" id="stronglydisagree" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="bicyclist_involved" asp-for="bicyclist_involved" id="disagree" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="bicyclist_involved" asp-for="bicyclist_involved" id="neither" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="bicyclist_involved" asp-for="bicyclist_involved" id="agree" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="bicyclist_involved" asp-for="bicyclist_involved" id="stronglyagree" value="0">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">I actively notice motorcyclists while I drive.</th>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="motorcycle_involved" asp-for="motorcycle_involved" id="stronglydisagree" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="motorcycle_involved" asp-for="motorcycle_involved" id="disagree" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="motorcycle_involved" asp-for="motorcycle_involved" id="neither" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="motorcycle_involved" asp-for="motorcycle_involved" id="agree" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="motorcycle_involved" asp-for="motorcycle_involved" id="stronglyagree" value="0">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">I always wear my seatbelt correctly in the car.</th>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="improper_restraint" asp-for="improper_restraint" id="stronglydisagree" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="improper_restraint" asp-for="improper_restraint" id="disagree" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="improper_restraint" asp-for="improper_restraint" id="neither" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="improper_restraint" asp-for="improper_restraint" id="agree" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="improper_restraint" asp-for="improper_restraint" id="stronglyagree" value="0">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">I always wear a seatbelt when I'm in the car.</th>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="unrestrained" asp-for="unrestrained" id="stronglydisagree" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="unrestrained" asp-for="unrestrained" id="disagree" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="unrestrained" asp-for="unrestrained" id="neither" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="unrestrained" asp-for="unrestrained" id="agree" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="unrestrained" asp-for="unrestrained" id="stronglyagree" value="0">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">I sometimes drive while under the influence of alcohol.</th>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="dui" asp-for="dui" id="stronglydisagree" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="dui" asp-for="dui" id="disagree" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="dui" asp-for="dui" id="neither" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="dui" asp-for="dui" id="agree" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="dui" asp-for="dui" id="stronglyagree" value="1">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">I am cautious when driving through intersections.</th>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="intersection_related" asp-for="intersection_related" id="stronglydisagree" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="intersection_related" asp-for="intersection_related" id="disagree" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="intersection_related" asp-for="intersection_related" id="neither" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="intersection_related" asp-for="intersection_related" id="agree" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="intersection_related" asp-for="intersection_related" id="stronglyagree" value="0">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">I often notice wild animals in my daily commute.</th>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="wild_animal_related" asp-for="wild_animal_related" id="stronglydisagree" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="wild_animal_related" asp-for="wild_animal_related" id="disagree" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="wild_animal_related" asp-for="wild_animal_related" id="neither" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="wild_animal_related" asp-for="wild_animal_related" id="agree" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="wild_animal_related" asp-for="wild_animal_related" id="stronglyagree" value="1">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">I drive when it is dark outside.</th>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="night_dark_condition" asp-for="night_dark_condition" id="stronglydisagree" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="night_dark_condition" asp-for="night_dark_condition" id="disagree" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="night_dark_condition" asp-for="night_dark_condition" id="neither" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="night_dark_condition" asp-for="night_dark_condition" id="agree" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="night_dark_condition" asp-for="night_dark_condition" id="stronglyagree" value="1">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">I make quick glances to my phone when I drive.</th>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="distracted_driving" asp-for="distracted_driving" id="stronglydisagree" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="distracted_driving" asp-for="distracted_driving" id="disagree" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="distracted_driving" asp-for="distracted_driving" id="neither" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="distracted_driving" asp-for="distracted_driving" id="agree" value="1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="distracted_driving" asp-for="distracted_driving" id="stronglyagree" value="1">
+                        </div>
+                    </td>
+                </tr>
 
-        <label for="formControlRange">I actively notice motorcycle drivers while I drive</label>
-        <input type="range" class="form-control-range" id="formControlRange">
-        <br />
+            </tbody>
+        </table>
+        <input type="hidden" asp-for="overturn_rollover" value="0" />
+        <input type="hidden" asp-for="commercial_motor_veh_involved" value="0" />
+        <input type="hidden" asp-for="single_vehicle" value="0" />
+        <input type="hidden" asp-for="crash_month" value="5" />
+        <input type="hidden" asp-for="crash_day" value="4" />
+        <input type="hidden" asp-for="crash_year" value="2019" />
+        <input type="hidden" asp-for="crash_hour" value="12" />
+
+        <button type="submit" class="btn btn-primary">Submit</button>
 
     </div>
-    <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
 </form>

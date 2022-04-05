@@ -8,6 +8,6 @@ namespace Intex2.Models
     // THIS IS USED FOR THE ML MODEL
     public class Prediction
     {
-        public int PredictedValue { get; set; }
+        public float PredictedValue { get; set; }
     }
 }
