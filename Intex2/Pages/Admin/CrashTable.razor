@@ -6,60 +6,45 @@
 
     <thead>
         <tr>
-            <th>CRASH_ID</th>
-            <th>CRASH_DATETIME</th>
-            <th>ROUTE</th>
-            <th>MILEPOINT</th>
-            <th>LAT_UTM_Y</th>
-            <th>LONG_UTM_Y</th>
-            <th>MAIN_ROAD_NAME</th>
+            <th>CRASH ID</th>
+            <th>DATE/TIME</th>
+            <th>ROUTE NUMBER</th>
+            <th>ADDRESS</th>
             <th>CITY</th>
-            <th>COUNTY_NAME</th>
-            <th>CRASH_SEVERITY_ID</th>
-            <th>WORK_ZONE_RELATED</th>
-            <th>PEDESTRIAN_INVOLVED</th>
-            <th>BICYCLIST_INVOLVED</th>
-            <th>MOTORCYCLE_INVOLVED</th>
-            <th>IMPROPER_RESTRAINT</th>
-            <th>UNRESTRAINED</th>
-            <th>DUI</th>
-            <th>INTERSECTION_RELATED</th>
-            <th>WILD_ANIMAL_RELATED</th>
-            <th>DOMESTIC_ANIMAL_RELATED</th>
-            <th>OVERTURN_ROLLOVER</th>
-            <th>COMMERCIAL_MOTOR_VEH_INVOLVED</th>
-            <th>TEENAGE_DRIVER_INVOLVED</th>
-            <th>OLDER_DRIVER_INVOLVED</th>
-            <th>NIGHT_DARK_CONDITION</th>
-            <th>SINGLE_VEHICLE</th>
-            <th>DISTRACTED_DRIVING</th>
-            <th>DROWSY_DRIVING</th>
-            <th>ROADWAY_DEPARTURE</th>
+            <th>COUNTY</th>
+            <th>CRASH SEVERITY</th>
         </tr>
     </thead>
 
     <tbody>
 
-        @if (ProjectData?.Count() > 0)
+        @if (CrashData?.Count() > 0)
         {
-            //List the projects
-            @foreach (Crash c in ProjectData)
+            //List the crashes
+            @foreach (Crash c in CrashData)
             {
                 <tr>
                     <td>@c.CRASH_ID</td>
-                    <td>@p.ProjectName</td>
-                    <td>@p.ProjectRegionalProgram</td>
+                    <td>@c.CRASH_DATETIME</td>
+                    <td>@c.ROUTE</td>
+                    <td>@c.MAIN_ROAD_NAME</td>
+                    <td>@c.CITY</td>
+                    <td>@c.COUNTY_NAME</td>
+                    <td>@c.CRASH_SEVERITY_ID</td>
 
+
+                    @*should we have this details button or should they just be able to click on the whole cell and get more info?????*@
                     <td>
-                        <NavLink class="btn btn-info btn-sm" href="@GetDetailsUrl(p.ProjectId)">Details</NavLink>
+                        <NavLink class="btn btn-info btn-sm" href="@GetDetailsUrl(c.CRASH_ID)">Details</NavLink>
                     </td>
 
                     <td>
-                        <NavLink class="btn btn-warning btn-sm" href="@GetEditUrl(p.ProjectId)">Edit</NavLink>
+                        <NavLink class="btn btn-warning btn-sm" href="@GetEditUrl(c.CRASH_ID)">Edit</NavLink>
                     </td>
 
+                    @*NEEDS VERIFICATION BEFORE DELETION!!!!!!!!*@
                     <td>
-                        <button class="btn btn-danger btn-sm" @onclick="@(x => RemoveProject(p))">Delete</button>
+                        <button class="btn btn-danger btn-sm" @onclick="@(x => RemoveCrash(c))">Delete</button>
                     </td>
                 </tr>
             }
@@ -75,17 +60,14 @@
 
 </table>
 
-
-                     
-
-
-@*<NavLink class="btn btn-primary" href="/admin/projects/create">Create</NavLink>
+<!--this was a button to add a new crash, but I think we're putting that in the header-->
+@*<NavLink class="btn btn-primary" href="/admin/projects/create">Create</NavLink>*@
 
     @code {
 
-        public IWaterProjectRepository repo => Service;
+        public ICrashRepository repo => Service;
 
-        public IEnumerable<Project> ProjectData { get; set; }
+        public IEnumerable<Crash> CrashData { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
@@ -94,16 +76,16 @@
 
         public async Task UpdateData()
         {
-            ProjectData = await repo.Projects.ToListAsync();
+            CrashData = await repo.Crashes.ToListAsync();
         }
 
-        public string GetDetailsUrl(long id) => $"/admin/projects/details/{id}";
-        public string GetEditUrl(long id) => $"/admin/projects/edit/{id}";
+        public string GetDetailsUrl(long id) => $"/admin/accidents/details/{id}";
+        public string GetEditUrl(long id) => $"/admin/accidents/edit/{id}";
 
-        public async Task RemoveProject(Project p)
+        public async Task RemoveCrash(Crash c)
         {
-            repo.DeleteProject(p);
+            repo.DeleteCrash(c);
             await UpdateData();
         }
 
-    }*@
+    }
