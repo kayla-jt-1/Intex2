@@ -1,5 +1,5 @@
 ﻿@{
-//Layout = "";
+    ViewData["TEST"] = "Login";
 }
 
 @model CrashData
@@ -56,15 +56,15 @@
         @* ROADS *@
         <div class="form-check">
             I often drive on (select as many as apply)<br />
-            <input class="form-check-input" asp-for="route_15"type="radio" name="road1" id="road" value="1">
+            <input class="form-check-input" asp-for="route_15" type="radio" name="road1" id="road" value="1">
             <label class="form-check-label" asp-for="route_15">I-15</label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" asp-for="route_89"type="radio" name="road2" id="road" value="1">
+            <input class="form-check-input" asp-for="route_89" type="radio" name="road2" id="road" value="1">
             <label class="form-check-label" asp-for="route_89">Route 89</label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" asp-for="roadway_departure"type="radio" name="raod3" id="road" value="1">
+            <input class="form-check-input" asp-for="roadway_departure" type="radio" name="raod3" id="road" value="1">
             <label class="form-check-label" asp-for="roadway_departure">Entrance/Exit Ramps</label>
         </div>
         <div class="form-check">

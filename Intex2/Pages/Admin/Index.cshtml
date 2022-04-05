@@ -30,50 +30,35 @@
     @*this is part of the blazor setup*@
     <script src="/_framework/blazor.server.js"></script>
 
-    @*tentative title*@
-    <!--<h4 style="padding-left: 30px; padding-top: 13px; color: #48484a;" class="display-4 lh-1 mb-1">Admin</h4>-->
-    @*NAVIGATION BAR*@
-    <!--<header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-1">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/admin/logout">Log Out</a>
-                        </li>
-                    </ul>
+    @*OLD TITLE*@
+    @*<h4 style="padding-left: 30px; padding-top: 13px; color: #48484a;" class="display-4 lh-1 mb-1">Admin</h4>*@
+
+    <div class="bg-secondary text-white p-2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <span class="navbar-brand m-lg-2 display-4 lh-1 mb-1" style="color: white;">Out DOT Solutions Administration</span>
+                </div>
+                <div class="col-3 text-right">
+                    <a class="nav-link" style="color:white;" href="/admin/logout">Log Out</a>
                 </div>
             </div>
-        </nav>
-    </header>-->
-    @*END OF NAVIGATION BAR*@
+        </div>
+    </div>
 
     <br />
 
-    @*<div class="bg-dark text-white p-2">
-            <span class="navbar-brand m-l-2">Admin</span>
-        </div>*@
 
     <div class="row">
         <div class="col col-4"></div>
         <div class="col col-2">
-            <NavLink class="btn btn-primary btn-info rounded" style="width:100%;" href="/admin/accidents" Match="NavLinkMatch.Prefix">View Accidents</NavLink>
+            <a class="btn btn-primary" asp-area="" asp-controller="Admin" asp-action="AdminLookup">Update Accident</a>
         </div>
         <div class="col col-2">
-            <NavLink class="btn btn-primary btn-info rounded" style="width:100%;" href="/admin/books/create" Match="NavLinkMatch.Prefix">Add an Accident</NavLink>
+            <a class="btn btn-primary" asp-area="" asp-controller="Admin" asp-action="AddCrash">Add Accident</a>
         </div>
         <div class="col col-4"></div>
     </div>
-
-    <a class="btn btn-primary" asp-area="" asp-controller="Admin" asp-action="AdminLookup">Update Accident</a>
-    <a class="btn btn-primary" asp-area="" asp-controller="Admin" asp-action="AddCrash">Add Accident</a>
 
 </body>
 
