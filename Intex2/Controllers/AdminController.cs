@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Intex2.Models;
+using Intex2.Models.ViewModels;
 
 
 namespace Intex2.Controllers
@@ -39,7 +39,7 @@ namespace Intex2.Controllers
 
                     if ((await signInManager.PasswordSignInAsync(user, loginmodel.Password, false, false)).Succeeded)
                     {
-                        return Redirect(loginmodel?.ReturnUrl ?? "/Home"); 
+                        return Redirect(loginmodel?.ReturnUrl ?? "/admin"); 
                     }
                 }
             }

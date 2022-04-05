@@ -1,4 +1,6 @@
-﻿@page
-@model Intex2.Pages.Admin.IndexModel
-@{
-}
+﻿@page "/admin"
+
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<h3>PLEASE WORK AND BE LOGGED IN!</h3>

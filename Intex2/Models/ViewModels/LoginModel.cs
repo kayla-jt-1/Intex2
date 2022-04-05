@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Intex2.Models
+namespace Intex2.Models.ViewModels
 {
     public class LoginModel
     {

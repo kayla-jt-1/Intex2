@@ -47,6 +47,8 @@ namespace Intex2
 
             services.AddScoped<ICrashRepository, EFCrashRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddRazorPages(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,6 +78,8 @@ namespace Intex2
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapRazorPages(); 
             });
 
             IdentitySeedData.EnsurePopulated(app);
