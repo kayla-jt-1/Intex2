@@ -1,5 +1,374 @@
-﻿<h3>Component1</h3>
+﻿@page "/admin/accidents/edit/{id:long}"
+@page "/admin/accidents/create"
+@inherits OwningComponentBase<ICrashRepository>
+
+
+@*<h3 class="bg-@ThemeColor text-white text-center p-1">@TitleText a Project</h3>*@
+<br />
+<h5 class="display-4 lh-1 mb-4" style="font-size:30px;">Enter Crash Details</h5>
+
+<style>
+    div.validation-message {
+        color: rgb(220,53,69);
+        font-weight: 500
+    }
+</style>
+
+
+<EditForm Model="c" OnValidSubmit="SaveProject">
+
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+
+    <div class="form-group">
+        <input class="form-control" type="hidden" disabled value="@c.CRASH_ID" />
+    </div>
+
+    <div class="form-group">
+        <label>Date and Time:</label>
+        <ValidationMessage For="@(() => c.CRASH_DATETIME)"></ValidationMessage>
+        <InputDate class="form-control" type="datetime-local" @bind-Value="c.CRASH_DATETIME"></InputDate>
+    </div>
+
+    <div class="form-group">
+        <label>Route Number:</label>
+        <ValidationMessage For="@(() => c.ROUTE)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="c.ROUTE"></InputText>
+    </div>
+
+    <div class="form-group">
+        <label>Milepoint:</label>
+        <ValidationMessage For="@(() => c.MILEPOINT)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="c.MILEPOINT"></InputNumber>
+    </div>
+
+    <div class="form-group">
+        <label>Latitude:</label>
+        <ValidationMessage For="@(() => c.LAT_UTM_Y)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="c.LAT_UTM_Y"></InputNumber>
+    </div>
+
+    <div class="form-group">
+        <label>Longitude:</label>
+        <ValidationMessage For="@(() => c.LONG_UTM_Y)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="c.LONG_UTM_Y"></InputNumber>
+    </div>
+
+    <div class="form-group">
+        <label>Address:</label>
+        <ValidationMessage For="@(() => c.MAIN_ROAD_NAME)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="c.MAIN_ROAD_NAME"></InputText>
+    </div>
+
+    <div class="form-group">
+        <label>City:</label>
+        <ValidationMessage For="@(() => c.CITY)"></ValidationMessage>
+        <InputSelect class="form-control" @bind-Value="c.CITY">
+            <option value="">Select a City</option>
+            <option value="AMERICANFORK">AMERICAN FORK</option>
+            <option value="BEAVER">BEAVER</option>
+            <option value="BLANDING">BLANDING</option>
+            <option value="BOUNTIFUL">BOUNTIFUL</option>
+            <option value="BRIANHEAD">BRIAN HEAD</option>
+            <option value="BRIGHAMCITY">BRIGHAM CITY</option>
+            <option value="CEDARCITY">CEDAR CITY</option>
+            <option value="CEDARFORT">CEDAR FORT</option>
+            <option value="CENTERVILLE">CENTERVILLE</option>
+            <option value="CLEARFIELD">CLEARFIELD</option>
+            <option value="CLINTON">CLINTON</option>
+            <option value="CORINNE">CORINNE</option>
+            <option value="COTTONWOODHEIGHTS">COTTONWOOD HEIGHTS</option>
+            <option value="DRAPER">DRAPER</option>
+            <option value="EAGLEMOUNTAIN">EAGLE MOUNTAIN</option>
+            <option value="EDEN">EDEN</option>
+            <option value="ELSINORE">ELSINORE</option>
+            <option value="ELWOOD">ELWOOD</option>
+            <option value="EPHRAIM">EPHRAIM</option>
+            <option value="FARMINGTON">FARMINGTON</option>
+            <option value="FARRWEST">FARR WEST</option>
+            <option value="FRUITHEIGHTS">FRUIT HEIGHTS</option>
+            <option value="GARLAND">GARLAND</option>
+            <option value="HARRISVILLE">HARRISVILLE</option>
+            <option value="HEBERCITY">HEBER CITY</option>
+            <option value="HERRIMAN">HERRIMAN</option>
+            <option value="HIDEOUT">HIDEOUT</option>
+            <option value="HIGHLAND">HIGHLAND</option>
+            <option value="HOLLADAY">HOLLADAY</option>
+            <option value="HONEYVILLE">HONEYVILLE</option>
+            <option value="HURRICANE">HURRICANE</option>
+            <option value="HYDE">HYDE PARK</option>
+            <option value="HYRUM">HYRUM</option>
+            <option value="INDEPENDENCE">INDEPENDENCE</option>
+            <option value="KAYSVILLE">KAYSVILLE</option>
+            <option value="KEARNS">KEARNS</option>
+            <option value="KIMBALLJUNCTION">KIMBALL JUNCTION</option>
+            <option value="LAYTON">LAYTON</option>
+            <option value="LEHI">LEHI</option>
+            <option value="LEWISTON">LEWISTON</option>
+            <option value="LINDON">LINDON</option>
+            <option value="LOGAN">LOGAN</option>
+            <option value="MAGNA">MAGNA</option>
+            <option value="MANTUA">MANTUA</option>
+            <option value="MAPLETON">MAPLETON</option>
+            <option value="MARRIOTTSLATERVILLE">MARRIOTT-SLATERVILLE</option>
+            <option value="MIDVALE">MIDVALE</option>
+            <option value="MIDWAY">MIDWAY</option>
+            <option value="MILLCREEK">MILLCREEK</option>
+            <option value="MOAB">MOAB</option>
+            <option value="MONA">MONA</option>
+            <option value="MURRAY">MURRAY</option>
+            <option value="MYTON">MYTON</option>
+            <option value="NAPLES">NAPLES</option>
+            <option value="NIBLEY">NIBLEY</option>
+            <option value="NORTHLOGAN">NORTH LOGAN</option>
+            <option value="NORTHOGDEN">NORTH OGDEN</option>
+            <option value="NORTHSALTLAKE">NORTH SALT LAKE</option>
+            <option value="OGDEN">OGDEN</option>
+            <option value="OREM">OREM</option>
+            <option value="OUTSIDECITYLIMITS">OUTSIDE CITY LIMITS</option>
+            <option value="PARKCITY">PARK CITY</option>
+            <option value="PERRY">PERRY</option>
+            <option value="PLEASANTGROVE">PLEASANT GROVE</option>
+            <option value="PLEASANTVIEW">PLEASANT VIEW</option>
+            <option value="PRICE">PRICE</option>
+            <option value="PROVO">PROVO</option>
+            <option value="RICHFIELD">RICHFIELD</option>
+            <option value="RICHMOND">RICHMOND</option>
+            <option value="RIVERDALE">RIVERDALE</option>
+            <option value="RIVERTON">RIVERTON</option>
+            <option value="ROY">ROY</option>
+            <option value="SALEM">SALEM</option>
+            <option value="SALTLAKECITY">SALT LAKE CITY</option>
+            <option value="SANDY">SANDY</option>
+            <option value="SANTACLARA">SANTA CLARA</option>
+            <option value="SANTAQUIN">SANTAQUIN</option>
+            <option value="SARATOGASPRINGS">SARATOGA SPRINGS</option>
+            <option value="SMITHFIELD">SMITHFIELD</option>
+            <option value="SOUTHJORDAN">SOUTH JORDAN</option>
+            <option value="SOUTHOGDEN">SOUTH OGDEN</option>
+            <option value="SOUTHSALTLAKE">SOUTH SALT LAKE</option>
+            <option value="SOUTHWEBER">SOUTH WEBER</option>
+            <option value="SPANISHFORK">SPANISH FORK</option>
+            <option value="SPRINGVILLE">SPRINGVILLE</option>
+            <option value="STGEORGE">ST. GEORGE</option>
+            <option value="SUNSET">SUNSET</option>
+            <option value="SYRACUSE">SYRACUSE</option>
+            <option value="TAYLORSVILLE">TAYLORSVILLE</option>
+            <option value="TOOELE">TOOELE</option>
+            <option value="UINTAH">UINTAH</option>
+            <option value="VERNAL">VERNAL</option>
+            <option value="WASHINGTON">WASHINGTON</option>
+            <option value="WELLSVILLE">WELLSVILLE</option>
+            <option value="WESTBOUNTIFUL">WEST BOUNTIFUL</option>
+            <option value="WESTHAVEN">WEST HAVEN</option>
+            <option value="WESTJORDAN">WEST JORDAN</option>
+            <option value="WESTVALLEYCITY">WEST VALLEY CITY</option>
+            <option value="WILLARD">WILLARD</option>
+            <option value="WOODSCROSS">WOODS CROSS</option>
+        </InputSelect>
+    </div>
+
+    <div class="form-group">
+        <label>County:</label>
+        <ValidationMessage For="@(() => c.COUNTY_NAME)"></ValidationMessage>
+        <InputSelect class="form-control" @bind-Value="c.COUNTY_NAME">
+            <option value="">Select a County</option>
+            <option value="BEAVER">BEAVER</option>
+            <option value="BOXELDER">BOX ELDER</option>
+            <option value="CACHE">CACHE</option>
+            <option value="CARBON">CARBON</option>
+            <option value="DAVIS">DAVIS</option>
+            <option value="DUCHESNE">DUCHESNE</option>
+            <option value="EMERY">EMERY</option>
+            <option value="GRAND">GRAND</option>
+            <option value="IRON">IRON</option>
+            <option value="JUAB">JUAB</option>
+            <option value="KANE">KANE</option>
+            <option value="MILLARD">MILLARD</option>
+            <option value="MORGAN">MORGAN</option>
+            <option value="SALTLAKE">SALT LAKE</option>
+            <option value="SANJUAN">SAN JUAN</option>
+            <option value="SANPETE">SANPETE</option>
+            <option value="SEVIER">SEVIER</option>
+            <option value="SUMMIT">SUMMIT</option>
+            <option value="TOOELE">TOOELE</option>
+            <option value="UINTAH">UINTAH</option>
+            <option value="UTAH">UTAH</option>
+            <option value="WASATCH">WASATCH</option>
+            <option value="WASHINGTON">WASHINGTON</option>
+            <option value="WEBER">WEBER</option>
+        </InputSelect>
+    </div>
+
+    <div class="form-group">
+        <label>Crash Severity:</label>
+        <ValidationMessage For="@(() => c.CRASH_SEVERITY_ID)"></ValidationMessage>
+        <InputSelect class="form-control" @bind-Value="c.CRASH_SEVERITY_ID">
+            <option value="">Select a Severity</option>
+            <option value="1">1 – No Injury</option>
+            <option value="2">2 – Possible Injury</option>
+            <option value="3">3 – Suspected Minor Injury</option>
+            <option value="4">4 – Suspected Serious Injury</option>
+            <option value="5">5 – Fatal</option>
+        </InputSelect>
+    </div>
+
+    <div class="form-group">
+        <label>Work Zone Related?:</label>
+        <ValidationMessage For="@(() => c.WORK_ZONE_RELATED)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.WORK_ZONE_RELATED"></InputCheckbox>
+    </div>
+
+    <div class="form-group">
+        <label>Pedestrian Involved?:</label>
+        <ValidationMessage For="@(() => c.PEDESTRIAN_INVOLVED)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.PEDESTRIAN_INVOLVED"></InputCheckbox>
+    </div>
+
+    <div class="form-group">
+        <label>Bicyclist Involved?:</label>
+        <ValidationMessage For="@(() => c.BICYCLIST_INVOLVED)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.BICYCLIST_INVOLVED"></InputCheckbox>
+    </div>
+
+    <div class="form-group">
+        <label>Motorcycle Involved?:</label>
+        <ValidationMessage For="@(() => c.MOTORCYCLE_INVOLVED)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.MOTORCYCLE_INVOLVED"></InputCheckbox>
+    </div>
+
+    <div class="form-group">
+        <label>Improper Restraint?:</label>
+        <ValidationMessage For="@(() => c.IMPROPER_RESTRAINT)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.IMPROPER_RESTRAINT"></InputCheckbox>
+    </div>
+
+    <div class="form-group">
+        <label>Unrestrained?:</label>
+        <ValidationMessage For="@(() => c.UNRESTRAINED)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.UNRESTRAINED"></InputCheckbox>
+    </div>
+
+    <div class="form-group">
+        <label>DUI?:</label>
+        <ValidationMessage For="@(() => c.DUI)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.DUI"></InputCheckbox>
+    </div>
+
+    <div class="form-group">
+        <label>Intersection Related?:</label>
+        <ValidationMessage For="@(() => c.INTERSECTION_RELATED)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.INTERSECTION_RELATED"></InputCheckbox>
+    </div>
+
+    <div class="form-group">
+        <label>Wild Animal Related?:</label>
+        <ValidationMessage For="@(() => c.WILD_ANIMAL_RELATED)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.WILD_ANIMAL_RELATED"></InputCheckbox>
+    </div>
+
+    <div class="form-group">
+        <label>Domestic Animal Related?:</label>
+        <ValidationMessage For="@(() => c.DOMESTIC_ANIMAL_RELATED)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.DOMESTIC_ANIMAL_RELATED"></InputCheckbox>
+    </div>
+
+    <div class="form-group">
+        <label>Overturn Rollover?:</label>
+        <ValidationMessage For="@(() => c.OVERTURN_ROLLOVER)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.OVERTURN_ROLLOVER"></InputCheckbox>
+    </div>
+
+    <div class="form-group">
+        <label>Commercial Motor Vehicle Involved?:</label>
+        <ValidationMessage For="@(() => c.COMMERCIAL_MOTOR_VEH_INVOLVED)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.COMMERCIAL_MOTOR_VEH_INVOLVED"></InputCheckbox>
+    </div>
+
+    <div class="form-group">
+        <label>Teenage Driver Involved?:</label>
+        <ValidationMessage For="@(() => c.TEENAGE_DRIVER_INVOLVED)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.TEENAGE_DRIVER_INVOLVED"></InputCheckbox>
+    </div>
+
+    <div class="form-group">
+        <label>Older Driver Involved?:</label>
+        <ValidationMessage For="@(() => c.OLDER_DRIVER_INVOLVED)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.OLDER_DRIVER_INVOLVED"></InputCheckbox>
+    </div>
+
+    <div class="form-group">
+        <label>Night/Dark Condition?:</label>
+        <ValidationMessage For="@(() => c.NIGHT_DARK_CONDITION)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.NIGHT_DARK_CONDITION"></InputCheckbox>
+    </div>
+
+    <div class="form-group">
+        <label>Single Vehicle?:</label>
+        <ValidationMessage For="@(() => c.SINGLE_VEHICLE)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.SINGLE_VEHICLE"></InputCheckbox>
+    </div>
+
+    <div class="form-group">
+        <label>Distracted Driving?:</label>
+        <ValidationMessage For="@(() => c.DISTRACTED_DRIVING)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.DISTRACTED_DRIVING"></InputCheckbox>
+    </div>
+
+    <div class="form-group">
+        <label>Drowsy Driving?:</label>
+        <ValidationMessage For="@(() => c.DROWSY_DRIVING)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.DROWSY_DRIVING"></InputCheckbox>
+    </div>
+
+    <div class="form-group">
+        <label>Roadway Departure?:</label>
+        <ValidationMessage For="@(() => c.ROADWAY_DEPARTURE)"></ValidationMessage>
+        <InputCheckbox class="form-control" @bind-Value="c.ROADWAY_DEPARTURE"></InputCheckbox>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-@ThemeColor">Save</button>
+    <NavLink class="btn btn-secondary" href="/admin/projects">Cancel</NavLink>
+
+</EditForm>
+
+
 
 @code {
+
+    [Parameter]
+    public long Id { get; set; } = 0;
+
+    public string ThemeColor => Id == 0 ? "primary" : "warning";
+    public string TitleText => Id == 0 ? "Create" : "Edit";
+
+    public Crash c { get; set; } = new Crash();
+
+    public ICrashRepository repo => Service;
+
+    protected override void OnParametersSet()
+    {
+        if (Id != 0) //existing crash
+        {
+            c = repo.Crashes.FirstOrDefault(x => x.CRASH_ID == Id);
+        }
+    }
+
+    public void SaveProject()
+    {
+        if (Id == 0) //new crash
+        {
+            repo.CreateCrash(c);
+        }
+        else
+        {
+            repo.SaveCrash(c);
+        }
+
+        NavManager.NavigateTo("/admin/crashes");
+    }
+
+    [Inject]
+    public NavigationManager NavManager { get; set; }
 
 }
