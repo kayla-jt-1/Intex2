@@ -3,6 +3,8 @@ using Intex2.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.ML.OnnxRuntime;
+using Microsoft.ML.OnnxRuntime.Tensors;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,12 +20,14 @@ namespace Intex2.Controllers
 
         private UserManager<IdentityUser> userManager;
         private SignInManager<IdentityUser> signInManager;
+        private InferenceSession _session;
 
-        public HomeController(ICrashRepository temp, UserManager<IdentityUser> um, SignInManager<IdentityUser> sim)
+        public HomeController(ICrashRepository temp, UserManager<IdentityUser> um, SignInManager<IdentityUser> sim, InferenceSession session)
         {
             repo = temp;
             userManager = um;
             signInManager = sim;
+            _session = session;
         }
 
         public IActionResult Index()
@@ -31,9 +35,25 @@ namespace Intex2.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Predict()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Predict(CrashData data)
+        {
+            var result = _session.Run(new List<NamedOnnxValue>
+            {
+                NamedOnnxValue.CreateFromTensor("int64_input", data.AsTensor())
+            });
+
+            Tensor<int> data2 = result.First().AsTensor<int>();
+            var prediction = new Prediction { PredictedValue = data2.First() };
+            result.Dispose();
+                        
+            return Ok(prediction);
         }
 
 
