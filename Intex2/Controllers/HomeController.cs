@@ -58,12 +58,7 @@ namespace Intex2.Controllers
                 }
             };
 
-            var crashes = repo.Crashes
-                .OrderBy(x => x.CRASH_DATETIME)
-                .Skip((pageNum - 1) * resultsPerPage)
-                .Take(resultsPerPage);
-
-                return View("CrashSummary", crashes);
+                return View("CrashSummary", x);
         }
 
 
