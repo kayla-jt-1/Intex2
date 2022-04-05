@@ -39,7 +39,7 @@ namespace Intex2.Controllers
 
                     if ((await signInManager.PasswordSignInAsync(user, loginmodel.Password, false, false)).Succeeded)
                     {
-                        return Redirect(loginmodel?.ReturnUrl ?? "/Admin"); 
+                        return Redirect(loginmodel?.ReturnUrl ?? "/Admin");
                     }
                 }
             }
@@ -53,6 +53,12 @@ namespace Intex2.Controllers
             await signInManager.SignOutAsync();
 
             return Redirect(returnUrl); 
+        }
+
+        [HttpGet]
+        public IActionResult AddCrash()
+        {
+            return View(); 
         }
 
 
