@@ -8,6 +8,16 @@
 @model AccidentsViewModel
 
 
+<div class="container">
+    <div class="justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="form"> <i class="fa fa-search"></i> <input type="text" class="form-control form-input" placeholder="Search Accident ID..."> <span class="left-pan"><i class="fa fa-microphone"></i></span> </div>
+        </div>
+    </div>
+</div>
+<br /><br />
+
+
 <style>
     /* Dropdown Button */
     .dropbtn {
@@ -76,33 +86,12 @@
     }
 </style>
 
-@*SEARCH BAR FOR CRASH ID*@
-@*<div class="container">
-    <div class="justify-content-center align-items-center">
-        <div class="col-md-6">
-            <div class="form"> <i class="fa fa-search"></i> <input type="text" class="form-control form-input" placeholder="Search Accident ID..."> <span class="left-pan"><i></i></span> </div>
-        </div>
-    </div>
-</div>*@
-
-
-<div class="container">
-    <div class="justify-content-center align-items-center">
-        <div class="col-md-6">
-            <div class="form"> <i class="fa fa-search"></i> <input type="text" class="form-control form-input" placeholder="Search Accident ID..."> <span class="left-pan"><i class="fa fa-microphone"></i></span> </div>
-        </div>
-    </div>
-</div>
-
-<br />
-
-@*DROPDOWN FOR CITY*@
 <div class="col-md-7" style="padding-left:4%;">
     <div class="dropdown">
         <button onclick="myFunction()" class="dropbtn">Search by City</button>
         <div id="myDropdown" class="dropdown-content">
             <input type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()">
-            <a href="AMERICANFORK">AMERICAN FORK</a>
+            <a asp-for="AMERICANFORK">AMERICAN FORK</a>
             <a href="BEAVER">BEAVER</a>
             <a href="BLANDING">BLANDING</a>
             <a href="BOUNTIFUL">BOUNTIFUL</a>
@@ -225,4 +214,10 @@
                     a[i].style.display = "none";
                 }
             }
-        }</script>
+        }
+    }
+</script>
+
+
+
+
