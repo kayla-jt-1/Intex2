@@ -86,21 +86,26 @@
 </style>
 
 
-<div class="container">
+@*OLD SEARCH BAR*@
+<!--<div class="container">
     <div class="justify-content-center align-items-center">
-        <div class="col-md-6">
+        <div class="col-md-6">-->
             @*<div class="form"> <i class="fa fa-search"></i> <input type="text" class="form-control form-input" placeholder="Search Accident ID..."> <span class="left-pan"><i class="fa fa-microphone"></i></span> </div>*@
-            <div class="form"> <i class="fa fa-search"></i> <input type="text" class="form-control form-input" placeholder="Search Accident ID..."><span class="left-pan"><button type="submit" class="searchbtn;" style="outline:none;">Submit</button></span> </div>
+            <!--<div class="form"> <i class="fa fa-search"></i> <input type="text" class="form-control form-input" placeholder="Search Accident ID..."><span class="left-pan"><button type="submit" class="searchbtn;" style="outline:none;">Submit</button></span> </div>
         </div>
     </div>
-</div>
+</div>-->
 @*<button type="submit" class="dropbtn">Search</button>*@
-<br />
+<!--<br />-->
+
 
 <form asp-controller="Admin" asp-action="IdFilter" method="get">
-    <input name="crashid" />
-    <button type="submit" class="btn">Search</button>
+    <div class="justify-content-center align-items-center">
+        <input class="form fa fa-search form-control form-input" placeholder="Search Accident ID..." name="crashid"/>
+        @*<button type="submit" class="btn">Search</button>*@
+    </div>
 </form>
+<br />
 
 
 <div class="col-md-7" style="padding-left:4%;">
