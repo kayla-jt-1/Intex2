@@ -16,8 +16,9 @@
 
             <input type="hidden" asp-for="CRASH_ID" />
 
-            <label asp-for="CRASH_DATETIME">Date and Time:</label>
-            <input asp-for="CRASH_DATETIME" type="datetime-local" />
+            @* -----> THIS IS TYPE STRING IN DATABASE SO WE NEED TO CHANGE IT HERE TOO <----- *@
+            @*<label asp-for="CRASH_DATETIME">Date and Time:</label>
+            <input asp-for="CRASH_DATETIME" type="datetime-local" />*@
             <br /><br />
 
             <label asp-for="ROUTE">Route Number:</label>

@@ -9,7 +9,9 @@ namespace Intex2.Models
         [Required]
         public int CRASH_ID { get; set; }
 
-        public DateTime CRASH_DATETIME { get; set; }
+        // this is a string in the database so it must be a string here -- used to be of type DateTime
+        public string CRASH_DATETIME { get; set; }
+
         public string ROUTE { get; set; }
 
         [Range(0, 1000000000000)] //Just to set the min to 0??????

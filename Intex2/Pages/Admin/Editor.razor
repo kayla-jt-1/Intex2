@@ -23,11 +23,12 @@
         <input class="form-control" type="hidden" disabled value="@c.CRASH_ID" />
     </div>
 
-    <div class="form-group">
+    @* -----> THIS IS TYPE STRING IN DATABASE SO WE NEED TO CHANGE IT HERE TOO <----- *@
+    @*<div class="form-group">
         <label>Date and Time:</label>
         <ValidationMessage For="@(() => c.CRASH_DATETIME)"></ValidationMessage>
         <InputDate class="form-control" type="datetime-local" @bind-Value="c.CRASH_DATETIME"></InputDate>
-    </div>
+    </div>*@
 
     <div class="form-group">
         <label>Route Number:</label>
