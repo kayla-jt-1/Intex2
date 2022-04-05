@@ -2,66 +2,68 @@
 
 @{
     ViewData["Title"] = "Admin - View Accidents";
+    @*Layout = null;*@ 
 }
 
 @model AccidentsViewModel
 
-<div class="input-group">
-    <div class="form-outline">
-        <input type="search" id="form1" class="form-control" />
-        <label class="form-label" for="form1">Search for Accident ID</label>
-    </div>
-    <button type="button" class="btn btn-primary">
-        <i class="fas fa-search"></i>
-    </button>
-</div>
-
-<a class="nav-link dropdown-toggle hidden-arrow btn btn-primary"
-   href="#"
-   id="navbarDropdownMenuLink"
-   role="button"
-   data-mdb-toggle="dropdown"
-   aria-expanded="false">
-    dropdown
-</a>
-<ul class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownMenuLink">
-    <li>
-        <div class="input-group mt-2 mx-2">
-            <div class="form-outline">
-                <input type="search" id="form1" class="form-control-dropdown" />
-                <label class="form-label" for="form1">Search</label>
+    @*SEARCH BAR FOR CRASH ID*@
+    <div class="container">
+        <div class="row height d-flex justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="form"> <i class="fa fa-search"></i> <input type="text" class="form-control form-input" placeholder="Search Accident ID..."> <span class="left-pan"><i class="fa fa-microphone"></i></span> </div>
             </div>
         </div>
-    </li>
-    <li><hr class="dropdown-divider" /></li>
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-</ul>
+    </div>
 
-<script>
-    const searchInputDropdown = document.getElementById('search-input-dropdown');
-    const dropdownOptions = document.querySelectorAll('.input-group-dropdown-item');
 
-    searchInputDropdown.addEventListener('input', () => {
-      const filter = searchInputDropdown.value.toLowerCase();
-      showOptions();
-      const valueExist = !!filter.length;
+    <a class="nav-link dropdown-toggle hidden-arrow btn btn-primary"
+       href="#"
+       id="navbarDropdownMenuLink"
+       role="button"
+       data-mdb-toggle="dropdown"
+       aria-expanded="false">
+        dropdown
+    </a>
+    <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownMenuLink">
+        <li>
+            <div class="input-group mt-2 mx-2">
+                <div class="form-outline">
+                    <input type="search" id="form1" class="form-control-dropdown" />
+                    <label class="form-label" for="form1">Search</label>
+                </div>
+            </div>
+        </li>
+        <li><hr class="dropdown-divider" /></li>
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
 
-      if (valueExist) {
-        dropdownOptions.forEach((el) => {
-          const elText = el.textContent.trim().toLowerCase();
-          const isIncluded = elText.includes(filter);
-          if (!isIncluded) {
-            el.style.display = 'none';
-          }
+
+
+
+    <script>const searchInputDropdown = document.getElementById('search-input-dropdown');
+        const dropdownOptions = document.querySelectorAll('.input-group-dropdown-item');
+
+        searchInputDropdown.addEventListener('input', () => {
+            const filter = searchInputDropdown.value.toLowerCase();
+            showOptions();
+            const valueExist = !!filter.length;
+
+            if (valueExist) {
+                dropdownOptions.forEach((el) => {
+                    const elText = el.textContent.trim().toLowerCase();
+                    const isIncluded = elText.includes(filter);
+                    if (!isIncluded) {
+                        el.style.display = 'none';
+                    }
+                });
+            }
         });
-      }
-    });
 
-    const showOptions = () => {
-      dropdownOptions.forEach((el) => {
-        el.style.display = 'flex';
-      })
-    }
-</script>
+        const showOptions = () => {
+            dropdownOptions.forEach((el) => {
+                el.style.display = 'flex';
+            })
+        }</script>
