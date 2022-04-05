@@ -18,8 +18,11 @@ namespace Intex2.Controllers
 
         private ICrashRepository repo;
 
+        // I THINK THIS JUST NEEDS TO BE IN ADMINCONTROLLER.CS
         private UserManager<IdentityUser> userManager;
         private SignInManager<IdentityUser> signInManager;
+
+
         private InferenceSession _session;
 
         public HomeController(ICrashRepository temp, UserManager<IdentityUser> um, SignInManager<IdentityUser> sim, InferenceSession session)
@@ -52,7 +55,7 @@ namespace Intex2.Controllers
             Tensor<float> data2 = result.First().AsTensor<float>();
             var prediction = new Prediction { PredictedValue = (long)(data2.First() * 100000) };
             result.Dispose();
-                        
+
             return Ok(prediction);
         }
 
@@ -82,54 +85,55 @@ namespace Intex2.Controllers
         }
 
 
-        //ADD CRASH
-        [HttpGet]
-        public IActionResult AddCrash()
-        {
-            ViewBag.Crashes = repo.Crashes.ToList();
-            return View();
+        ////ADD CRASH
+        //[HttpGet]
+        //public IActionResult AddCrash()
+        //{
+        //    ViewBag.Crashes = repo.Crashes.ToList();
+        //    return View();
 
-        }
+        //}
 
-        [HttpPost]
-        public IActionResult AddCrash(Crash crash)
-        {
-            if (ModelState.IsValid)
-            {
-                repo.SaveCrash(crash);
+        //[HttpPost]
+        //public IActionResult AddCrash(Crash crash)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        repo.SaveCrash(crash);
 
-                return View("Confirmation", crash);
-            }
-            else
-            {
-                ViewBag.Crashes = repo.Crashes.ToList();
-                return View();
-            }
-        }
+        //        return View("Confirmation", crash);
+        //    }
+        //    else
+        //    {
+        //        ViewBag.Crashes = repo.Crashes.ToList();
+        //        return View();
+        //    }
+        //}
 
-        //EDIT CRASH 
-        [HttpGet]
-        public IActionResult EditCrash(int crashId)
-        {
-            var crash = repo.Crashes.Single(x => x.CRASH_ID == crashId);
 
-            return View("AddCrash", crash);
-        }
+        ////EDIT CRASH 
+        //[HttpGet]
+        //public IActionResult EditCrash(int crashId)
+        //{
+        //    var crash = repo.Crashes.Single(x => x.CRASH_ID == crashId);
 
-        [HttpPost]
-        public IActionResult EditCrash(Crash crash)
-        {
-            if (ModelState.IsValid)
-            {
-                repo.SaveCrash(crash);
+        //    return View("AddCrash", crash);
+        //}
 
-                return RedirectToAction("CrashSummary");
-            }
-            else
-            {
-                return View("AddCrash", crash);
-            }
-        }
+        //[HttpPost]
+        //public IActionResult EditCrash(Crash crash)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        repo.SaveCrash(crash);
+
+        //        return RedirectToAction("CrashSummary");
+        //    }
+        //    else
+        //    {
+        //        return View("AddCrash", crash);
+        //    }
+        //}
 
 
         //DELETE CRASH

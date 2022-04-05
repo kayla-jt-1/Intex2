@@ -1,52 +1,12 @@
-﻿@inherits LayoutComponentBase
+﻿@*LAYOUT FOR ADMIN PART OF SITE*@
 
-<div class="bg-info text-white p-2">
+@inherits LayoutComponentBase
+@*TITLE*@
+<h4 style="padding-left: 30px; padding-top: 13px; color: #48484a;" class="display-4 lh-1 mb-1">Admin</h4>
 
-    <div class="container-fluid">
-
-        <div class="row">
-
-            <div class="col">
-                <span class="navbar-brand m-lg-2">Administration</span>
-            </div>
-
-            <div class="col-2 text-right">
-                @*account controller and logout action*@
-                <a class="btn btn-sm btn-primary" href="/account/logout">Log Out</a>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<div class="container-fluid">
-
-    <div class="row p-2">
-
-        <div class="col-3">
-            <NavLink class="btn btn-block btn-outline-primary" href="/admin/books"
-                     ActiveClass="btn-primary text-white" Match="NavLinkMatch.Prefix">Crashes</NavLink>
-
-            @*<NavLink class="btn btn-block btn-outline-primary" href="/admin/checkouts"
-                ActiveClass="btn-primary text-white" Match="NavLinkMatch.Prefix">Payments</NavLink>*@
-
-        </div>
-
-        <div class="col">
-            @Body
-        </div>
-
-    </div>
-
-</div>
-
-
-
+@*NAVIGATION BAR*@
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-1">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -55,17 +15,44 @@
             <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="/account/logout">Log Out</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="/account/logout">Log Out</a>
+                        <a class="nav-link text-dark" href="/admin/logout">Log Out</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/admin">Admin Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/admin/accidents">View Accidents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/admin/test">TEST PAGE</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 </header>
+@*END OF NAVIGATION BAR*@
+
+<NavLink class="btn btn-block btn-outline-primary" href="/admin/test"
+         ActiveClass="btn-primary text-white" Match="NavLinkMatch.Prefix">TEST</NavLink>
+
+
+<!--<div class="container-fluid">
+    <div class="row p-2">
+        <div class="col-3">
+            <NavLink class="btn btn-block btn-outline-primary" href="/admin/accidents"
+                     ActiveClass="btn-primary text-white" Match="NavLinkMatch.Prefix">Crashes</NavLink>-->
+
+            @*<NavLink class="btn btn-block btn-outline-primary" href="/admin/checkouts"
+                ActiveClass="btn-primary text-white" Match="NavLinkMatch.Prefix">Payments</NavLink>*@
+        <!--</div>
+        <div class="col">
+            @Body
+        </div>
+    </div>
+</div>-->
+
 

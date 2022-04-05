@@ -1,15 +1,33 @@
-﻿@*@{
+﻿@{
     Layout = null;
-}*@
+    ViewData["Title"] = "Login";
+}
 
 @model LoginModel
 
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-wide" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
+    <meta name="author" content="themefisher.com">
+
     <title>UDOT Login</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Icon Font Css -->
+    <link rel="stylesheet" href="plugins/icofont/icofont.min.css">
+    <!-- Slick Slider  CSS -->
+    <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="plugins/slick-carousel/slick/slick-theme.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 
@@ -55,53 +73,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-@*<body style="background: #000;">
-
-        <div class="text-danger" asp-validation-summary="All"></div>
-        <form method="post" asp-controller="Admin" asp-action="Login">
-
-            <section class="vh-100" style="background-color: #34568B;">
-                <div class="container py-5 h-100">
-                    <div class="row d-flex justify-content-center align-items-center h-100">
-                        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                            <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                                <div class="card-body p-5 text-center">
-
-                                    <h3 class="mb-5">Sign In</h3>
-
-                                    <div class="form-outline mb-4">
-                                        <input asp-for="Username" class="form-control form-control-lg" />
-                                        <label asp-for="Username">Username</label>
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <input type="password" asp-for="Password" onpaste="return false" class="form-control form-control-lg" />
-                                        <label asp-for="Password">Password</label>
-                                    </div>
-
-                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-
-                                    <hr class="my-4">
-                                    <input type="hidden" asp-for="ReturnUrl" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-        </form>
-
-    </body>
-
-    </html>*@

@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Add Crash Record";
-    Layout = "AdminLayout";
+    @*Layout = "AdminLayout";*@
 }
 
 @model Intex2.Models.Crash
@@ -195,10 +195,10 @@
             <br /><br />
 
             <label asp-for="WORK_ZONE_RELATED">Work Zone Related?</label>
-            <input asp-for="WORK_ZONE_RELATED" type="radio" id="yes" name="WORK_ZONE_RELATED" value="yes">
-            <label for="yes">Yes</label>
-            <input asp-for="WORK_ZONE_RELATED" type="radio" id="no" name="WORK_ZONE_RELATED" value="no">
-            <label for="no">No</label>
+            <input asp-for="WORK_ZONE_RELATED" type="checkbox" id="yes" name="WORK_ZONE_RELATED" value="yes">
+            @*<label for="yes">Yes</label>
+            <input asp-for="WORK_ZONE_RELATED" type="checkbox" id="no" name="WORK_ZONE_RELATED" value="no">
+            <label for="no">No</label>*@
             <br /><br />
 
             <label asp-for="PEDESTRIAN_INVOLVED">Pedestrian Involved?</label>
