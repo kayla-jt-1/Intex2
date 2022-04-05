@@ -1,0 +1,32 @@
+﻿@*PAGE TO DISPLAY ADMIN SEARCH RESULTS*@
+
+@model List<Crash>
+
+<h4 class="display-4 lh-1 mb-2">Search Results</h4>
+
+<br />
+
+<table class="table table-dark table-striped">
+
+    <thead class="font-weight-bold">
+        <tr>
+            <td>Crash ID:</td>
+            <td>City:</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.CRASH_ID</td>
+                <td>@x.CITY</td>
+
+                <td><a asp-controller="Home" asp-action="Edit" asp-route-bowlerid="@x.CRASH_ID">Edit</a></td>
+                <td><a asp-controller="Home" asp-action="Delete" asp-route-bowlerid="@x.CRASH_ID">Delete</a></td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>

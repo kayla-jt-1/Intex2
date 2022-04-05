@@ -118,6 +118,43 @@ namespace Intex2.Controllers
         }
 
 
+        //FILTER BY CITY
+        [HttpGet]
+        public IActionResult CityFilter(string city)
+        {
+            var blah = repo.Crashes
+                            .Where(x => x.CITY == city)
+                            .ToList();
+
+            return View("DisplayResults", blah); 
+        }
+
+
+        //FILTER BY ID
+        [HttpGet]
+        public IActionResult IdFilter(int crashid)
+        {
+            var blah = repo.Crashes
+                            .Where(x => x.CRASH_ID == crashid)
+                            .ToList();
+            return View("DisplayResults", blah); 
+        }
+
+
+        [HttpGet]
+        public IActionResult DisplayResults()
+        {
+            var blah = repo.Crashes
+                            .ToList();
+
+            return View(blah); 
+        }
+
+
+
+        //FILTER BY ID
+
+
         //public IActionResult Test()
         //{
 
