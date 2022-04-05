@@ -52,9 +52,9 @@ namespace Intex2
             services.AddScoped<ICrashRepository, EFCrashRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            //services.AddSingleton<InferenceSession>(
-            //    new InferenceSession("Model/crash_data.onnx")
-            //);
+            services.AddSingleton<InferenceSession>(
+                new InferenceSession("Models/crash_data.onnx")
+            );
 
             services.AddRazorPages();
 
@@ -85,6 +85,10 @@ namespace Intex2
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute( //endpoints from pagination 
+                    name: "Paging",
+                    pattern: "page{pageNum}",
+                    defaults: new { Controller = "Home", action = "AllCrashes" });
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
