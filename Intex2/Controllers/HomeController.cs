@@ -33,10 +33,15 @@ namespace Intex2.Controllers
 
         //VIEW ALL CRASHES
         [HttpGet]
-        public IActionResult AllCrashes()
+        public IActionResult AllCrashes(int pageNum = 1)
         {
-            var crashes = repo.Crashes.ToList();
-            return View("CrashSummary", crashes);
+            int resultsPerPage = 10;
+            var crashes = repo.Crashes
+                .OrderBy(x => x.CRASH_DATETIME)
+                .Skip((pageNum - 1) * resultsPerPage)
+                .Take(resultsPerPage);
+
+                return View("CrashSummary", crashes);
         }
 
 
