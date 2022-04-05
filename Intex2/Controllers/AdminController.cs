@@ -5,17 +5,20 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Intex2.Models.ViewModels;
-
+using Intex2.Models;
 
 namespace Intex2.Controllers
 {
     public class AdminController : Controller
     {
+        private ICrashRepository repo;
+
         private UserManager<IdentityUser> userManager; // we are setting the value of this in the AccountController constructor right below
         private SignInManager<IdentityUser> signInManager;
 
-        public AdminController(UserManager<IdentityUser> um, SignInManager<IdentityUser> sim)
+        public AdminController(ICrashRepository temp, UserManager<IdentityUser> um, SignInManager<IdentityUser> sim)
         {
+            repo = temp;
             userManager = um;
             signInManager = sim;
         }
@@ -39,7 +42,7 @@ namespace Intex2.Controllers
 
                     if ((await signInManager.PasswordSignInAsync(user, loginmodel.Password, false, false)).Succeeded)
                     {
-                        return Redirect(loginmodel?.ReturnUrl ?? "/Admin"); 
+                        return Redirect(loginmodel?.ReturnUrl ?? "/Admin");
                     }
                 }
             }
@@ -53,6 +56,65 @@ namespace Intex2.Controllers
             await signInManager.SignOutAsync();
 
             return Redirect(returnUrl); 
+        }
+
+
+        //ADD CRASH
+        [HttpGet]
+        public IActionResult AddCrash()
+        {
+            ViewBag.Crashes = repo.Crashes.ToList();
+            return View();
+
+        }
+
+        [HttpPost]
+        public IActionResult AddCrash(Crash crash)
+        {
+            if (ModelState.IsValid)
+            {
+                repo.SaveCrash(crash);
+
+                return View("Confirmation", crash);
+            }
+            else
+            {
+                ViewBag.Crashes = repo.Crashes.ToList();
+                return View();
+            }
+        }
+
+
+        //EDIT CRASH 
+        [HttpGet]
+        public IActionResult EditCrash(int crashId)
+        {
+            var crash = repo.Crashes.Single(x => x.CRASH_ID == crashId);
+
+            return View("AddCrash", crash);
+        }
+
+        [HttpPost]
+        public IActionResult EditCrash(Crash crash)
+        {
+            if (ModelState.IsValid)
+            {
+                repo.SaveCrash(crash);
+
+                return RedirectToAction("CrashSummary");
+            }
+            else
+            {
+                return View("AddCrash", crash);
+            }
+        }
+
+
+        //LOOKUP CRASH FOR ADMINS
+        [HttpGet]
+        public IActionResult AdminLookup()
+        {
+            return View();
         }
 
 
