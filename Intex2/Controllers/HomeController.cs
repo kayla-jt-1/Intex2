@@ -85,54 +85,54 @@ namespace Intex2.Controllers
         }
 
 
-        //ADD CRASH
-        [HttpGet]
-        public IActionResult AddCrash()
-        {
-            ViewBag.Crashes = repo.Crashes.ToList();
-            return View();
+        ////ADD CRASH
+        //[HttpGet]
+        //public IActionResult AddCrash()
+        //{
+        //    ViewBag.Crashes = repo.Crashes.ToList();
+        //    return View();
 
-        }
+        //}
 
-        [HttpPost]
-        public IActionResult AddCrash(Crash crash)
-        {
-            if (ModelState.IsValid)
-            {
-                repo.SaveCrash(crash);
+        //[HttpPost]
+        //public IActionResult AddCrash(Crash crash)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        repo.SaveCrash(crash);
 
-                return View("Confirmation", crash);
-            }
-            else
-            {
-                ViewBag.Crashes = repo.Crashes.ToList();
-                return View();
-            }
-        }
+        //        return View("Confirmation", crash);
+        //    }
+        //    else
+        //    {
+        //        ViewBag.Crashes = repo.Crashes.ToList();
+        //        return View();
+        //    }
+        //}
 
-        //EDIT CRASH 
-        [HttpGet]
-        public IActionResult EditCrash(int crashId)
-        {
-            var crash = repo.Crashes.Single(x => x.CRASH_ID == crashId);
+        ////EDIT CRASH 
+        //[HttpGet]
+        //public IActionResult EditCrash(int crashId)
+        //{
+        //    var crash = repo.Crashes.Single(x => x.CRASH_ID == crashId);
 
-            return View("AddCrash", crash);
-        }
+        //    return View("AddCrash", crash);
+        //}
 
-        [HttpPost]
-        public IActionResult EditCrash(Crash crash)
-        {
-            if (ModelState.IsValid)
-            {
-                repo.SaveCrash(crash);
+        //[HttpPost]
+        //public IActionResult EditCrash(Crash crash)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        repo.SaveCrash(crash);
 
-                return RedirectToAction("CrashSummary");
-            }
-            else
-            {
-                return View("AddCrash", crash);
-            }
-        }
+        //        return RedirectToAction("CrashSummary");
+        //    }
+        //    else
+        //    {
+        //        return View("AddCrash", crash);
+        //    }
+        //}
 
 
         //DELETE CRASH

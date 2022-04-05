@@ -5,17 +5,20 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Intex2.Models.ViewModels;
-
+using Intex2.Models;
 
 namespace Intex2.Controllers
 {
     public class AdminController : Controller
     {
+        private ICrashRepository repo;
+
         private UserManager<IdentityUser> userManager; // we are setting the value of this in the AccountController constructor right below
         private SignInManager<IdentityUser> signInManager;
 
-        public AdminController(UserManager<IdentityUser> um, SignInManager<IdentityUser> sim)
+        public AdminController(ICrashRepository temp, UserManager<IdentityUser> um, SignInManager<IdentityUser> sim)
         {
+            repo = temp;
             userManager = um;
             signInManager = sim;
         }
@@ -55,10 +58,38 @@ namespace Intex2.Controllers
             return Redirect(returnUrl); 
         }
 
+
+        //ADD CRASH
         [HttpGet]
         public IActionResult AddCrash()
         {
-            return View(); 
+            ViewBag.Crashes = repo.Crashes.ToList();
+            return View();
+
+        }
+
+        [HttpPost]
+        public IActionResult AddCrash(Crash crash)
+        {
+            if (ModelState.IsValid)
+            {
+                repo.SaveCrash(crash);
+
+                return View("Confirmation", crash);
+            }
+            else
+            {
+                ViewBag.Crashes = repo.Crashes.ToList();
+                return View();
+            }
+        }
+
+
+
+        [HttpGet]
+        public IActionResult AdminLookup()
+        {
+            return View();
         }
 
 
