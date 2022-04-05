@@ -8,7 +8,7 @@
     ViewData["Title"] = "View Accidents";
 }
 
-@model List<Crash>
+@model AccidentsViewModel
 
     <h3>Below are all the crashes on record for the city of Provo in 2016, 2017 and 2019.</h3>
 
@@ -16,7 +16,7 @@
 <div class="accordian" id="crash_accordion">
 
     <!--Iterate through all of the crashes-->
-    @foreach (var c in Model)
+    @foreach (var c in Model.Crashes)
     {
     <div class="card card-outline-primary m-1 p-1">
 
