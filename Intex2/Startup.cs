@@ -83,6 +83,10 @@ namespace Intex2
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute( //endpoints from pagination 
+                    name: "Paging",
+                    pattern: "page{pageNum}",
+                    defaults: new { Controller = "Home", action = "AllCrashes" });
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
