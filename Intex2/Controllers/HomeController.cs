@@ -18,8 +18,11 @@ namespace Intex2.Controllers
 
         private ICrashRepository repo;
 
+        // I THINK THIS JUST NEEDS TO BE IN ADMINCONTROLLER.CS
         private UserManager<IdentityUser> userManager;
         private SignInManager<IdentityUser> signInManager;
+
+
         private InferenceSession _session;
 
         public HomeController(ICrashRepository temp, UserManager<IdentityUser> um, SignInManager<IdentityUser> sim, InferenceSession session)
@@ -52,7 +55,7 @@ namespace Intex2.Controllers
             Tensor<int> data2 = result.First().AsTensor<int>();
             var prediction = new Prediction { PredictedValue = data2.First() };
             result.Dispose();
-                        
+
             return Ok(prediction);
         }
 

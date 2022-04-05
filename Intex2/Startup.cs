@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.ML.OnnxRuntime;
+//using Microsoft.ML.OnnxRuntime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,11 +52,13 @@ namespace Intex2
             services.AddScoped<ICrashRepository, EFCrashRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddSingleton<InferenceSession>(
-                new InferenceSession("Model/crash_data.onnx")
-            );
+            //services.AddSingleton<InferenceSession>(
+            //    new InferenceSession("Model/crash_data.onnx")
+            //);
 
-            services.AddRazorPages(); 
+            services.AddRazorPages();
+
+            services.AddServerSideBlazor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -87,7 +89,10 @@ namespace Intex2
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                endpoints.MapRazorPages(); 
+                endpoints.MapRazorPages();
+
+                endpoints.MapBlazorHub(); 
+                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index"); 
             });
 
             IdentitySeedData.EnsurePopulated(app);
