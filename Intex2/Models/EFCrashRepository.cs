@@ -7,9 +7,9 @@ namespace Intex2.Models
     {
         private CrashContext context { get; set; }
 
-        public EFCrashRepository(CrashContext c)
+        public EFCrashRepository(CrashContext temp)
         {
-            context = c;
+            context = temp;
         }
 
         public IQueryable<Crash> Crashes => context.Crashes;
