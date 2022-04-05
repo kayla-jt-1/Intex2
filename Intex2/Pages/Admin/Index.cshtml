@@ -1,6 +1,82 @@
-﻿@page "/admin"
+﻿@*HOME PAGE FOR ADMIN SECTION*@
+
+@page "/admin"
 
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize]
 
-<h3>PLEASE WORK AND BE LOGGED IN!</h3>
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Admin</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    @*if we don't enter anything else in then go here:*@
+
+    <base href="/" />
+
+</head>
+
+<body>
+
+    @*<component type="typeof(Routed)" render-mode="Server" />*@
+    <component type="typeof(Routed)" render-mode="Server" />
+    @*if it isn't recognizing "Routed" then do Bookstore.Pages.Admin.Routed*@
+
+    @*this is part of the blazor setup*@
+    <script src="/_framework/blazor.server.js"></script>
+
+    @*tentative title*@
+    <h4 style="padding-left: 30px; padding-top: 13px; color: #48484a;" class="display-4 lh-1 mb-1">Admin</h4>
+
+    @*NAVIGATION BAR*@
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-1">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/admin/logout">Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    @*END OF NAVIGATION BAR*@
+
+    <br />
+
+    @*<div class="bg-dark text-white p-2">
+            <span class="navbar-brand m-l-2">Admin</span>
+        </div>*@
+
+
+    <div class="row">
+        <div class="col col-4"></div>
+        <div class="col col-2">
+            <NavLink class="btn btn-primary btn-info rounded" style="width:100%;" href="/admin/accidents">View Accidents</NavLink>
+        </div>
+        <div class="col col-2">
+            <NavLink class="btn btn-primary btn-info rounded" style="width:100%;" href="/admin/books/create">Add an Accident</NavLink>
+        </div>
+        <div class="col col-4"></div>
+    </div>
+
+
+
+</body>
+
+</html>
+
