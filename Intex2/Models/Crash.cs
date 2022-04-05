@@ -19,7 +19,7 @@ namespace Intex2.Models
         public double LAT_UTM_Y { get; set; }
 
         [Range(0, 1000000000000)]
-        public double LONG_UTM_Y { get; set; }
+        public double LONG_UTM_X { get; set; }
         public string MAIN_ROAD_NAME { get; set; }
         public string CITY { get; set; }
         public string COUNTY_NAME { get; set; }
