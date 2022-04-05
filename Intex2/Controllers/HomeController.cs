@@ -49,11 +49,11 @@ namespace Intex2.Controllers
         {
             var result = _session.Run(new List<NamedOnnxValue>
             {
-                NamedOnnxValue.CreateFromTensor("int64_input", data.AsTensor())
+                NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
             });
 
-            Tensor<int> data2 = result.First().AsTensor<int>();
-            var prediction = new Prediction { PredictedValue = data2.First() };
+            Tensor<float> data2 = result.First().AsTensor<float>();
+            var prediction = new Prediction { PredictedValue = (long)(data2.First() * 100000) };
             result.Dispose();
 
             return Ok(prediction);

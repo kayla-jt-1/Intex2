@@ -53,7 +53,7 @@ namespace Intex2
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddSingleton<InferenceSession>(
-                new InferenceSession("Models/crash_data.onnx")
+                new InferenceSession("Models/crash_data_float.onnx")
             );
 
             services.AddRazorPages();
