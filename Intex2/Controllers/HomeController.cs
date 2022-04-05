@@ -31,6 +31,11 @@ namespace Intex2.Controllers
             return View();
         }
 
+        public IActionResult Predict()
+        {
+            return View();
+        }
+
 
         //VIEW ALL CRASHES
         [HttpGet]
