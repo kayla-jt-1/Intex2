@@ -212,7 +212,9 @@
         </InputSelect>
     </div>
 
-    <div class="form-group">
+    @* ** -----> THESE ARE NOW OF TYPE TEXT AND NOT BOOLEAN <----- ** *@ 
+
+    @*<div class="form-group">
         <label>Work Zone Related?:</label>
         <ValidationMessage For="@(() => c.WORK_ZONE_RELATED)"></ValidationMessage>
         <InputCheckbox class="form-control" @bind-Value="c.WORK_ZONE_RELATED"></InputCheckbox>
@@ -324,7 +326,7 @@
         <label>Roadway Departure?:</label>
         <ValidationMessage For="@(() => c.ROADWAY_DEPARTURE)"></ValidationMessage>
         <InputCheckbox class="form-control" @bind-Value="c.ROADWAY_DEPARTURE"></InputCheckbox>
-    </div>
+    </div>*@
 
     <br />
     <button type="submit" class="btn btn-@ThemeColor">Save</button>
