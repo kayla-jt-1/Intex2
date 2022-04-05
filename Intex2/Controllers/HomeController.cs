@@ -1,4 +1,5 @@
 ﻿using Intex2.Models;
+using Intex2.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -30,12 +31,33 @@ namespace Intex2.Controllers
             return View();
         }
 
+        public IActionResult Predict()
+        {
+            return View();
+        }
+
 
         //VIEW ALL CRASHES
         [HttpGet]
         public IActionResult AllCrashes(int pageNum = 1)
         {
             int resultsPerPage = 10;
+
+            var x = new AccidentsViewModel
+            {
+                Crashes = repo.Crashes
+                .OrderBy(x => x.CRASH_DATETIME)
+                .Skip((pageNum - 1) * resultsPerPage)
+                .Take(resultsPerPage),
+
+                PageInfo = new PageInfo
+                {
+                    TotalNumRecords = repo.Crashes.Count(),
+                    RecordsPerPage = resultsPerPage,
+                    CurrentPage = pageNum
+                }
+            };
+
             var crashes = repo.Crashes
                 .OrderBy(x => x.CRASH_DATETIME)
                 .Skip((pageNum - 1) * resultsPerPage)

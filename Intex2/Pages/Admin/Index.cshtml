@@ -62,19 +62,18 @@
             <span class="navbar-brand m-l-2">Admin</span>
         </div>*@
 
+    <a class="nav-link text-dark" href="/admin/test">Log Out</a>
 
     <div class="row">
         <div class="col col-4"></div>
         <div class="col col-2">
-            <NavLink class="btn btn-primary btn-info rounded" style="width:100%;" href="/admin/accidents">View Accidents</NavLink>
+            <NavLink class="btn btn-primary btn-info rounded" style="width:100%;" href="/admin/accidents" Match="NavLinkMatch.Prefix">View Accidents</NavLink>
         </div>
         <div class="col col-2">
-            <NavLink class="btn btn-primary btn-info rounded" style="width:100%;" href="/admin/books/create">Add an Accident</NavLink>
+            <NavLink class="btn btn-primary btn-info rounded" style="width:100%;" href="/admin/books/create" Match="NavLinkMatch.Prefix">Add an Accident</NavLink>
         </div>
         <div class="col col-4"></div>
     </div>
-
-
 
 </body>
 
