@@ -77,7 +77,8 @@ namespace Intex2.Controllers
                 {
                     TotalNumRecords = repo.Crashes.Count(),
                     RecordsPerPage = resultsPerPage,
-                    CurrentPage = pageNum
+                    CurrentPage = pageNum,
+                    LinksPerPage = 10
                 }
             };
 

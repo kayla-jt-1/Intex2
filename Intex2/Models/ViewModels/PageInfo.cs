@@ -13,5 +13,11 @@ namespace Intex2.Models.ViewModels
 
         //How many pages we need 
         public int TotalPages => (int)Math.Ceiling((double)TotalNumRecords / RecordsPerPage);
+
+        //How many pages can there be on one page
+        public int LinksPerPage { get; set; }
+
+        // Dynamicaly create links
+        public string UrlParams { get; set; }
     }
 }
