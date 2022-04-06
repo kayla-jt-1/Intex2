@@ -26,7 +26,7 @@ namespace Intex2.Controllers
         [HttpGet]
         public IActionResult Login(string returnUrl)
         {
-            return View(new LoginModel { ReturnUrl = returnUrl }); 
+            return View(new LoginModel { ReturnUrl = returnUrl });
         }
 
         [HttpPost]
@@ -48,14 +48,14 @@ namespace Intex2.Controllers
             }
 
             ModelState.AddModelError("", "Invalid Username or Password");
-            return View(loginmodel); 
+            return View(loginmodel);
         }
 
         public async Task<RedirectResult> Logout(string returnUrl = "/")
         {
             await signInManager.SignOutAsync();
 
-            return Redirect(returnUrl); 
+            return Redirect(returnUrl);
         }
 
 
@@ -63,8 +63,8 @@ namespace Intex2.Controllers
         [HttpGet]
         public IActionResult AddCrash()
         {
-            //ViewBag.Crashes = repo.Crashes.ToList();
-            return View(new Crash());
+            ViewBag.Crashes = repo.Crashes.ToList();
+            return View();
 
         }
 
@@ -79,22 +79,10 @@ namespace Intex2.Controllers
             }
             else
             {
-                ViewBag.Crashes = repo.Crashes.ToList(); //DO WE NEED THIS LINE???
+                ViewBag.Crashes = repo.Crashes.ToList();
                 return View();
             }
         }
-
-
-        ////CONFIRMATION OF ADDING
-        //[HttpGet]
-        //public IActionResult Confirmation(Crash crash)
-        //{
-
-        //    return View();
-
-        //}
-
-
 
 
         //EDIT CRASH 
@@ -113,21 +101,12 @@ namespace Intex2.Controllers
             {
                 repo.SaveCrash(crash);
 
-                return RedirectToPage("CrashSummary");
+                return RedirectToAction("CrashSummary");
             }
             else
             {
                 return View("AddCrash", crash);
             }
-        }
-
-        
-
-        [HttpGet]
-        public IActionResult GroupFilter(int crashSevId)
-        {
-            var blah = repo.Crashes.Where(x => x.CRASH_SEVERITY_ID == crashSevId).ToList();
-            return View("CrashSummary", blah);
         }
 
 
@@ -139,13 +118,41 @@ namespace Intex2.Controllers
         }
 
 
+        //FILTER BY CITY
+        [HttpGet]
+        public IActionResult CityFilter(string city)
+        {
+            var blah = repo.Crashes
+                            .Where(x => x.CITY == city)
+                            .ToList();
 
-        [HttpPost]
-        public IActionResult AdminLookup(Crash crash)
-        { 
-
-            return View(crash);
+            return View("DisplayResults", blah);
         }
+
+
+        //FILTER BY ID
+        [HttpGet]
+        public IActionResult IdFilter(int crashid)
+        {
+            var blah = repo.Crashes
+                            .Where(x => x.CRASH_ID == crashid)
+                            .ToList();
+            return View("DisplayResults", blah);
+        }
+
+
+        [HttpGet]
+        public IActionResult DisplayResults()
+        {
+            var blah = repo.Crashes
+                            .ToList();
+
+            return View(blah);
+        }
+
+
+
+        //FILTER BY ID
 
 
         //public IActionResult Test()
