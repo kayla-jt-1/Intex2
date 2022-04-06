@@ -7,13 +7,12 @@
 <link href="~/css/style.css" rel="stylesheet" />
 <link href="~/css/site.css" rel="stylesheet" />
 
-<h3>Am I at risk of a fatal car crash? @ViewBag.PredictionResults</h3>
+<h3>Am I at risk of a fatal car crash?</h3>
+<h6>Take this quick survey to see the fatality of your current driving habits.</h6>
 
 <form method="post" asp-controller="Home">
     <div class="form-group">
         
-        
-        <button type="submit" class="btn btn-primary">Submit</button>
 
         <table class="table table-striped text-wrap">
             <thead>
@@ -477,7 +476,7 @@
         <input type="hidden" asp-for="crash_year" value="2019" />
         <input type="hidden" asp-for="crash_hour" value="12" />
 
-        
+        <button type="submit" class="btn btn-primary">Submit</button>
 
     </div>
 </form>

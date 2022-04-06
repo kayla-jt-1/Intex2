@@ -39,13 +39,12 @@ namespace Intex2.Controllers
         }
 
         [HttpGet]
-        public IActionResult Predict(string prediction) //string prediction
+        public IActionResult Predict()
         {
-            ViewBag.PredictionResults = prediction;
-
             return View();
         }
 
+        // Data Model Prediction
         [HttpPost]
         public IActionResult Predict(CrashData data)
         {
@@ -64,10 +63,8 @@ namespace Intex2.Controllers
             return View("PredictResults", prediction.PredictedValue);
         }
 
-        public IActionResult PredictResults(int prediction)
+        public IActionResult PredictResults()
         {
-            ViewBag.PredictedResults = prediction;
-
             return View();
         }
 
