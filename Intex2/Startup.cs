@@ -41,6 +41,7 @@ namespace Intex2
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppIdentityDBContext>();
 
+
             //services.AddDbContext<CrashContext>(options =>
             //{
             //    options.UseSqlite(Configuration["ConnectionStrings:AppointmentDBConnection"]);
@@ -59,6 +60,13 @@ namespace Intex2
             services.AddRazorPages();
 
             services.AddServerSideBlazor();
+
+            // Cookie Policy Options
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -82,6 +90,16 @@ namespace Intex2
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseCookiePolicy();
+
+
+            // Content-Security-Policy (CSP) HTTP header
+            app.Use(async (ctx, next) =>
+            {
+                ctx.Response.Headers.Add("Content-Security-Policy",
+                "default - src 'self'; style - src 'self'; img - src 'self'; script - src 'self'; base - uri 'self'; block - all - mixed - content 'self'; object - src 'none'; upgrade - insecure-requests 'self'; frame - src 'self'; font - src 'self'");
+                await next();
+            });
 
             app.UseEndpoints(endpoints =>
             {
