@@ -141,25 +141,67 @@ namespace Intex2.Controllers
         [HttpGet]
         public IActionResult CityFilter(string city)
         {
-            var blah = repo.Crashes
+            var temp = repo.Crashes
                             .Where(x => x.CITY == city)
                             .ToList();
 
-            return View("DisplayResults", blah);
+            return View("DisplayResults", temp);
         }
-
 
         //FILTER BY ID
         [HttpGet]
         public IActionResult IdFilter(int crashid)
         {
-            var blah = repo.Crashes
+            var temp = repo.Crashes
                             .Where(x => x.CRASH_ID == crashid)
                             .ToList();
-            return View("DisplayResults", blah);
+            return View("DisplayResults", temp);
         }
 
+        //FILTER BY COUNTY
+        [HttpGet]
+        public IActionResult CountyFilter(string county)
+        {
+            var temp = repo.Crashes
+                            .Where(x => x.COUNTY_NAME == county)
+                            .ToList();
+            return View("DisplayResults", temp);
+        }
 
+        //FILTER BY CRASH SEVERITY
+        [HttpGet]
+        public IActionResult CrashSevFilter(int severity)
+        {
+            var temp = repo.Crashes
+                            .Where(x => x.CRASH_SEVERITY_ID == severity)
+                            .ToList();
+            return View("DisplayResults", temp);
+        }
+
+        //FILTER BY DUI
+        [HttpGet]
+        public IActionResult DUIFilter(string dui)
+        {
+            var temp = repo.Crashes
+                            .Where(x => x.DUI == dui)
+                            .ToList();
+            return View("DisplayResults", temp);
+        }
+
+        //FILTER BY DISTRACTED DRIVING
+        [HttpGet]
+        public IActionResult DistractedFilter(string distracted)
+        {
+            var temp = repo.Crashes
+                            .Where(x => x.DISTRACTED_DRIVING == distracted)
+                            .ToList();
+            return View("DisplayResults", temp);
+        }
+        
+
+
+
+        //DISPLAYS FILTERED RESULTS
         [HttpGet]
         public IActionResult DisplayResults()
         {
@@ -171,9 +213,8 @@ namespace Intex2.Controllers
 
 
 
+
         //FILTER BY ID
-
-
         //public IActionResult Test()
         //{
 
