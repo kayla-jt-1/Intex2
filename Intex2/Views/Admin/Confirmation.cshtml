@@ -1,7 +1,7 @@
 ﻿@*Confirmation Page*@
 
 @{
-    ViewData["Title"] = "Confirmation";
+    ViewData["Title"] = "Accident Submitted";
     ViewData["TEST"] = "Logout";
 }
 
@@ -9,4 +9,6 @@
 @model Intex2.Models.Crash
 
 <br />
-<h4>@Model.CRASH_ID has been added to the list</h4>
+<h3>@Model.ROUTE has been added</h3>
+
+<a class="btn btn-primary" asp-controller="Admin" asp-action="Index">Return Home</a>

@@ -102,8 +102,8 @@
         <td>@x.MAIN_ROAD_NAME</td>
         <td>@x.CRASH_SEVERITY_ID</td>
 
-        <td><a asp-controller="Home" asp-action="Edit" asp-route-bowlerid="@x.CRASH_ID">Edit</a></td>
-        <td><a asp-controller="Home" asp-action="Delete" asp-route-bowlerid="@x.CRASH_ID">Delete</a></td>
+        <td><a asp-controller="Admin" asp-action="Edit" asp-route-crashid="@x.CRASH_ID">Edit</a></td>
+        <td><a asp-controller="Admin" asp-action="Delete" asp-route-crashid="@x.CRASH_ID">Delete</a></td>
     </tr>
         }
 

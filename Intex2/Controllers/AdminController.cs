@@ -26,7 +26,7 @@ namespace Intex2.Controllers
         [HttpGet]
         public IActionResult Login(string returnUrl)
         {
-            return View(new LoginModel { ReturnUrl = returnUrl }); 
+            return View(new LoginModel { ReturnUrl = returnUrl });
         }
 
         [HttpPost]
@@ -48,14 +48,14 @@ namespace Intex2.Controllers
             }
 
             ModelState.AddModelError("", "Invalid Username or Password");
-            return View(loginmodel); 
+            return View(loginmodel);
         }
 
         public async Task<RedirectResult> Logout(string returnUrl = "/")
         {
             await signInManager.SignOutAsync();
 
-            return Redirect(returnUrl); 
+            return Redirect(returnUrl);
         }
 
 
@@ -63,7 +63,7 @@ namespace Intex2.Controllers
         [HttpGet]
         public IActionResult AddCrash()
         {
-            ViewBag.Crashes = repo.Crashes.ToList();
+            //ViewBag.Crashes = repo.Crashes.ToList(); //IS THIS NECESSARY????
             return View();
 
         }
@@ -87,7 +87,7 @@ namespace Intex2.Controllers
 
         //EDIT CRASH 
         [HttpGet]
-        public IActionResult EditCrash(int crashId)
+        public IActionResult Edit(int crashId)
         {
             var crash = repo.Crashes.Single(x => x.CRASH_ID == crashId);
 
@@ -95,7 +95,7 @@ namespace Intex2.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditCrash(Crash crash)
+        public IActionResult Edit(Crash crash)
         {
             if (ModelState.IsValid)
             {
@@ -107,6 +107,23 @@ namespace Intex2.Controllers
             {
                 return View("AddCrash", crash);
             }
+        }
+
+        //DELETE CRASH
+        [HttpGet]
+        public IActionResult Delete(int crashId)
+        {
+            var crash = repo.Crashes.Single(x => x.CRASH_ID == crashId);
+
+            return View(crash);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Crash crash)
+        {
+            repo.DeleteCrash(crash);
+
+            return View("CrashSummary");
         }
 
 
@@ -126,7 +143,7 @@ namespace Intex2.Controllers
                             .Where(x => x.CITY == city)
                             .ToList();
 
-            return View("DisplayResults", blah); 
+            return View("DisplayResults", blah);
         }
 
 
@@ -137,7 +154,7 @@ namespace Intex2.Controllers
             var blah = repo.Crashes
                             .Where(x => x.CRASH_ID == crashid)
                             .ToList();
-            return View("DisplayResults", blah); 
+            return View("DisplayResults", blah);
         }
 
 
@@ -147,7 +164,7 @@ namespace Intex2.Controllers
             var blah = repo.Crashes
                             .ToList();
 
-            return View(blah); 
+            return View(blah);
         }
 
 
