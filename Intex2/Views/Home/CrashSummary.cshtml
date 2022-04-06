@@ -14,16 +14,18 @@
 <h3>Crash data on record for 2016, 2017 and 2019.</h3>
 <br />
 
+<a type="submit" class="btn btn-primary" asp-controller="Home" asp-action="FilterData">Filter Data</a>
+
 <!--Display the crashes-->
 <div class="accordion" id="crash_accordion">
 
     <!--Iterate through all of the crashes-->
     @foreach (var c in Model.Crashes)
     {
-    <div class="card card-outline-primary m-5 p-3" style="background-color: #F4F4F4; color: #545557; padding-left:50%;">
-        <h4>
-            Accident number: @c.CRASH_ID
-        </h4>
+        <div class="card card-outline-primary m-5 p-3" style="background-color: #F4F4F4; color: #545557; padding-left:50%;">
+            <h4>
+                Accident number: @c.CRASH_ID
+            </h4>
 
             <!--display the date and time-->
             <div><div style="font-weight: bold; display: inline; ">Date:</div> @c.CRASH_DATETIME</div>
@@ -98,7 +100,7 @@
                     <span>No </span>
                 }
             </div>
-        <br /><br />
+            <br /><br />
 
             <!--Display Pedestrian Involved as Yes or No-->
             <div>
@@ -318,12 +320,13 @@
                     <span>Roadway Departure:  No </span>
                 }
             </div>
-        <br /><br />
+            <br /><br />
         </div>
-        }
-    </div>
+    }
+</div>
 
-<br /><br />
+<br />
+<br />
 <div page-model="@Model.PageInfo"
      page-action="AllCrashes" page-classes-enabled="true"
      page-class="btn" page-class-normal="btn-outline-dark"

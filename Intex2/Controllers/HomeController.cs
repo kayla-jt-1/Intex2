@@ -101,6 +101,11 @@ namespace Intex2.Controllers
                 return View("CrashSummary", x);
         }
 
+        public IActionResult FilterData()
+        {
+            return View();
+        }
+
 
         ////ADD CRASH
         //[HttpGet]
