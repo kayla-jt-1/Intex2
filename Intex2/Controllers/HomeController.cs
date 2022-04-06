@@ -55,7 +55,9 @@ namespace Intex2.Controllers
                 NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
             }); //.ToList().Last().AsEnumerable<NamedOnnxValue>()
 
-            ViewBag.PredictedResult = result.First().Value;
+            int prediction = 4;
+            ViewBag.PredictedResult = 4;
+            //ViewBag.PredictedResult = result.First().Value;
 
             //var prediction = _session.Run(new Prediction { PredictedValue = result.First().AsTensor<float>());
 
@@ -63,7 +65,14 @@ namespace Intex2.Controllers
             //var prediction = new Prediction { PredictedValue = (long)(data2.First() * 100000) };
             //result.Dispose();
 
-            return View("PredictResults", ViewBag.PredictedResult);
+            return View("PredictResults", prediction);
+        }
+
+        public IActionResult PredictResults(int prediction)
+        {
+            ViewBag.PredictedResults = prediction;
+
+            return View();
         }
 
 
