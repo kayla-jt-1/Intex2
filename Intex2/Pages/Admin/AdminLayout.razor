@@ -1,11 +1,11 @@
 ﻿@*LAYOUT FOR ADMIN PART OF SITE*@
 
-@inherits LayoutComponentBase
+@*@inherits LayoutComponentBase*@
 @*TITLE*@
-<h4 style="padding-left: 30px; padding-top: 13px; color: #48484a;" class="display-4 lh-1 mb-1">Admin</h4>
+<!--<h4 style="padding-left: 30px; padding-top: 13px; color: #48484a;" class="display-4 lh-1 mb-1">Admin</h4>-->
 
 @*NAVIGATION BAR*@
-<header>
+<!--<header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-1">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -20,34 +20,25 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="/admin/logout">Log Out</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="/admin">Admin Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="/admin/accidents">View Accidents</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="/admin/test">TEST PAGE</a>
-                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-</header>
+</header>-->
 @*END OF NAVIGATION BAR*@
 
-<NavLink class="btn btn-block btn-outline-primary" href="/admin/test"
-         ActiveClass="btn-primary text-white" Match="NavLinkMatch.Prefix">TEST</NavLink>
+@*<NavLink class="btn btn-block btn-outline-primary" href="/admin/test"
+         ActiveClass="btn-primary text-white" Match="NavLinkMatch.Prefix">TEST</NavLink>*@
 
 
-<!--<div class="container-fluid">
-    <div class="row p-2">
-        <div class="col-3">
-            <NavLink class="btn btn-block btn-outline-primary" href="/admin/accidents"
-                     ActiveClass="btn-primary text-white" Match="NavLinkMatch.Prefix">Crashes</NavLink>-->
+<!--<!--<div class="container-fluid">-->
+    @*<div class="row p-2">
+        <div class="col-3">*@
+            <!--<NavLink class="btn btn-block btn-outline-primary" href="/admin/accidents"
+                     ActiveClass="btn-primary text-white" Match="NavLinkMatch.Prefix">Crashes</NavLink>-->-->
 
-            @*<NavLink class="btn btn-block btn-outline-primary" href="/admin/checkouts"
-                ActiveClass="btn-primary text-white" Match="NavLinkMatch.Prefix">Payments</NavLink>*@
+            <!--<!--<!---->--><!--@*<NavLink class="btn btn-block btn-outline-primary" href="/admin/checkouts"
+                ActiveClass="btn-primary text-white" Match="NavLinkMatch.Prefix">Payments</NavLink>*@-->-->
         <!--</div>
         <div class="col">
             @Body
