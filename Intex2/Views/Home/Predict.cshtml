@@ -7,105 +7,23 @@
 <link href="~/css/style.css" rel="stylesheet" />
 <link href="~/css/site.css" rel="stylesheet" />
 
-<h3>Am I at risk of a fatal car crash?</h3>
+<h3>Am I at risk of a fatal car crash? @ViewBag.PredictionResults</h3>
 
 <form method="post" asp-controller="Home">
     <div class="form-group">
-        @* CITY *@
-        <div class="form-check">
-            I currently live in (city) <br />
-            <input class="form-check-input" asp-for="city_SaltLakeCity" type="radio" name="location" id="location" value="1">
-            <label class="form-check-label" asp-for="city_SaltLakeCity">Salk Lake City</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" asp-for="city_WestValleyCity" type="radio" name="location" id="location" value="1">
-            <label class="form-check-label" asp-for="city_WestValleyCity">West Valley</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" asp-for="city_OutsideCityLimits" type="radio" name="location" id="location" value="1">
-            <label class="form-check-label" asp-for="city_OutsideCityLimits">Outside City Limits</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" asp-for="city_Other" type="radio" name="location" id="location" value="1">
-            <label class="form-check-label" asp-for="city_Other">Other</label>
-        </div>
-        <br />
-        @* COUNTY *@
-        <div class="form-check">
-            I currently live in (county)<br />
-            <input class="form-check-input" asp-for="county_name_Davis" type="radio" name="county" id="location" value="1">
-            <label class="form-check-label" asp-for="county_name_Davis">Davis County</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" asp-for="county_name_SaltLake" type="radio" name="county" id="location" value="1">
-            <label class="form-check-label" asp-for="county_name_SaltLake">Salt Lake County</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" asp-for="county_name_Utah" type="radio" name="county" id="location" value="1">
-            <label class="form-check-label" asp-for="county_name_Utah">Utah County</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" asp-for="county_name_Weber" type="radio" name="county" id="location" value="1">
-            <label class="form-check-label" asp-for="county_name_Weber">Weber County</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" asp-for="county_name_Other" type="radio" name="county" id="location" value="1">
-            <label class="form-check-label" asp-for="county_name_Other">Other</label>
-        </div>
-        <br />
-        @* ROADS *@
-        <div class="form-check">
-            I often drive on (select as many as apply)<br />
-            <input class="form-check-input" asp-for="route_15"type="radio" name="road1" id="road" value="1">
-            <label class="form-check-label" asp-for="route_15">I-15</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" asp-for="route_89"type="radio" name="road2" id="road" value="1">
-            <label class="form-check-label" asp-for="route_89">Route 89</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" asp-for="roadway_departure"type="radio" name="raod3" id="road" value="1">
-            <label class="form-check-label" asp-for="roadway_departure">Entrance/Exit Ramps</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" asp-for="route_Other" type="radio" name="road4" id="road" value="1">
-            <label class="form-check-label" asp-for="route_Other">Other</label>
-        </div>
-
-        <input type="hidden" asp-for="main_road_name_I_15" value="1" />
-
-        @* AGE *@
-        <div class="form-check">
-            I am ____ years old<br />
-            <input class="form-check-input" asp-for="teenage_driver_involved" type="radio" name="age" id="location" value="0">
-            <label class="form-check-label" asp-for="teenage_driver_involved">15-17</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="age" id="location">
-            <label class="form-check-label">18-25</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="age" id="location">
-            <label class="form-check-label">26-40</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="age" id="location">
-            <label class="form-check-label">41-55</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" asp-for="older_driver_involved" type="radio" name="age" id="location" value="0">
-            <label class="form-check-label" asp-for="older_driver_involved">55+</label>
-        </div>
+        
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
 
         <table class="table table-striped text-wrap">
             <thead>
                 <tr>
-                    <th scope="col" colspan="1" style="width: 8rem;"></th>
-                    <th scope="col" colspan="1" style="width: 6rem;">Strongly Disagree</th>
-                    <th scope="col" colspan="1" style="width: 6rem;">Disagree</th>
-                    <th scope="col" colspan="1" style="width: 6rem;">Neither Agree nor Disagree</th>
-                    <th scope="col" colspan="1" style="width: 6rem;">Agree</th>
-                    <th scope="col" colspan="1" style="width: 6rem;">Strongly Agree</th>
+                    <th scope="col" colspan="1" style="width: 8rem;" class="text-wrap"></th>
+                    <th scope="col" colspan="1" style="width: 6rem;" class="text-wrap">Strongly Disagree</th>
+                    <th scope="col" colspan="1" style="width: 6rem;" class="text-wrap">Disagree</th>
+                    <th scope="col" colspan="1" style="width: 6rem;" class="text-wrap">Neither Agree nor Disagree</th>
+                    <th scope="col" colspan="1" style="width: 6rem;" class="text-wrap">Agree</th>
+                    <th scope="col" colspan="1" style="width: 6rem;" class="text-wrap">Strongly Agree</th>
                 </tr>
             </thead>
             <tbody>
@@ -417,6 +335,109 @@
                         </div>
                     </td>
                 </tr>
+                
+                <tr>
+                    @* AGE *@
+                    <td colspan="2">
+                        I am ____ years old
+                    </td>
+                    <td colspan="1">
+                        <div class="form-check">
+                            <input class="form-check-input" asp-for="teenage_driver_involved" type="radio" name="age" id="location" value="0">
+                            <label class="form-check-label" asp-for="teenage_driver_involved">15-17</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="age" id="location">
+                            <label class="form-check-label">18-25</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="age" id="location">
+                            <label class="form-check-label">26-40</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="age" id="location">
+                            <label class="form-check-label">41-55</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" asp-for="older_driver_involved" type="radio" name="age" id="location" value="0">
+                            <label class="form-check-label" asp-for="older_driver_involved">55+</label>
+                        </div>
+                    </td>
+                    @* ROADS *@
+                    <td colspan="2">
+                        I often drive on (select as many as apply)
+                    </td>
+                    <td colspan="1">
+                        <div class="form-check">
+                            <input class="form-check-input" asp-for="route_15" type="radio" name="road1" id="road" value="1">
+                            <label class="form-check-label" asp-for="route_15">I-15</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" asp-for="route_89" type="radio" name="road2" id="road" value="1">
+                            <label class="form-check-label" asp-for="route_89">Route 89</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" asp-for="roadway_departure" type="radio" name="raod3" id="road" value="1">
+                            <label class="form-check-label" asp-for="roadway_departure">Entrance/Exit Ramps</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" asp-for="route_Other" type="radio" name="road4" id="road" value="1">
+                            <label class="form-check-label" asp-for="route_Other">Other</label>
+                        </div>
+
+                        <input type="hidden" asp-for="main_road_name_I_15" value="1" />
+                    </td>
+                </tr>
+            <tr>
+                @* CITY *@
+                <td colspan="2" >
+                    I currently live in (city)
+                </td>
+                <td colspan="1">
+                    <div class="form-check">
+                        <input class="form-check-input" asp-for="city_SaltLakeCity" type="radio" name="location" id="location" value="1">
+                        <label class="form-check-label" asp-for="city_SaltLakeCity">Salk Lake City</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" asp-for="city_WestValleyCity" type="radio" name="location" id="location" value="1">
+                        <label class="form-check-label" asp-for="city_WestValleyCity">West Valley</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" asp-for="city_OutsideCityLimits" type="radio" name="location" id="location" value="1">
+                        <label class="form-check-label" asp-for="city_OutsideCityLimits">Outside City Limits</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" asp-for="city_Other" type="radio" name="location" id="location" value="1">
+                        <label class="form-check-label" asp-for="city_Other">Other</label>
+                    </div>
+                </td>
+                @* COUNTY *@
+                <td colspan="2">
+                    I currently live in (county)
+                </td>
+                <td colspan="1">
+                    <div class="form-check">
+                        <input class="form-check-input" asp-for="county_name_Davis" type="radio" name="county" id="location" value="1">
+                        <label class="form-check-label" asp-for="county_name_Davis">Davis County</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" asp-for="county_name_SaltLake" type="radio" name="county" id="location" value="1">
+                        <label class="form-check-label" asp-for="county_name_SaltLake">Salt Lake County</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" asp-for="county_name_Utah" type="radio" name="county" id="location" value="1">
+                        <label class="form-check-label" asp-for="county_name_Utah">Utah County</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" asp-for="county_name_Weber" type="radio" name="county" id="location" value="1">
+                        <label class="form-check-label" asp-for="county_name_Weber">Weber County</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" asp-for="county_name_Other" type="radio" name="county" id="location" value="1">
+                        <label class="form-check-label" asp-for="county_name_Other">Other</label>
+                    </div>
+                </td>
+            </tr>
 
             </tbody>
         </table>
@@ -428,7 +449,7 @@
         <input type="hidden" asp-for="crash_year" value="2019" />
         <input type="hidden" asp-for="crash_hour" value="12" />
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        
 
     </div>
 </form>
