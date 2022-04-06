@@ -60,6 +60,13 @@ namespace Intex2
             services.AddRazorPages();
 
             services.AddServerSideBlazor();
+
+            // Cookie Policy Options
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -83,6 +90,7 @@ namespace Intex2
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseCookiePolicy();
 
 
             // Content-Security-Policy (CSP) HTTP header
