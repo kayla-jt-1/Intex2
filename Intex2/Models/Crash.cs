@@ -10,24 +10,37 @@ namespace Intex2.Models
         public int CRASH_ID { get; set; }
 
         // this is a string in the database so it must be a string here -- used to be of type DateTime
+        [Required (ErrorMessage ="Please enter a datetime")]
         public string CRASH_DATETIME { get; set; }
 
+        [Required(ErrorMessage = "Please enter a valid route")]
         public string ROUTE { get; set; }
 
         //[Range(0, 1000000000000)] //Just to set the min to 0??????
+        [Required(ErrorMessage = "Please enter a valid milepoint")]
         public double MILEPOINT { get; set; }
 
         //[Range(0, 1000000000000)]
+        [Required(ErrorMessage = "Please enter a valid latitude")]
         public double LAT_UTM_Y { get; set; }
 
         //[Range(0, 1000000000000)]
+        [Required(ErrorMessage = "Please enter a valid longitude")]
         public double LONG_UTM_X { get; set; }
+
+        [Required(ErrorMessage = "Please enter a valid address")]
         public string MAIN_ROAD_NAME { get; set; }
+
+        [Required(ErrorMessage = "Please enter a valid city")]
         public string CITY { get; set; }
+
+        [Required(ErrorMessage = "Please enter a valid county")]
         public string COUNTY_NAME { get; set; }
+
+        [Required(ErrorMessage = "Please select a crash severity")]
         public int CRASH_SEVERITY_ID { get; set; }
 
-        // these values are either "true" or "false" 
+        // these values are either "true" or "false"
         public string WORK_ZONE_RELATED { get; set; }
         public string PEDESTRIAN_INVOLVED { get; set; }
         public string BICYCLIST_INVOLVED { get; set; }

@@ -79,7 +79,7 @@ namespace Intex2.Controllers
             }
             else
             {
-                ViewBag.Crashes = repo.Crashes.ToList();
+                //ViewBag.Crashes = repo.Crashes.ToList();
                 return View();
             }
         }
@@ -121,9 +121,11 @@ namespace Intex2.Controllers
         [HttpPost]
         public IActionResult Delete(Crash crash)
         {
-            repo.DeleteCrash(crash);
+            Crash crashChange = repo.Crashes.Single(x => x.CRASH_ID == crash.CRASH_ID); 
 
-            return View("CrashSummary");
+            repo.DeleteCrash(crashChange);
+
+            return RedirectToAction("AdminLookup");
         }
 
 

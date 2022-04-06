@@ -6,7 +6,7 @@
 @model Crash
 
 <div class="text-center">
-    <h6 class="display-4">Are you sure you want to delete the record @Model.CRASH_ID?</h6>
+    <h4 class="display-5">Are you sure you want to delete the record @Model.CRASH_ID?</h4>
 </div>
 <br />
 
@@ -17,13 +17,13 @@
 
     @*Cancel Button*@
     <div class="col col-2">
-        <a asp-controller="Home" asp-action="AllCrashes" class="btn btn-primary p-1" style="width:100%;">Cancel</a>
+        <a asp-controller="Admin" asp-action="AdminLookup" class="btn btn-primary p-1" style="width:100%;">Cancel</a>
     </div>
 
 
     @*Delete Button*@
     <div class="col col-2">
-        <form method="post" asp-controller="Home" asp-action="Delete">
+        <form method="post" asp-controller="Admin" asp-action="Delete">
             <button type="submit" class="btn btn-dark p-1" style="width:100%;">Delete</button>
             <input type="hidden" asp-for="CRASH_ID" />
         </form>
