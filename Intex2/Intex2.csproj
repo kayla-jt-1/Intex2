@@ -23,6 +23,9 @@
     <Folder Include="wwwroot\css\maps\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\images\bg\" />
+    <Folder Include="wwwroot\plugins\" />
+    <Folder Include="wwwroot\plugins\icofont\" />
+    <Folder Include="wwwroot\plugins\icofont\fonts\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.22" />
@@ -43,5 +46,8 @@
     <Content Remove="wwwroot\css\maps\" />
     <Content Remove="wwwroot\img\" />
     <Content Remove="wwwroot\images\bg\" />
+    <Content Remove="wwwroot\plugins\" />
+    <Content Remove="wwwroot\plugins\icofont\" />
+    <Content Remove="wwwroot\plugins\icofont\fonts\" />
   </ItemGroup>
 </Project>
