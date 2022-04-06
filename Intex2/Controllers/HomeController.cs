@@ -39,24 +39,31 @@ namespace Intex2.Controllers
         }
 
         [HttpGet]
-        public IActionResult Predict()
+        public IActionResult Predict(string prediction) //string prediction
         {
+            ViewBag.PredictionResults = prediction;
+
             return View();
         }
 
         [HttpPost]
         public IActionResult Predict(CrashData data)
         {
+            
             var result = _session.Run(new List<NamedOnnxValue>
             {
                 NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
-            });
+            }); //.ToList().Last().AsEnumerable<NamedOnnxValue>()
 
-            Tensor<float> data2 = result.First().AsTensor<float>();
-            var prediction = new Prediction { PredictedValue = (long)(data2.First() * 100000) };
-            result.Dispose();
+            ViewBag.PredictedResult = result.First().Value;
 
-            return Ok(prediction);
+            //var prediction = _session.Run(new Prediction { PredictedValue = result.First().AsTensor<float>());
+
+            //Tensor<float> data2 = result.First().AsTensor<Int64>();
+            //var prediction = new Prediction { PredictedValue = (long)(data2.First() * 100000) };
+            //result.Dispose();
+
+            return View("PredictResults", ViewBag.PredictedResult);
         }
 
 

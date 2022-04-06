@@ -14,13 +14,13 @@ namespace Intex2.Models
 
         public string ROUTE { get; set; }
 
-        [Range(0, 1000000000000)] //Just to set the min to 0??????
+        //[Range(0, 1000000000000)] //Just to set the min to 0??????
         public double MILEPOINT { get; set; }
 
-        [Range(0, 1000000000000)]
+        //[Range(0, 1000000000000)]
         public double LAT_UTM_Y { get; set; }
 
-        [Range(0, 1000000000000)]
+        //[Range(0, 1000000000000)]
         public double LONG_UTM_X { get; set; }
         public string MAIN_ROAD_NAME { get; set; }
         public string CITY { get; set; }

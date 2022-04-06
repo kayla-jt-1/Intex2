@@ -17,31 +17,31 @@
 
             <input type="hidden" asp-for="CRASH_ID" />
 
-            @* -----> THIS IS TYPE STRING IN DATABASE SO WE NEED TO CHANGE IT HERE TOO <----- *@
-            @*<label asp-for="CRASH_DATETIME">Date and Time:</label>
-            <input asp-for="CRASH_DATETIME" type="datetime-local" />*@
+            @*THIS IS TYPE STRING IN DATABASE SO WE NEED TO CHANGE IT HERE TOO*@
+            <label asp-for="CRASH_DATETIME">Date and Time:<br />(MM/DD/YYYY HH:MM:SS AM/PM)</label>
+            <input asp-for="CRASH_DATETIME" />
             <br /><br />
 
             <label asp-for="ROUTE">Route Number:</label>
-            <input asp-for="ROUTE" min="0"/>
+            <input asp-for="ROUTE" min="0" />
             <br /><br />
 
             @*Milepoint should have a minimum of 0*@
 
             <label asp-for="MILEPOINT">Milepoint:</label>
-            <input asp-for="MILEPOINT" min="0"/>
+            <input asp-for="MILEPOINT" min="0" />
             <br /><br />
 
             @*latitude should have a minimum of 0*@
 
             <label asp-for="LAT_UTM_Y">Latitude:</label>
-            <input asp-for="LAT_UTM_Y" min="0"/>
+            <input asp-for="LAT_UTM_Y" min="0" />
             <br /><br />
 
             @*longitude should have a minimum of 0*@
 
             <label asp-for="LONG_UTM_X">Longitude:</label>
-            <input asp-for="LONG_UTM_X" min="0"/>
+            <input asp-for="LONG_UTM_X" min="0" />
             <br /><br />
 
             <label asp-for="MAIN_ROAD_NAME">Address:</label>
@@ -196,140 +196,82 @@
             <br /><br />
 
             <label asp-for="WORK_ZONE_RELATED">Work Zone Related?</label>
-            <input asp-for="WORK_ZONE_RELATED" type="checkbox" id="yes" name="WORK_ZONE_RELATED" value="yes">
-            @*<label for="yes">Yes</label>
-            <input asp-for="WORK_ZONE_RELATED" type="checkbox" id="no" name="WORK_ZONE_RELATED" value="no">
-            <label for="no">No</label>*@
+            <input asp-for="WORK_ZONE_RELATED" type="checkbox" id="true" name="WORK_ZONE_RELATED" value="true">
             <br /><br />
 
             <label asp-for="PEDESTRIAN_INVOLVED">Pedestrian Involved?</label>
-            <input asp-for="PEDESTRIAN_INVOLVED" type="radio" id="yes" name="PEDESTRIAN_INVOLVED" value="yes">
-            <label for="yes">Yes</label>
-            <input asp-for="PEDESTRIAN_INVOLVED" type="radio" id="no" name="PEDESTRIAN_INVOLVED" value="no">
-            <label for="no">No</label>
-            <br /><br />
+            <input asp-for="PEDESTRIAN_INVOLVED" type="checkbox" id="true" name="PEDESTRIAN_INVOLVED" value="true">
 
             <label asp-for="BICYCLIST_INVOLVED">Bicyclist Involved?</label>
-            <input asp-for="BICYCLIST_INVOLVED" type="radio" id="yes" name="BICYCLIST_INVOLVED" value="yes">
-            <label for="yes">Yes</label>
-            <input asp-for="BICYCLIST_INVOLVED" type="radio" id="no" name="BICYCLIST_INVOLVED" value="no">
-            <label for="no">No</label>
+            <input asp-for="BICYCLIST_INVOLVED" type="checkbox" id="true" name="BICYCLIST_INVOLVED" value="true">
             <br /><br />
 
             <label asp-for="MOTORCYCLE_INVOLVED">Motorcycle Involved?</label>
-            <input asp-for="MOTORCYCLE_INVOLVED" type="radio" id="yes" name="MOTORCYCLE_INVOLVED" value="yes">
-            <label for="yes">Yes</label>s
-            <input asp-for="MOTORCYCLE_INVOLVED" type="radio" id="no" name="MOTORCYCLE_INVOLVED" value="no">
-            <label for="no">No</label>
+            <input asp-for="MOTORCYCLE_INVOLVED" type="checkbox" id="true" name="MOTORCYCLE_INVOLVED" value="true">
             <br /><br />
 
             <label asp-for="IMPROPER_RESTRAINT">Improper Restraint?</label>
-            <input asp-for="IMPROPER_RESTRAINT" type="radio" id="yes" name="IMPROPER_RESTRAINT" value="yes">
-            <label for="yes">Yes</label>
-            <input asp-for="IMPROPER_RESTRAINT" type="radio" id="no" name="IMPROPER_RESTRAINT" value="no">
-            <label for="no">No</label>
+            <input asp-for="IMPROPER_RESTRAINT" type="checkbox" id="true" name="IMPROPER_RESTRAINT" value="true">
             <br /><br />
 
             <label asp-for="UNRESTRAINED">Unrestrained?</label>
-            <input asp-for="UNRESTRAINED" type="radio" id="yes" name="UNRESTRAINED" value="yes">
-            <label for="yes">Yes</label>
-            <input asp-for="UNRESTRAINED" type="radio" id="no" name="UNRESTRAINED" value="no">
-            <label for="no">No</label>
+            <input asp-for="UNRESTRAINED" type="checkbox" id="true" name="UNRESTRAINED" value="true">
             <br /><br />
 
             <label asp-for="DUI">DUI?</label>
-            <input asp-for="DUI" type="radio" id="yes" name="DUI" value="yes">
-            <label for="yes">Yes</label>
-            <input asp-for="DUI" type="radio" id="no" name="DUI" value="no">
-            <label for="no">No</label>
+            <input asp-for="DUI" type="checkbox" id="true" name="DUI" value="true">
             <br /><br />
 
             <label asp-for="INTERSECTION_RELATED">Intersection Related?</label>
-            <input asp-for="INTERSECTION_RELATED" type="radio" id="yes" name="INTERSECTION_RELATED" value="yes">
-            <label for="yes">Yes</label>
-            <input asp-for="INTERSECTION_RELATED" type="radio" id="no" name="INTERSECTION_RELATED" value="no">
-            <label for="no">No</label>
+            <input asp-for="INTERSECTION_RELATED" type="checkbox" id="true" name="INTERSECTION_RELATED" value="true">
             <br /><br />
 
             <label asp-for="WILD_ANIMAL_RELATED">Wild Animal Related?</label>
-            <input asp-for="WILD_ANIMAL_RELATED" type="radio" id="yes" name="WILD_ANIMAL_RELATED" value="yes">
-            <label for="yes">Yes</label>
-            <input asp-for="WILD_ANIMAL_RELATED" type="radio" id="no" name="WILD_ANIMAL_RELATED" value="no">
-            <label for="no">No</label>
+            <input asp-for="WILD_ANIMAL_RELATED" type="checkbox" id="true" name="WILD_ANIMAL_RELATED" value="true">
             <br /><br />
 
             <label asp-for="DOMESTIC_ANIMAL_RELATED">Domestic Animal Related?</label>
-            <input asp-for="DOMESTIC_ANIMAL_RELATED" type="radio" id="yes" name="DOMESTIC_ANIMAL_RELATED" value="yes">
-            <label for="yes">Yes</label>
-            <input asp-for="DOMESTIC_ANIMAL_RELATED" type="radio" id="no" name="DOMESTIC_ANIMAL_RELATED" value="no">
-            <label for="no">No</label>
+            <input asp-for="DOMESTIC_ANIMAL_RELATED" type="checkbox" id="true" name="DOMESTIC_ANIMAL_RELATED" value="true">
             <br /><br />
 
             <label asp-for="OVERTURN_ROLLOVER">Overturn Rollover?</label>
-            <input asp-for="OVERTURN_ROLLOVER" type="radio" id="yes" name="OVERTURN_ROLLOVER" value="yes">
-            <label for="yes">Yes</label>
-            <input asp-for="OVERTURN_ROLLOVER" type="radio" id="no" name="OVERTURN_ROLLOVER" value="no">
-            <label for="no">No</label>
+            <input asp-for="OVERTURN_ROLLOVER" type="checkbox" id="true" name="OVERTURN_ROLLOVER" value="true">
             <br /><br />
 
             <label asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED">Commercial Motor Vehicle Involved?</label>
-            <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" type="radio" id="yes" name="COMMERCIAL_MOTOR_VEH_INVOLVED" value="yes">
-            <label for="yes">Yes</label>
-            <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" type="radio" id="no" name="COMMERCIAL_MOTOR_VEH_INVOLVED" value="no">
-            <label for="no">No</label>
+            <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" type="checkbox" id="true" name="COMMERCIAL_MOTOR_VEH_INVOLVED" value="true">
             <br /><br />
 
             <label asp-for="TEENAGE_DRIVER_INVOLVED">Teenage Driver Involved?</label>
-            <input asp-for="TEENAGE_DRIVER_INVOLVED" type="radio" id="yes" name="TEENAGE_DRIVER_INVOLVED" value="yes">
-            <label for="yes">Yes</label>
-            <input asp-for="TEENAGE_DRIVER_INVOLVED" type="radio" id="no" name="TEENAGE_DRIVER_INVOLVED" value="no">
-            <label for="no">No</label>
+            <input asp-for="TEENAGE_DRIVER_INVOLVED" type="checkbox" id="true" name="TEENAGE_DRIVER_INVOLVED" value="true">
             <br /><br />
 
             <label asp-for="OLDER_DRIVER_INVOLVED">Older Driver Involved?</label>
-            <input asp-for="OLDER_DRIVER_INVOLVED" type="radio" id="yes" name="OLDER_DRIVER_INVOLVED" value="yes">
-            <label for="yes">Yes</label>
-            <input asp-for="OLDER_DRIVER_INVOLVED" type="radio" id="no" name="OLDER_DRIVER_INVOLVED" value="no">
-            <label for="no">No</label>
+            <input asp-for="OLDER_DRIVER_INVOLVED" type="checkbox" id="true" name="OLDER_DRIVER_INVOLVED" value="true">
             <br /><br />
 
             <label asp-for="NIGHT_DARK_CONDITION">Night/Dark Condition?</label>
-            <input asp-for="NIGHT_DARK_CONDITION" type="radio" id="yes" name="NIGHT_DARK_CONDITION" value="yes">
-            <label for="yes">Yes</label>
-            <input asp-for="NIGHT_DARK_CONDITION" type="radio" id="no" name="NIGHT_DARK_CONDITION" value="no">
-            <label for="no">No</label>
+            <input asp-for="NIGHT_DARK_CONDITION" type="checkbox" id="true" name="NIGHT_DARK_CONDITION" value="true">
             <br /><br />
 
             <label asp-for="SINGLE_VEHICLE">Single Vehicle?</label>
-            <input asp-for="SINGLE_VEHICLE" type="radio" id="yes" name="SINGLE_VEHICLE" value="yes">
-            <label for="yes">Yes</label>
-            <input asp-for="SINGLE_VEHICLE" type="radio" id="no" name="SINGLE_VEHICLE" value="no">
-            <label for="no">No</label>
+            <input asp-for="SINGLE_VEHICLE" type="checkbox" id="true" name="SINGLE_VEHICLE" value="true">
             <br /><br />
 
             <label asp-for="DISTRACTED_DRIVING">Distracted Driving?</label>
-            <input asp-for="DISTRACTED_DRIVING" type="radio" id="yes" name="DISTRACTED_DRIVING" value="yes">
-            <label for="yes">Yes</label>
-            <input asp-for="DISTRACTED_DRIVING" type="radio" id="no" name="DISTRACTED_DRIVING" value="no">
-            <label for="no">No</label>
+            <input asp-for="DISTRACTED_DRIVING" type="checkbox" id="true" name="DISTRACTED_DRIVING" value="true">
             <br /><br />
 
             <label asp-for="DROWSY_DRIVING">Drowsy Driving?</label>
-            <input asp-for="DROWSY_DRIVING" type="radio" id="yes" name="DROWSY_DRIVING" value="yes">
-            <label for="yes">Yes</label>
-            <input asp-for="DROWSY_DRIVING" type="radio" id="no" name="DROWSY_DRIVING" value="no">
-            <label for="no">No</label>
+            <input asp-for="DROWSY_DRIVING" type="checkbox" id="true" name="DROWSY_DRIVING" value="true">
             <br /><br />
 
             <label asp-for="ROADWAY_DEPARTURE">Roadway Departure?</label>
-            <input asp-for="ROADWAY_DEPARTURE" type="radio" id="yes" name="ROADWAY_DEPARTURE" value="yes">
-            <label for="yes">Yes</label>
-            <input asp-for="ROADWAY_DEPARTURE" type="radio" id="no" name="ROADWAY_DEPARTURE" value="no">
-            <label for="no">No</label>
+            <input asp-for="ROADWAY_DEPARTURE" type="checkbox" id="true" name="ROADWAY_DEPARTURE" value="true">
             <br /><br />
 
 
-            <button type="submit" class="btn btn-info">Yeet Crash Record</button>
+            <button type="submit" class="btn" style="border-color: #D5A021" asp-controller="Admin" asp-action="AddCrash">Yeet Crash Record</button>
         </form>
     </fieldset>
 
