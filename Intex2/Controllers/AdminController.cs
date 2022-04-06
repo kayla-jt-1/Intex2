@@ -121,7 +121,7 @@ namespace Intex2.Controllers
         [HttpPost]
         public IActionResult Delete(Crash crash)
         {
-            Crash crashChange = repo.Crashes.Single(x => x.CRASH_ID == crash.CRASH_ID); 
+            Crash crashChange = repo.Crashes.Single(x => x.CRASH_ID == crash.CRASH_ID);
 
             repo.DeleteCrash(crashChange);
 
