@@ -83,6 +83,20 @@ namespace Intex2
             app.UseAuthentication();
             app.UseAuthorization();
 
+
+            // Content-Security-Policy (CSP) HTTP header
+            app.Use(async (ctx, next) =>
+            {
+                ctx.Response.Headers.Add("Content-Security-Policy",
+                "default - src 'self'; style - src 'self'; img - src 'self'; script - src 'self'; base - uri 'self'; block - all - mixed - content 'self'; object - src 'none'; upgrade - insecure-requests 'self'; frame - src 'self'; font - src 'self'");
+                await next();
+            });
+
+
+            //base-uri, block-all-mixed-content, object-src, upgrade-insecure-requests, frame-src, font-src
+            //https://docs.microsoft.com/en-us/aspnet/core/blazor/security/content-security-policy?view=aspnetcore-3.1
+            //"default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; base-uri 'self'; block-all-mixed-content 'self'; object-src 'none'; upgrade-insecure-requests 'self'; frame-src 'self'; font-src 'self'");
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute( //endpoints from pagination 
