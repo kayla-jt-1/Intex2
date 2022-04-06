@@ -121,7 +121,7 @@ namespace Intex2.Controllers
 
         ////EDIT CRASH 
         //[HttpGet]
-        //public IActionResult EditCrash(int crashId)
+        //public IActionResult Edit(int crashId)
         //{
         //    var crash = repo.Crashes.Single(x => x.CRASH_ID == crashId);
 
@@ -129,7 +129,7 @@ namespace Intex2.Controllers
         //}
 
         //[HttpPost]
-        //public IActionResult EditCrash(Crash crash)
+        //public IActionResult Edit(Crash crash)
         //{
         //    if (ModelState.IsValid)
         //    {
@@ -144,22 +144,22 @@ namespace Intex2.Controllers
         //}
 
 
-        //DELETE CRASH
-        [HttpGet]
-        public IActionResult Delete(int crashId)
-        {
-            var crash = repo.Crashes.Single(x => x.CRASH_ID == crashId);
+        ////DELETE CRASH
+        //[HttpGet]
+        //public IActionResult Delete(int crashId)
+        //{
+        //    var crash = repo.Crashes.Single(x => x.CRASH_ID == crashId);
 
-            return View(crash);
-        }
+        //    return View(crash);
+        //}
 
-        [HttpPost]
-        public IActionResult Delete(Crash crash)
-        {
-            repo.DeleteCrash(crash);
+        //[HttpPost]
+        //public IActionResult Delete(Crash crash)
+        //{
+        //    repo.DeleteCrash(crash);
 
-            return View("CrashSummary");
-        }
+        //    return View("CrashSummary");
+        //}
 
 
         ////LOGIN
