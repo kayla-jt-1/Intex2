@@ -212,14 +212,43 @@ namespace Intex2.Controllers
         }
 
 
+        //ACTIONS FOR USER REGISTRATION
+        public IActionResult Register()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new IdentityUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                };
 
-        //FILTER BY ID
-        //public IActionResult Test()
-        //{
+                var result = await userManager.CreateAsync(user, model.Password);
 
-        //    return View();
-        //}
+                if (result.Succeeded)
+                {
+                    await signInManager.SignInAsync(user, isPersistent: false);
+
+                    return RedirectToAction("index", "Home");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+
+            }
+            return View(model);
+        }
+
 
     }
 }
