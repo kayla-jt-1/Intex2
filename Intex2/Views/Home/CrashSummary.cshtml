@@ -11,7 +11,8 @@
 
 @model AccidentsViewModel
 
-<h3>Below are all the crashes on record for the city of Provo in 2016, 2017 and 2019.</h3>
+<h3>Crash data on record for 2016, 2017 and 2019.</h3>
+<br />
 
 <!--Display the crashes-->
 <div class="accordion" id="crash_accordion">
@@ -19,45 +20,49 @@
     <!--Iterate through all of the crashes-->
     @foreach (var c in Model.Crashes)
     {
-        <div class="card">
-            <h4>
-                Accident number: @c.CRASH_ID
-            </h4>
-
-
-            <!--display the date and time-->
-            <div>Date: @c.CRASH_DATETIME</div>
+    <div class="card card-outline-primary m-5 p-3" style="background-color: #F4F4F4; color: #545557; padding-left:50%;">
+        <h4>
+            Accident number: @c.CRASH_ID
+        </h4>
 
             <!--display the date and time-->
-            <div>Time: @c.CRASH_DATETIME</div>
+            <div><div style="font-weight: bold; display: inline; ">Date:</div> @c.CRASH_DATETIME</div>
+
+            <!--display the date and time-->
+            <div><div style="font-weight: bold; display: inline; ">Time:</div> @c.CRASH_DATETIME</div>
 
             <!--display the road name-->
-            <div>Road: @c.MAIN_ROAD_NAME</div>
+            <div><div style="font-weight: bold; display: inline; ">Road:</div> @c.MAIN_ROAD_NAME</div>
 
             <!--display the city-->
-            <div>City: @c.CITY</div>
+            <div><div style="font-weight: bold; display: inline; ">City:</div> @c.CITY</div>
 
             <!--identify and display the severity-->
             <div>
                 @if (c.CRASH_SEVERITY_ID == 1)
                 {
-                    <span>Accident severity: No Injury</span>
+                    <div style="font-weight: bold; display: inline; ">Accident Severity:</div>
+                    <span>No Injury</span>
                 }
                 else if (c.CRASH_SEVERITY_ID == 2)
                 {
-                    <span>Accident severity: Possible Injury</span>
+                    <div style="font-weight: bold; display: inline; ">Accident Severity:</div>
+                    <span>Possible Injury</span>
                 }
                 else if (c.CRASH_SEVERITY_ID == 3)
                 {
-                    <span>Accident severity: Suspected Minor Injury</span>
+                    <div style="font-weight: bold; display: inline; ">Accident Severity:</div>
+                    <span>Suspected Minor Injury</span>
                 }
                 else if (c.CRASH_SEVERITY_ID == 4)
                 {
-                    <span>Accident severity: Suspected Major Injury</span>
+                    <div style="font-weight: bold; display: inline; ">Accident Severity:</div>
+                    <span>Suspected Major Injury</span>
                 }
                 else if (c.CRASH_SEVERITY_ID == 5)
                 {
-                    <span>Accident severity: Fatal</span>
+                    <div style="font-weight: bold; display: inline; ">Accident Severity:</div>
+                    <span>Fatal</span>
                 }
                 else // this should never be the case
                 {
@@ -66,41 +71,46 @@
             </div>
 
             <!--Display the Route Number-->
-            <div>Route number: @c.ROUTE</div>
+            <div><div style="font-weight: bold; display: inline; ">Route Number:</div> @c.ROUTE</div>
 
             <!--Display the Milepoint-->
-            <div>Milepoint: @c.MILEPOINT</div>
+            <div><div style="font-weight: bold; display: inline; ">Milepoint:</div> @c.MILEPOINT</div>
 
             <!--Display the Lattitude-->
-            <div>Lattitude: @c.LAT_UTM_Y</div>
+            <div><div style="font-weight: bold; display: inline; ">Latitude:</div> @c.LAT_UTM_Y</div>
 
             <!--Display the Longitude-->
-            <div>Longitude: @c.LONG_UTM_X</div>
+            <div><div style="font-weight: bold; display: inline; ">Longitude:</div> @c.LONG_UTM_X</div>
 
             <!--Display the County-->
-            <div>County: @c.COUNTY_NAME</div>
+            <div><div style="font-weight: bold; display: inline; ">County:</div> @c.COUNTY_NAME</div>
 
             <!--Display Work Zone Related as Yes or No-->
             <div>
                 @if (c.WORK_ZONE_RELATED == "true")
                 {
-                    <span>Work Zone Related: Yes</span>
+                    <div style="font-weight: bold; display: inline; ">Work Zone Related:</div>
+                    <span>Yes</span>
                 }
                 else
                 {
-                    <span> Work Zone Related: No </span>
+                    <div style="font-weight: bold; display: inline; ">Work Zone Related:</div>
+                    <span>No </span>
                 }
             </div>
+        <br /><br />
 
             <!--Display Pedestrian Involved as Yes or No-->
             <div>
                 @if (c.PEDESTRIAN_INVOLVED == "true")
                 {
-                    <span>Pedestrian Involved: Yes</span>
+                    <div style="font-weight: bold; display: inline; ">Pedestrian Involved:</div>
+                    <span>Yes</span>
                 }
                 else
                 {
-                    <span>Pedestrian Involved:  No </span>
+                    <div style="font-weight: bold; display: inline; ">Pedestrian Involved:</div>
+                    <span>No </span>
                 }
             </div>
 
@@ -308,9 +318,12 @@
                     <span>Roadway Departure:  No </span>
                 }
             </div>
+        <br /><br />
         </div>
-    }
-</div>
+        }
+    </div>
+
+<br /><br />
 <div page-model="@Model.PageInfo"
      page-action="AllCrashes" page-classes-enabled="true"
      page-class="btn" page-class-normal="btn-outline-dark"
@@ -318,301 +331,301 @@
 
 </div>
 
-
-
-
-
+<br />
+<br />
+<br />
+<br />
 
 
 
 
 @* EVERYTHING BELOW IS ME TRYING TO GET FILTERING TO WORK
 
-    @model List<Crash>
+        @model List<Crash>
 
 
-    <style>
-        /* Dropdown Button */
-        .dropbtn {
-            background-color: #04AA6D;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .searchbtn {
-            background-color: #04AA6D;
-            color: white;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* Dropdown button on hover & focus */
-        .dropbtn:hover, .dropbtn:focus {
-            background-color: #3e8e41;
-        }
-
-        /* The search field */
-        #myInput {
-            box-sizing: border-box;
-            background-image: url('searchicon.png');
-            background-position: 14px 12px;
-            background-repeat: no-repeat;
-            font-size: 16px;
-            padding: 14px 20px 12px 45px;
-            border: none;
-            border-bottom: 1px solid #ddd;
-        }
-
-            /* The search field when it gets focus/clicked on */
-            #myInput:focus {
-                outline: 3px solid #ddd;
+        <style>
+            /* Dropdown Button */
+            .dropbtn {
+                background-color: #04AA6D;
+                color: white;
+                padding: 16px;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
             }
 
-        /* The container <div> - needed to position the dropdown content */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Dropdown Content (Hidden by Default) */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f6f6f6;
-            min-width: 230px;
-            border: 1px solid #ddd;
-            z-index: 1;
-        }
-
-            /* Links inside the dropdown */
-            .dropdown-content a {
-                color: black;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
+            .searchbtn {
+                background-color: #04AA6D;
+                color: white;
+                font-size: 14px;
+                border: none;
+                cursor: pointer;
             }
 
-                /* Change color of dropdown links on hover */
-                .dropdown-content a:hover {
-                    background-color: #f1f1f1
+            /* Dropdown button on hover & focus */
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: #3e8e41;
+            }
+
+            /* The search field */
+            #myInput {
+                box-sizing: border-box;
+                background-image: url('searchicon.png');
+                background-position: 14px 12px;
+                background-repeat: no-repeat;
+                font-size: 16px;
+                padding: 14px 20px 12px 45px;
+                border: none;
+                border-bottom: 1px solid #ddd;
+            }
+
+                /* The search field when it gets focus/clicked on */
+                #myInput:focus {
+                    outline: 3px solid #ddd;
                 }
 
-        /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-        .show {
-            display: block;
-        }
-    </style>
-
-    <form method="post">
-
-        <div asp-validation-summary="All"></div>
-
-        <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Search Crash Severity ID</button>
-            <div id="myDropdown" class="dropdown-content">
-                <input name="CRASH_SEVERITY_ID" type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()">
-                <a asp-controller="Admin" asp-action="GroupFilter">1 – NO INJURY</a>
-                <a asp-controller="Admin" asp-action="GroupFilter">2 – POSSIBLE INJURY</a>
-                <a asp-controller="Admin" asp-action="GroupFilter">3 – SUSPECTED MINOR INJURY</a>
-                <a asp-controller="Admin" asp-action="GroupFilter">4 – SUSPECTED SERIOUS INJURY</a>
-                <a asp-controller="Admin" asp-action="GroupFilter">5 – FATAL</a>
-            </div>
-        </div>
-        <br />
-
-        <div class="col-md-7" style="padding-left:4%;">
-            <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">Search City</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <input asp-for="CITY" type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()">
-                    <a asp-controller="Admin" asp-action="CityFilter" value="AMERICAN FORK">AMERICAN FORK</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="BEAVER">BEAVER</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="BLANDING">BLANDING</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="BOUNTIFUL">BOUNTIFUL</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="BRIAN HEAD">BRIAN HEAD</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="BRIGHAM CITY">BRIGHAM CITY</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="CEDAR CITY">CEDAR CITY</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="CEDAR FORT">CEDAR FORT</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="CENTERVILLE">CENTERVILLE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="CLEARFIELD">CLEARFIELD</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="CLINTON">CLINTON</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="CORINNE">CORINNE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="COTTONWOOD HEIGHTS">COTTONWOOD HEIGHTS</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="DRAPER">DRAPER</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="EAGLE MOUNTAIN">EAGLE MOUNTAIN</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="EDEN">EDEN</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="ELSINORE">ELSINORE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="ELWOOD">ELWOOD</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="EPHRAIM">EPHRAIM</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="FARMINGTON">FARMINGTON</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="FARR WEST">FARR WEST</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="FRUIT HEIGHTS">FRUIT HEIGHTS</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="GARLAND">GARLAND</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HARRISVILLE">HARRISVILLE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HEBER CITY">HEBER CITY</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HERRIMAN">HERRIMAN</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HIDEOUT">HIDEOUT</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HIGHLAND">HIGHLAND</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HOLLADAY">HOLLADAY</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HONEYVILLE">HONEYVILLE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HURRICANE">HURRICANE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HYDE PARK">HYDE PARK</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HYRUM">HYRUM</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="INDEPENDENCE">INDEPENDENCE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="KAYSVILLE">KAYSVILLE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="KEARNS">KEARNS</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="KIMBALL JUNCTION">KIMBALL JUNCTION</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="LAYTON">LAYTON</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="LEHI">LEHI</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="LEWISTON">LEWISTON</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="LINDON">LINDON</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="LOGAN">LOGAN</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MAGNA">MAGNA</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MANTUA">MANTUA</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MAPLETON">MAPLETON</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MARRIOTT-SLATERVILLE">MARRIOTT-SLATERVILLE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MIDVALE">MIDVALE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MIDWAY">MIDWAY</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MILLCREEK">MILLCREEK</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MOAB">MOAB</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MONA">MONA</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MURRAY">MURRAY</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MYTON">MYTON</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="NAPLES">NAPLES</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="NIBLEY">NIBLEY</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="NORTH LOGAN">NORTH LOGAN</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="NORTH OGDEN">NORTH OGDEN</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="NORTH SALT LAKE">NORTH SALT LAKE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="OGDEN">OGDEN</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="OREM">OREM</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="OUTSIDE CITY LIMITS">OUTSIDE CITY LIMITS</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="PARK CITY">PARK CITY</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="PERRY">PERRY</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="PLEASANT GROVE">PLEASANT GROVE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="PLEASANT VIEW">PLEASANT VIEW</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="PRICE">PRICE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="PROVO">PROVO</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="RICHFIELD">RICHFIELD</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="RICHMOND">RICHMOND</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="RIVERDALE">RIVERDALE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="RIVERTON">RIVERTON</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="ROY">ROY</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SALEM">SALEM</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SALT LAKE CITY">SALT LAKE CITY</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SANDY">SANDY</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SANTA CLARA">SANTA CLARA</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SANTAQUIN">SANTAQUIN</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SARATOGA SPRINGS">SARATOGA SPRINGS</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SMITHFIELD">SMITHFIELD</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SOUTH JORDAN">SOUTH JORDAN</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SOUTH OGDEN">SOUTH OGDEN</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SOUTH SALT LAKE">SOUTH SALT LAKE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SOUTH WEBER">SOUTH WEBER</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SPANISH FORK">SPANISH FORK</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SPRINGVILLE">SPRINGVILLE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="ST. GEORGE">ST. GEORGE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SUNSET">SUNSET</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SYRACUSE">SYRACUSE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="TAYLORSVILLE">TAYLORSVILLE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="TOOELE">TOOELE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="UINTAH">UINTAH</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="VERNAL">VERNAL</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="WASHINGTON">WASHINGTON</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="WELLSVILLE">WELLSVILLE</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="WEST BOUNTIFUL">WEST BOUNTIFUL</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="WEST HAVEN">WEST HAVEN</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="WEST JORDAN">WEST JORDAN</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="WEST VALLEY CITY">WEST VALLEY CITY</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="WILLARD">WILLARD</a>
-                    <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="WOODS CROSS">WOODS CROSS</a>
-                </div>
-            </div>
-            <br />
-
-            <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">Search County</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <input asp-for="COUNTY_NAME" type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()">
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="BEAVER">BEAVER</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="BOXELDER">BOX ELDER</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="CACHE">CACHE</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="CARBON">CARBON</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="DAVIS">DAVIS</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="DUCHESNE">DUCHESNE</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="EMERY">EMERY</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="GRAND">GRAND</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="IRON">IRON</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="JUAB">JUAB</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="KANE">KANE</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="MILLARD">MILLARD</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="MORGAN">MORGAN</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="SALTLAKE">SALT LAKE</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="SANJUAN">SAN JUAN</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="SANPETE">SANPETE</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="SEVIER">SEVIER</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="SUMMIT">SUMMIT</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" alue="TOOELE">TOOELE</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="UINTAH">UINTAH</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="UTAH">UTAH</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="WASATCH">WASATCH</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="WASHINGTON">WASHINGTON</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter" value="WEBER">WEBER</a>
-                </div>
-            </div>
-            <br />
-
-            <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">Search DUI</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <input asp-for="DUI" type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()">
-                    <a asp-controller="Admin" asp-action="GroupFilter">TRUE</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter">FALSE</a>
-                </div>
-            </div>
-            <br />
-
-            <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">Searh Distracted Driving</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <input asp-for="DISTRACTED_DRIVING" type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()">
-                    <a asp-controller="Admin" asp-action="GroupFilter">TRUE</a>
-                    <a asp-controller="Admin" asp-action="GroupFilter">FALSE</a>
-                </div>
-            </div>
-            <br />
-        </div>
-
-
-
-        @*<input type="hidden" asp-for="AppointmentId" />
-
-<button type="submit" class="btn btn-info">Search</button>
-</form>
-
-
-
-
-<script>function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-
-    function filterFunction() {
-        var input, filter, ul, li, a, i;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        div = document.getElementById("myDropdown");
-        a = div.getElementsByTagName("a");
-        for (i = 0; i < a.length; i++) {
-            txtValue = a[i].textContent || a[i].innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                a[i].style.display = "";
-            } else {
-                a[i].style.display = "none";
+            /* The container <div> - needed to position the dropdown content */
+            .dropdown {
+                position: relative;
+                display: inline-block;
             }
+
+            /* Dropdown Content (Hidden by Default) */
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f6f6f6;
+                min-width: 230px;
+                border: 1px solid #ddd;
+                z-index: 1;
+            }
+
+                /* Links inside the dropdown */
+                .dropdown-content a {
+                    color: black;
+                    padding: 12px 16px;
+                    text-decoration: none;
+                    display: block;
+                }
+
+                    /* Change color of dropdown links on hover */
+                    .dropdown-content a:hover {
+                        background-color: #f1f1f1
+                    }
+
+            /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+            .show {
+                display: block;
+            }
+        </style>
+
+        <form method="post">
+
+            <div asp-validation-summary="All"></div>
+
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">Search Crash Severity ID</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <input name="CRASH_SEVERITY_ID" type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()">
+                    <a asp-controller="Admin" asp-action="GroupFilter">1 – NO INJURY</a>
+                    <a asp-controller="Admin" asp-action="GroupFilter">2 – POSSIBLE INJURY</a>
+                    <a asp-controller="Admin" asp-action="GroupFilter">3 – SUSPECTED MINOR INJURY</a>
+                    <a asp-controller="Admin" asp-action="GroupFilter">4 – SUSPECTED SERIOUS INJURY</a>
+                    <a asp-controller="Admin" asp-action="GroupFilter">5 – FATAL</a>
+                </div>
+            </div>
+            <br />
+
+            <div class="col-md-7" style="padding-left:4%;">
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">Search City</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <input asp-for="CITY" type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()">
+                        <a asp-controller="Admin" asp-action="CityFilter" value="AMERICAN FORK">AMERICAN FORK</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="BEAVER">BEAVER</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="BLANDING">BLANDING</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="BOUNTIFUL">BOUNTIFUL</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="BRIAN HEAD">BRIAN HEAD</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="BRIGHAM CITY">BRIGHAM CITY</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="CEDAR CITY">CEDAR CITY</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="CEDAR FORT">CEDAR FORT</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="CENTERVILLE">CENTERVILLE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="CLEARFIELD">CLEARFIELD</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="CLINTON">CLINTON</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="CORINNE">CORINNE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="COTTONWOOD HEIGHTS">COTTONWOOD HEIGHTS</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="DRAPER">DRAPER</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="EAGLE MOUNTAIN">EAGLE MOUNTAIN</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="EDEN">EDEN</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="ELSINORE">ELSINORE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="ELWOOD">ELWOOD</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="EPHRAIM">EPHRAIM</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="FARMINGTON">FARMINGTON</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="FARR WEST">FARR WEST</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="FRUIT HEIGHTS">FRUIT HEIGHTS</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="GARLAND">GARLAND</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HARRISVILLE">HARRISVILLE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HEBER CITY">HEBER CITY</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HERRIMAN">HERRIMAN</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HIDEOUT">HIDEOUT</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HIGHLAND">HIGHLAND</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HOLLADAY">HOLLADAY</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HONEYVILLE">HONEYVILLE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HURRICANE">HURRICANE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HYDE PARK">HYDE PARK</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="HYRUM">HYRUM</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="INDEPENDENCE">INDEPENDENCE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="KAYSVILLE">KAYSVILLE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="KEARNS">KEARNS</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="KIMBALL JUNCTION">KIMBALL JUNCTION</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="LAYTON">LAYTON</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="LEHI">LEHI</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="LEWISTON">LEWISTON</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="LINDON">LINDON</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="LOGAN">LOGAN</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MAGNA">MAGNA</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MANTUA">MANTUA</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MAPLETON">MAPLETON</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MARRIOTT-SLATERVILLE">MARRIOTT-SLATERVILLE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MIDVALE">MIDVALE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MIDWAY">MIDWAY</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MILLCREEK">MILLCREEK</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MOAB">MOAB</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MONA">MONA</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MURRAY">MURRAY</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="MYTON">MYTON</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="NAPLES">NAPLES</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="NIBLEY">NIBLEY</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="NORTH LOGAN">NORTH LOGAN</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="NORTH OGDEN">NORTH OGDEN</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="NORTH SALT LAKE">NORTH SALT LAKE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="OGDEN">OGDEN</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="OREM">OREM</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="OUTSIDE CITY LIMITS">OUTSIDE CITY LIMITS</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="PARK CITY">PARK CITY</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="PERRY">PERRY</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="PLEASANT GROVE">PLEASANT GROVE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="PLEASANT VIEW">PLEASANT VIEW</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="PRICE">PRICE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="PROVO">PROVO</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="RICHFIELD">RICHFIELD</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="RICHMOND">RICHMOND</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="RIVERDALE">RIVERDALE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="RIVERTON">RIVERTON</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="ROY">ROY</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SALEM">SALEM</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SALT LAKE CITY">SALT LAKE CITY</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SANDY">SANDY</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SANTA CLARA">SANTA CLARA</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SANTAQUIN">SANTAQUIN</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SARATOGA SPRINGS">SARATOGA SPRINGS</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SMITHFIELD">SMITHFIELD</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SOUTH JORDAN">SOUTH JORDAN</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SOUTH OGDEN">SOUTH OGDEN</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SOUTH SALT LAKE">SOUTH SALT LAKE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SOUTH WEBER">SOUTH WEBER</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SPANISH FORK">SPANISH FORK</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SPRINGVILLE">SPRINGVILLE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="ST. GEORGE">ST. GEORGE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SUNSET">SUNSET</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="SYRACUSE">SYRACUSE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="TAYLORSVILLE">TAYLORSVILLE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="TOOELE">TOOELE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="UINTAH">UINTAH</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="VERNAL">VERNAL</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="WASHINGTON">WASHINGTON</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="WELLSVILLE">WELLSVILLE</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="WEST BOUNTIFUL">WEST BOUNTIFUL</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="WEST HAVEN">WEST HAVEN</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="WEST JORDAN">WEST JORDAN</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="WEST VALLEY CITY">WEST VALLEY CITY</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="WILLARD">WILLARD</a>
+                        <a asp-controller="Admin" asp-action="CityFilter" asp-route-city="WOODS CROSS">WOODS CROSS</a>
+                    </div>
+                </div>
+                <br />
+
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">Search County</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <input asp-for="COUNTY_NAME" type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()">
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="BEAVER">BEAVER</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="BOXELDER">BOX ELDER</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="CACHE">CACHE</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="CARBON">CARBON</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="DAVIS">DAVIS</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="DUCHESNE">DUCHESNE</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="EMERY">EMERY</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="GRAND">GRAND</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="IRON">IRON</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="JUAB">JUAB</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="KANE">KANE</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="MILLARD">MILLARD</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="MORGAN">MORGAN</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="SALTLAKE">SALT LAKE</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="SANJUAN">SAN JUAN</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="SANPETE">SANPETE</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="SEVIER">SEVIER</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="SUMMIT">SUMMIT</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" alue="TOOELE">TOOELE</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="UINTAH">UINTAH</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="UTAH">UTAH</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="WASATCH">WASATCH</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="WASHINGTON">WASHINGTON</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter" value="WEBER">WEBER</a>
+                    </div>
+                </div>
+                <br />
+
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">Search DUI</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <input asp-for="DUI" type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()">
+                        <a asp-controller="Admin" asp-action="GroupFilter">TRUE</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter">FALSE</a>
+                    </div>
+                </div>
+                <br />
+
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">Searh Distracted Driving</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <input asp-for="DISTRACTED_DRIVING" type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()">
+                        <a asp-controller="Admin" asp-action="GroupFilter">TRUE</a>
+                        <a asp-controller="Admin" asp-action="GroupFilter">FALSE</a>
+                    </div>
+                </div>
+                <br />
+            </div>
+
+
+
+            @*<input type="hidden" asp-for="AppointmentId" />
+
+    <button type="submit" class="btn btn-info">Search</button>
+    </form>
+
+
+
+
+    <script>function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
         }
-    }</script>*@
+
+        function filterFunction() {
+            var input, filter, ul, li, a, i;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            div = document.getElementById("myDropdown");
+            a = div.getElementsByTagName("a");
+            for (i = 0; i < a.length; i++) {
+                txtValue = a[i].textContent || a[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    a[i].style.display = "";
+                } else {
+                    a[i].style.display = "none";
+                }
+            }
+        }</script>*@
 
