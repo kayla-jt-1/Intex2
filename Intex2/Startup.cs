@@ -41,6 +41,7 @@ namespace Intex2
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppIdentityDBContext>();
 
+
             //services.AddDbContext<CrashContext>(options =>
             //{
             //    options.UseSqlite(Configuration["ConnectionStrings:AppointmentDBConnection"]);
