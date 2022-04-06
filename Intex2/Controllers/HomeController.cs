@@ -53,19 +53,15 @@ namespace Intex2.Controllers
             var result = _session.Run(new List<NamedOnnxValue>
             {
                 NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
-            }); //.ToList().Last().AsEnumerable<NamedOnnxValue>()
+            });
 
-            int prediction = 4;
-            ViewBag.PredictedResult = 4;
-            //ViewBag.PredictedResult = result.First().Value;
+            Tensor<float> score = result.First().AsTensor<float>();
+            var prediction = new Prediction { PredictedValue = score.First()};
+            result.Dispose();
 
-            //var prediction = _session.Run(new Prediction { PredictedValue = result.First().AsTensor<float>());
+            ViewBag.PredictedResults = Math.Round(prediction.PredictedValue);
 
-            //Tensor<float> data2 = result.First().AsTensor<Int64>();
-            //var prediction = new Prediction { PredictedValue = (long)(data2.First() * 100000) };
-            //result.Dispose();
-
-            return View("PredictResults", prediction);
+            return View("PredictResults", prediction.PredictedValue);
         }
 
         public IActionResult PredictResults(int prediction)

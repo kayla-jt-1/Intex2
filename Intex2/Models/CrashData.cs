@@ -9,6 +9,8 @@ namespace Intex2.Models
     // THIS IS USED FOR THE ML MODEL
     public class CrashData
     {
+        public float main_road_name_Other { get; set; }
+        public float work_zone_related { get; set; }
         public float pedestrian_involved { get; set; }
         public float bicyclist_involved { get; set; }
         public float motorcycle_involved { get; set; }
@@ -33,7 +35,6 @@ namespace Intex2.Models
         public float route_15 { get; set; }
         public float route_89 { get; set; }
         public float route_Other { get; set; }
-        public float main_road_name_I_15 { get; set; }
         public float city_OutsideCityLimits { get; set; }
         public float city_Other { get; set; }
         public float city_SaltLakeCity { get; set; }
@@ -48,10 +49,10 @@ namespace Intex2.Models
         {
             float[] data = new float[]
             {
-                pedestrian_involved, bicyclist_involved, motorcycle_involved, improper_restraint, unrestrained, dui, intersection_related, wild_animal_related, overturn_rollover, commercial_motor_veh_involved, teenage_driver_involved, older_driver_involved, night_dark_condition, single_vehicle, distracted_driving, drowsy_driving, roadway_departure, crash_month, crash_year, crash_day, crash_hour, route_15, route_89, route_Other, main_road_name_I_15, city_OutsideCityLimits, city_Other, city_SaltLakeCity, city_WestValleyCity, county_name_Davis, county_name_Other, county_name_SaltLake, county_name_Utah, county_name_Weber
+                main_road_name_Other, work_zone_related, pedestrian_involved, bicyclist_involved, motorcycle_involved, improper_restraint, unrestrained, dui, intersection_related, wild_animal_related, overturn_rollover, commercial_motor_veh_involved, teenage_driver_involved, older_driver_involved, night_dark_condition, single_vehicle, distracted_driving, drowsy_driving, roadway_departure, crash_month, crash_year, crash_day, crash_hour, route_15, route_89, route_Other, city_OutsideCityLimits, city_Other, city_SaltLakeCity, city_WestValleyCity, county_name_Davis, county_name_Other, county_name_SaltLake, county_name_Utah, county_name_Weber
             };
 
-            int[] dimensions = new int[] { 1, 34 };
+            int[] dimensions = new int[] { 1, 35 };
 
             return new DenseTensor<float>(data, dimensions);
         }
