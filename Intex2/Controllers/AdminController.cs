@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Intex2.Models.ViewModels;
 using Intex2.Models;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Intex2.Controllers
 {
@@ -248,6 +250,14 @@ namespace Intex2.Controllers
             }
             return View(model);
         }
+
+
+        [Authorize]
+        public IActionResult AdminHome()
+        {
+            return View(); 
+        }
+
 
 
     }
