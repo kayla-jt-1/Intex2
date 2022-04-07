@@ -4,7 +4,7 @@
 @{
 }
 
-<div class="row">
+@*<div class="row">
     <div class="col col-4"></div>
     <div class="col col-2">
         <a class="btn btn-primary" asp-area="" asp-controller="Admin" asp-action="AdminLookup">Update Accident</a>
@@ -13,4 +13,37 @@
         <a class="btn btn-primary" asp-area="" asp-controller="Admin" asp-action="AddCrash">Add Accident</a>
     </div>
     <div class="col col-4"></div>
+</div>*@
+
+
+@*BUTTON CARDS*@
+<br /><br />
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <img src="~/images/search.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Update Accident</h5>
+                    <p class="card-text">Search for a motor vehicle accident to edit or delete it.</p>
+                    <a class="btn btn-primary" asp-area="" asp-controller="Admin" asp-action="AdminLookup">Search</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <img src="~/images/add.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Add Accident</h5>
+                    <p class="card-text">Add a new motor vehicle accident into the system.</p>
+                    <a class="btn btn-primary" asp-area="" asp-controller="Admin" asp-action="AddCrash">Add</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+        </div>
+    </div>
 </div>
+
