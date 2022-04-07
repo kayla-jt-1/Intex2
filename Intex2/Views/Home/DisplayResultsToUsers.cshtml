@@ -54,18 +54,19 @@
         <th style="width:18%;">Date</th>
         <th style="width:23%;">Road Name</th>
         <th style="width:13%;">Crash Severity</th>
+        <th style="width:5%;">Summary</th>
     </tr>
 
     @foreach (var x in Model)
     {
-        <tr>
-            <td>@x.CRASH_ID</td>
-            <td>@x.CITY</td>
-            <td>@x.CRASH_DATETIME</td>
-            <td>@x.MAIN_ROAD_NAME</td>
-            <td>@x.CRASH_SEVERITY_ID</td>
-
-        </tr>
+<tr>
+    <td>@x.CRASH_ID</td>
+    <td>@x.CITY</td>
+    <td>@x.CRASH_DATETIME</td>
+    <td>@x.MAIN_ROAD_NAME</td>
+    <td>@x.CRASH_SEVERITY_ID</td>
+    <td><a asp-controller="Home" asp-action="SummaryInfo" asp-route-crashid="@x.CRASH_ID">Summary</a></td>
+</tr>
     }
 
 </table>
