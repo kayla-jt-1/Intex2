@@ -53,4 +53,7 @@
     <Content Remove="wwwroot\plugins\icofont\" />
     <Content Remove="wwwroot\plugins\icofont\fonts\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\crash_data_new.onnx" />
+  </ItemGroup>
 </Project>
