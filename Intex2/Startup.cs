@@ -38,8 +38,16 @@ namespace Intex2
             services.AddDbContext<AppIdentityDBContext>(options =>
             options.UseSqlite(Configuration["ConnectionStrings:IdentityConnection"]));
 
+            // TEST SECTION
+            //services.AddIdentity<IdentityUser, IdentityRole>()
+            //    .AddEntityFrameworkStores<AppIdentityDBContext>();
+
             services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<AppIdentityDBContext>();
+                .AddEntityFrameworkStores<AppIdentityDBContext>()
+                    .AddDefaultTokenProviders()
+                    .AddDefaultUI()
+                    .AddEntityFrameworkStores<AppIdentityDBContext>();
+            // END OF TEST SECTION
 
 
             //services.AddDbContext<CrashContext>(options =>
