@@ -288,5 +288,11 @@ namespace Intex2.Controllers
         {
             return View();
         }
+
+        //TERMS & CONDITIONS
+        public IActionResult Terms()
+        {
+            return View();
+        }
     }
 }
