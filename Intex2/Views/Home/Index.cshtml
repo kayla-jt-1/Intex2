@@ -37,19 +37,15 @@ ViewData["TEST"] = "Login";
     <div style="padding-left:15px; padding-right:15px;">
     <div class="mb-1"></div>
     <div class="divider mb-1"></div>
-    <span class="text-uppercase text-sm letter-spacing ">Welcome to TCP – The Crash Patrol</span>
-    <h1 class="mb-3 mt-3">Your Trusted Resource For Utah Car Crash Data</h1>
+    <span class="text-uppercase text-sm letter-spacing ">Your Trusted Resource For Utah Car Crash Data</span>
+    <h1 class="mb-3 mt-3">Welcome to TCP – The Crash Patrol</h1>
 
     <p class="mb-4 pr-5">
         Utah has seen a rise in motor vehicle accidents over the past few years. These accidents impact our family and friends and have taken far too many lives.
         These accidents are related to a number of things, such as
         distractions and drunk driving. We want to raise awareness about the increasing number of road accidents to hopefully reverse the curve and make a change.
-        <br /><br />
-        Records in this site use data taken from 2016, 2017, and 2019.
-        <br /><br />
-        Users may search through motor vehicle accident records in our searchable database and take a quick survey to see what kind of crash could be caused from their driving habits.
-        Our model predicts crash severity based on a number of common features.
-        Administration personnel may add, edit, and delete records. 
+        <br />
+
     </p>
     </div>
     <br />
@@ -57,6 +53,15 @@ ViewData["TEST"] = "Login";
     <div style="text-align:center;">
         <img style="height:350px;" src="~/images/CrashPatrol.png" alt="CrashPatrolLogo">
     </div>
+    <br />
+
+    <p>
+        Records in this site use data taken from 2016, 2017, and 2019.
+        <br /><br />
+        Users may search through motor vehicle accident records in our searchable database and take a quick survey to see what kind of crash could be caused from their driving habits.
+        Our model predicts crash severity based on a number of common features.
+        Administration personnel may add, edit, and delete records.
+    </p>
 
     <br /><br />
 
@@ -66,31 +71,31 @@ ViewData["TEST"] = "Login";
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="counter-stat">
-                            <i class="icofont-doctor"></i>
-                            <span class="h3">320</span>
-                            <p>Fatal Crashes in 2021</p>
+                            <i class="icofont-soft-drinks"></i>
+                            <span class="h3">913</span>
+                            <p>Alcohol Related Crashes<br /> In 2021</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="counter-stat">
-                            <i class="icofont-flag"></i>
+                            <i class="icofont-broken"></i>
                             <span class="h3">14,852</span>+
-                            <p>Crashes in 2022 so far</p>
+                            <p>Crashes in 2022<br /> So Far</p>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="counter-stat">
-                            <i class="icofont-badge"></i>
+                            <i class="icofont-car-alt-1"></i>
                             <span class="h3">74</span>+
-                            <p>Fatal Crashes Since January</p>
+                            <p>Fatal Crashes<br /> Since January</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="counter-stat">
-                            <i class="icofont-globe"></i>
-                            <span class="h3">0</span>
-                            <p>Our Goal</p>
+                            <i class="icofont-ban"></i>
+                            <span class="h3">65%</span>
+                            <p>Deaths Seatbelt Related<br /> In 2018</p>
                         </div>
                     </div>
                 </div>
@@ -124,9 +129,9 @@ ViewData["TEST"] = "Login";
                             @*<img src="images/logo.png" alt="" class="img-fluid">*@
                         </div>
                         <ul class="list-inline footer-socials mt-4">
-                            <li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i class="icofont-facebook"></i></a></li>
-                            <li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="icofont-twitter"></i></a></li>
-                            <li class="list-inline-item"><a href="https://www.pinterest.com/themefisher/"><i class="icofont-linkedin"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="icofont-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="icofont-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="icofont-linkedin"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -137,11 +142,8 @@ ViewData["TEST"] = "Login";
                         <div class="divider mb-4"></div>
 
                         <ul class="list-unstyled footer-menu lh-35">
-                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Terms">Terms & Conditions</a></li>
                             <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a></li>
-                            @*<li><a href="#">Company Support </a></li>
-                                <li><a href="#">FAQuestions</a></li>
-                                <li><a href="#">Company Licence</a></li>*@
                         </ul>
                     </div>
                 </div>
@@ -156,7 +158,7 @@ ViewData["TEST"] = "Login";
                                 <i class="icofont-email mr-3"></i>
                                 <span class="h6 mb-0">Support Available for 24/7</span>
                             </div>
-                            <h6 class="mt-2 mr-3"><a href="tel:+23-345-67890">Support@TheCrashPatrol.com</a></h6>
+                            <h6 class="mt-2 mr-3"><a href="tel:+23-345-67890">support@TheCrashPatrol.com</a></h6>
                         </div>
 
                         <div class="footer-contact-block">

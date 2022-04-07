@@ -177,6 +177,14 @@ namespace Intex2.Controllers
         }
 
 
+        // SUMMARY INFO
+        public IActionResult SummaryInfo(int crashId)
+        {
+            var crash = repo.Crashes.Single(x => x.CRASH_ID == crashId);
+
+            return View(crash);
+        }
+
         ////ADD CRASH
         //[HttpGet]
         //public IActionResult AddCrash()
@@ -285,6 +293,12 @@ namespace Intex2.Controllers
 
         //PRIVACY
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        //TERMS & CONDITIONS
+        public IActionResult Terms()
         {
             return View();
         }
