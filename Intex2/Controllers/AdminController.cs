@@ -103,7 +103,9 @@ namespace Intex2.Controllers
             {
                 repo.SaveCrash(crash);
 
+                // CHECK THIS 
                 return RedirectToAction("CrashSummary");
+                //return View("AdminHome");
             }
             else
             {
@@ -127,7 +129,7 @@ namespace Intex2.Controllers
 
             repo.DeleteCrash(crashChange);
 
-            return RedirectToAction("AdminLookup");
+            return RedirectToAction("AdminHome");
         }
 
 
