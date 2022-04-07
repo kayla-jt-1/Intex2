@@ -16,25 +16,79 @@
     <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">City:</div> @Model.CITY</div>
     <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">County:</div> @Model.COUNTY_NAME</div>
     <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Date:</div> @Model.CRASH_DATETIME</div>
-    <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Road Name:</div> @Model.MAIN_ROAD_NAME</div>
+    <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Address:</div> @Model.MAIN_ROAD_NAME</div>
     <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Crash Severity:</div> @Model.CRASH_SEVERITY_ID</div>
     <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Route:</div> @Model.ROUTE</div>
     <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Milepoint:</div> @Model.MILEPOINT</div>
     <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Latitude:</div> @Model.LAT_UTM_Y</div>
     <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Longitude:</div> @Model.LONG_UTM_X</div>
-    <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Work Zone:</div> @Model.WORK_ZONE_RELATED</div>
-    <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Pedestrian:</div> @Model.PEDESTRIAN_INVOLVED</div>
-    <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Bicyclist:</div> @Model.BICYCLIST_INVOLVED</div>
-    <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Motorcycle:</div> @Model.MOTORCYCLE_INVOLVED</div>
-    <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Unrestrained:</div> @Model.UNRESTRAINED</div>
-    <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">DUI:</div> @Model.DUI</div>
-    <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Intersection:</div> @Model.INTERSECTION_RELATED</div>
-    <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Wild Animal:</div> @Model.WILD_ANIMAL_RELATED</div>
-    <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Drowsy:</div> @Model.DROWSY_DRIVING</div>
-    <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Overturn Rollover:</div> @Model.OVERTURN_ROLLOVER</div>
-    <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Teengage Driver:</div> @Model.TEENAGE_DRIVER_INVOLVED</div>
-    <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Night Conditions:</div> @Model.NIGHT_DARK_CONDITION</div>
-    <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Distracted Driving:</div> @Model.DISTRACTED_DRIVING</div>
+    @if (Model.WORK_ZONE_RELATED == "true")
+    {
+        <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Work Zone:</div> @Model.WORK_ZONE_RELATED</div>
+    }
+
+    @if (Model.PEDESTRIAN_INVOLVED == "true")
+    {
+        <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Pedestrian:</div> @Model.PEDESTRIAN_INVOLVED</div>
+    }
+
+    @if (Model.BICYCLIST_INVOLVED == "true")
+    {
+        <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Bicyclist:</div> @Model.BICYCLIST_INVOLVED</div>
+    }
+
+    @if (Model.MOTORCYCLE_INVOLVED == "true")
+    {
+        <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Motorcycle:</div> @Model.MOTORCYCLE_INVOLVED</div>
+    }
+
+    @if (Model.UNRESTRAINED == "true")
+    {
+        <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Unrestrained:</div> @Model.UNRESTRAINED</div>
+    }
+
+    @if (Model.DUI == "true")
+    {
+        <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">DUI:</div> @Model.DUI</div>
+    }
+
+    @if (Model.INTERSECTION_RELATED == "true")
+    {
+        <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Intersection:</div> @Model.INTERSECTION_RELATED</div>
+    }
+
+    @if (Model.WILD_ANIMAL_RELATED == "true")
+    {
+        <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Wild Animal:</div> @Model.WILD_ANIMAL_RELATED</div>
+    }
+
+    @if (Model.DROWSY_DRIVING == "true")
+    {
+        <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Drowsy:</div> @Model.DROWSY_DRIVING</div>
+    }
+
+    @if (Model.OVERTURN_ROLLOVER == "true")
+    {
+        <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Overturn Rollover:</div> @Model.OVERTURN_ROLLOVER</div>
+    }
+
+    @if (Model.TEENAGE_DRIVER_INVOLVED == "true")
+    {
+        <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Teengage Driver:</div> @Model.TEENAGE_DRIVER_INVOLVED</div>
+    }
+
+    @if (Model.NIGHT_DARK_CONDITION == "true")
+    {
+        <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Night Conditions:</div> @Model.NIGHT_DARK_CONDITION</div>
+
+    }
+
+    @if (Model.DISTRACTED_DRIVING == "true")
+    {
+        <div style="padding-left:14px;"><div style="font-weight: bold; display: inline; ">Distracted Driving:</div> @Model.DISTRACTED_DRIVING</div>
+    }
+
+
     <br /><br />
 </div>
 

@@ -69,10 +69,9 @@
                         <li class="nav-item active"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                         <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="AllCrashes">Data</a></li>
                         <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Predict">Self Assess</a></li>
-                        @*<li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Login">Login</a></li>*@
-                        @*<li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Admin" asp-action="@ViewData["TEST"]">@ViewData["TEST"]</a></li>*@
-                        <partial name="_LoginPartial" />
+                        <li class="nav-item"><a class="nav-link" href="#">|</a></li>
                         <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Admin" asp-action="AdminHome">Admin</a></li>
+                        <partial name="_LoginPartial" />
                     </ul>
                 </div>
             </div>
@@ -86,7 +85,7 @@
         </main>
     </div>
 
-    <br /><br /><br />
+    <br />
     <!-- footer Start -->
     <footer class="footer">
        <div class="container">
@@ -95,7 +94,7 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-lg-6">
                         <div class="copyright">
-                            &copy; Copyright Reserved to <span class="text-color">TCP – The Crash Patrol</span>
+                            &copy; Copyright Reserved to <span class="text-color">TCP – The Crash Patrol</span> – <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
                         </div>
                     </div>
                 </div>
