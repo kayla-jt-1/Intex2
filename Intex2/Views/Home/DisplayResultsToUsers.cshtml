@@ -2,12 +2,10 @@
 
 @{
     ViewData["Title"] = "Admin – View Accidents";
-    ViewData["TEST"] = "Logout";
+    ViewData["TEST"] = "Login";
 }
 
 @model List<Crash>
-
-
 
 <style>
     * {
@@ -47,39 +45,35 @@
 </style>
 
 
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for an ID.." title="Type in an ID">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for an ID.." title="Type in an ID">
 
-    <table id="myTable">
-        <tr class="header">
-            @*<th style="width:60%;">Crash ID:</th>
-        <th style="width:40%;">City:</th>*@
-            <th style="width:18%;">Crash ID</th>
-            <th style="width:18%;">City</th>
-            <th style="width:18%;">Date</th>
-            <th style="width:23%;">Road Name</th>
-            <th style="width:13%;">Crash Severity</th>
-            <th style="width:5%;">Edit</th>
-            <th style="width:5%;">Delete</th>
-        </tr>
-
-        @foreach (var x in Model)
-        {
-    <tr>
-        <td>@x.CRASH_ID</td>
-        <td>@x.CITY</td>
-        <td>@x.CRASH_DATETIME</td>
-        <td>@x.MAIN_ROAD_NAME</td>
-        <td>@x.CRASH_SEVERITY_ID</td>
-
-        <td><a asp-controller="Admin" asp-action="Edit" asp-route-crashid="@x.CRASH_ID">Edit</a></td>
-        <td><a asp-controller="Admin" asp-action="Delete" asp-route-crashid="@x.CRASH_ID">Delete</a></td>
+<table id="myTable">
+    <tr class="header">
+        <th style="width:18%;">Crash ID</th>
+        <th style="width:18%;">City</th>
+        <th style="width:18%;">Date</th>
+        <th style="width:23%;">Road Name</th>
+        <th style="width:13%;">Crash Severity</th>
     </tr>
-        }
 
-    </table>
-    <br /><br /><br />
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.CRASH_ID</td>
+            <td>@x.CITY</td>
+            <td>@x.CRASH_DATETIME</td>
+            <td>@x.MAIN_ROAD_NAME</td>
+            <td>@x.CRASH_SEVERITY_ID</td>
 
-    <script>function myFunction() {
+        </tr>
+    }
+
+</table>
+<br />
+<br />
+<br />
+
+<script>function myFunction() {
             var input, filter, table, tr, td, i, txtValue;
             input = document.getElementById("myInput");
             filter = input.value.toUpperCase();
@@ -96,7 +90,6 @@
                     }
                 }
             }
-}
-    </script>
+}</script>
 
 
