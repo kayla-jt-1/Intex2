@@ -18,7 +18,6 @@ namespace Intex2.Controllers
 
         private ICrashRepository repo;
 
-        // I THINK THIS JUST NEEDS TO BE IN ADMINCONTROLLER.CS
         private UserManager<IdentityUser> userManager;
         private SignInManager<IdentityUser> signInManager;
 
@@ -184,111 +183,6 @@ namespace Intex2.Controllers
 
             return View(crash);
         }
-
-        ////ADD CRASH
-        //[HttpGet]
-        //public IActionResult AddCrash()
-        //{
-        //    ViewBag.Crashes = repo.Crashes.ToList();
-        //    return View();
-
-        //}
-
-        //[HttpPost]
-        //public IActionResult AddCrash(Crash crash)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        repo.SaveCrash(crash);
-
-        //        return View("Confirmation", crash);
-        //    }
-        //    else
-        //    {
-        //        ViewBag.Crashes = repo.Crashes.ToList();
-        //        return View();
-        //    }
-        //}
-
-
-        ////EDIT CRASH 
-        //[HttpGet]
-        //public IActionResult Edit(int crashId)
-        //{
-        //    var crash = repo.Crashes.Single(x => x.CRASH_ID == crashId);
-
-        //    return View("AddCrash", crash);
-        //}
-
-        //[HttpPost]
-        //public IActionResult Edit(Crash crash)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        repo.SaveCrash(crash);
-
-        //        return RedirectToAction("CrashSummary");
-        //    }
-        //    else
-        //    {
-        //        return View("AddCrash", crash);
-        //    }
-        //}
-
-
-        ////DELETE CRASH
-        //[HttpGet]
-        //public IActionResult Delete(int crashId)
-        //{
-        //    var crash = repo.Crashes.Single(x => x.CRASH_ID == crashId);
-
-        //    return View(crash);
-        //}
-
-        //[HttpPost]
-        //public IActionResult Delete(Crash crash)
-        //{
-        //    repo.DeleteCrash(crash);
-
-        //    return View("CrashSummary");
-        //}
-
-
-        ////LOGIN
-        //[HttpGet]
-        //public IActionResult Login(string returnUrl)
-        //{
-        //    return View(new Login { ReturnUrl = returnUrl });
-        //}
-
-        //[HttpPost]
-        //public async Task<IActionResult> Login(Login login)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        IdentityUser user = await userManager.FindByNameAsync(login.Username);
-
-        //        if (user != null)
-        //        {
-        //            await signInManager.SignOutAsync();
-
-        //            if ((await signInManager.PasswordSignInAsync(user, login.Password, false, false)).Succeeded)
-        //            {
-        //                return Redirect(login?.ReturnUrl ?? "/Admin");
-        //            }
-        //        }
-        //    }
-
-        //    ModelState.AddModelError("", "Invalid Name or Password");
-        //    return View(login);
-        //}
-
-        //public async Task<RedirectResult> Logout(string returnUrl = "/")
-        //{
-        //    await signInManager.SignOutAsync();
-
-        //    return Redirect(returnUrl);
-        //}
 
 
         //PRIVACY

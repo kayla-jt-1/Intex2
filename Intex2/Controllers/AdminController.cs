@@ -65,7 +65,6 @@ namespace Intex2.Controllers
         [HttpGet]
         public IActionResult AddCrash()
         {
-            //ViewBag.Crashes = repo.Crashes.ToList(); //IS THIS NECESSARY????
             return View();
 
         }
@@ -81,7 +80,6 @@ namespace Intex2.Controllers
             }
             else
             {
-                //ViewBag.Crashes = repo.Crashes.ToList();
                 return View();
             }
         }
@@ -103,9 +101,7 @@ namespace Intex2.Controllers
             {
                 repo.SaveCrash(crash);
 
-                // CHECK THIS 
                 return RedirectToAction("CrashSummary");
-                //return View("AdminHome");
             }
             else
             {

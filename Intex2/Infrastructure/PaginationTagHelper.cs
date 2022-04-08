@@ -127,27 +127,6 @@ namespace Intex2.Infrastructure
             return tb;
         }
 
-            //    for (int i = 1; i <= PageModel.TotalPages; i++)
-            //    {
-            //        TagBuilder tb = new TagBuilder("a");
-
-            //        tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = i });
-
-            //        //bootstrap
-            //        if (PageClassesEnabled)
-            //        {
-            //            tb.AddCssClass(PageClass);
-            //            tb.AddCssClass(i == PageModel.CurrentPage ? PageClassSelected : PageClassNormal);
-            //        }
-
-            //        tb.InnerHtml.Append(i.ToString());
-
-            //        final.InnerHtml.AppendHtml(tb);
-
-            //    }
-
-            //    tho.Content.AppendHtml(final.InnerHtml);
-
         
     }
 }

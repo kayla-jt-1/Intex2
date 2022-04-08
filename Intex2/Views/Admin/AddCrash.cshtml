@@ -1,7 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Admin – Add Accident";
     ViewData["TEST"] = "Logout";
-    @*Layout = "AdminLayout";*@
 }
 
 @model Crash
@@ -17,9 +16,7 @@
 
         <div asp-validation-summary="All"></div>
 
-        @*<input type="hidden" asp-for="CRASH_ID" />*@
 
-        @*THIS IS TYPE STRING IN DATABASE SO WE NEED TO CHANGE IT HERE TOO*@
         <label asp-for="CRASH_DATETIME">Date and Time:<br />(MM/DD/YYYY HH:MM:SS AM/PM)</label>
         <br />
         <input asp-for="CRASH_DATETIME" size="50"/>
@@ -29,8 +26,6 @@
         <br />
         <input asp-for="ROUTE" size="50"/>
         <br /><br />
-
-        @*Milepoint should have a minimum of 0*@
 
         <label asp-for="MILEPOINT">Milepoint:</label>
         <br />

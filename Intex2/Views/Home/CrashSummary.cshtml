@@ -161,7 +161,6 @@
     <div class="dropdown">
         <button onclick="myFunction3()" class="dropbtn fw-normal dropdown-toggle btn" style="background-color: #233a66; color: white;">Search Crash Severity</button>
         <div id="myDropdown3" class="dropdown-content">
-            @*<input type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()">*@
             <a asp-controller="Home" asp-action="CrashSevFilter" asp-route-severity="1">1 – NO INJURY</a>
             <a asp-controller="Home" asp-action="CrashSevFilter" asp-route-severity="2">2 – POSSIBLE INJURY</a>
             <a asp-controller="Home" asp-action="CrashSevFilter" asp-route-severity="3">3 – SUSPECTED MINOR INJURY</a>
@@ -171,13 +170,10 @@
     </div>
 
 
-    @*<p style="margin:13px;"></p>*@
-
 
     <div class="dropdown">
         <button onclick="myFunction4()" class="dropbtn fw-normal dropdown-toggle btn" style="background-color: #233a66; color: white;">Search DUI</button>
         <div id="myDropdown4" class="dropdown-content">
-            @*<input type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()">*@
             <a asp-controller="Home" asp-action="DUIFilter" asp-route-dui="true">TRUE</a>
             <a asp-controller="Home" asp-action="DUIFilter" asp-route-dui="false">FALSE</a>
         </div>
@@ -186,15 +182,12 @@
     <div class="dropdown">
         <button onclick="myFunction5()" class="dropbtn fw-normal dropdown-toggle btn" style="background-color: #233a66; color: white;">Search Distracted Driving</button>
         <div id="myDropdown5" class="dropdown-content">
-            @*<input type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()">*@
             <a asp-controller="Home" asp-action="DistractedFilter" asp-route-distracted="true">TRUE</a>
             <a asp-controller="Home" asp-action="DistractedFilter" asp-route-distracted="false">FALSE</a>
         </div>
     </div>
 </div>
 
-
-@*<a type="submit" class="btn btn-primary" asp-controller="Home" asp-action="FilterData">Filter Data</a>*@
 
 <!--Display the crashes-->
 <div class="accordion" id="crash_accordion">
@@ -509,9 +502,9 @@
      page-action="AllCrashes" 
      page-classes-enabled="true"
      page-class="btn" 
-     page-class-label="p-2 font-weight-bold  pt-md-2  text-center" class="text-center"
+     page-class-label="p-2 font-weight-bold  pt-md-2  text-center" class="text-center btn-group pull-right m-1"
      page-class-normal="btn-outline-dark"
-     page-class-selected="btn-primary" class="btn-group pull-right m-1">
+     page-class-selected="btn-primary">
 
 </div>
 

@@ -59,38 +59,3 @@ namespace Intex2.Models
     }
 }
 
-//public Int64 pedestrian_involved { get; set; }
-//public Int64 bicyclist_involved { get; set; }
-//public Int64 motorcycle_involved { get; set; }
-//public Int64 improper_restraint { get; set; }
-//public Int64 unrestrained { get; set; }
-//public Int64 dui { get; set; }
-//public Int64 intersection_related { get; set; }
-//public Int64 wild_animal_related { get; set; }
-//public Int64 overturn_rollover { get; set; }
-//public Int64 commercial_motor_veh_involved { get; set; }
-//public Int64 teenage_driver_involved { get; set; }
-//public Int64 older_driver_involved { get; set; }
-//public Int64 night_dark_condition { get; set; }
-//public Int64 single_vehicle { get; set; }
-//public Int64 distracted_driving { get; set; }
-//public Int64 drowsy_driving { get; set; }
-//public Int64 roadway_departure { get; set; }
-//public Int64 crash_month { get; set; }
-//public Int64 crash_year { get; set; }
-//public Int64 crash_day { get; set; }
-//public Int64 crash_hour { get; set; }
-//public Int64 route_15 { get; set; }
-//public Int64 route_89 { get; set; }
-//public Int64 route_Other { get; set; }
-//public Int64 main_road_name_I_15 { get; set; }
-//public Int64 city_OutsideCityLimits { get; set; }
-//public Int64 city_Other { get; set; }
-//public Int64 city_SaltLakeCity { get; set; }
-//public Int64 city_WestValleyCity { get; set; }
-//public Int64 county_name_Davis { get; set; }
-//public Int64 county_name_Other { get; set; }
-//public Int64 county_name_SaltLake { get; set; }
-//public Int64 county_name_Utah { get; set; }
-//public Int64 county_name_Weber { get; set; }
-

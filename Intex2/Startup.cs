@@ -32,29 +32,21 @@ namespace Intex2
 
             services.AddDbContext<CrashContext>(options =>
             {
-                //options.UseMySql(Environment.GetEnvironmentVariable("CrashDbConnection"));
-                options.UseMySql(Configuration["ConnectionStrings:CrashDbConnection"]);
+                options.UseMySql(Environment.GetEnvironmentVariable("CrashDbConnection"));
+                //options.UseMySql(Configuration["ConnectionStrings:CrashDbConnection"]);
             });
 
             services.AddDbContext<AppIdentityDBContext>(options =>
             options.UseSqlite(Configuration["ConnectionStrings:IdentityConnection"]));
 
-            // TEST SECTION
-            //services.AddIdentity<IdentityUser, IdentityRole>()
-            //    .AddEntityFrameworkStores<AppIdentityDBContext>();
+
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppIdentityDBContext>()
                     .AddDefaultTokenProviders()
                     .AddDefaultUI()
                     .AddEntityFrameworkStores<AppIdentityDBContext>();
-            // END OF TEST SECTION
 
-
-            //services.AddDbContext<CrashContext>(options =>
-            //{
-            //    options.UseSqlite(Configuration["ConnectionStrings:AppointmentDBConnection"]);
-            //});
 
             services.AddDistributedMemoryCache();
             services.AddSession();
@@ -74,11 +66,9 @@ namespace Intex2
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
-                //options.MinimumSameSitePolicy = SameSiteMode.None;
                 options.MinimumSameSitePolicy = SameSiteMode.Strict;
             });
 
-            //HSTS
 
             services.AddHsts(options =>
             {
@@ -101,11 +91,10 @@ namespace Intex2
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection(); // was commented out 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
             app.UseRouting();

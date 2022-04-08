@@ -9,22 +9,19 @@ namespace Intex2.Models
         [Required]
         public int CRASH_ID { get; set; }
 
-        // this is a string in the database so it must be a string here -- used to be of type DateTime
+        // this is a string in the database so it must be a string here
         [Required (ErrorMessage ="Please enter a datetime")]
         public string CRASH_DATETIME { get; set; }
 
         [Required(ErrorMessage = "Please enter a valid route")]
         public string ROUTE { get; set; }
 
-        //[Range(0, 1000000000000)] //Just to set the min to 0??????
         [Required(ErrorMessage = "Please enter a valid milepoint")]
         public double MILEPOINT { get; set; }
 
-        //[Range(0, 1000000000000)]
         [Required(ErrorMessage = "Please enter a valid latitude")]
         public double LAT_UTM_Y { get; set; }
 
-        //[Range(0, 1000000000000)]
         [Required(ErrorMessage = "Please enter a valid longitude")]
         public double LONG_UTM_X { get; set; }
 
