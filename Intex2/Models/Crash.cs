@@ -14,15 +14,18 @@ namespace Intex2.Models
         public string CRASH_DATETIME { get; set; }
 
         [Required(ErrorMessage = "Please enter a valid route")]
+        [Range(0, 1000000000)]
         public string ROUTE { get; set; }
 
         [Required(ErrorMessage = "Please enter a valid milepoint")]
         public double MILEPOINT { get; set; }
 
         [Required(ErrorMessage = "Please enter a valid latitude")]
+        [Range(0, 1000000000)]
         public double LAT_UTM_Y { get; set; }
 
         [Required(ErrorMessage = "Please enter a valid longitude")]
+        [Range(0, 1000000000)]
         public double LONG_UTM_X { get; set; }
 
         [Required(ErrorMessage = "Please enter a valid address")]
