@@ -90,7 +90,7 @@ namespace Intex2.Infrastructure
                 TagBuilder labelDiv;
                 labelDiv = new TagBuilder("div");
                 labelDiv.AddCssClass(PageClassLabel);
-                labelDiv.InnerHtml.Append($"Showing {PageModel.CurrentPage} of { PageModel.TotalPages}");
+                labelDiv.InnerHtml.Append($"Showing {PageModel.CurrentPage} of { PageModel.TotalPages} \n");
                 final.InnerHtml.AppendHtml(labelDiv);
 
                 TagBuilder kms = new TagBuilder("div");
