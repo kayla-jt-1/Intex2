@@ -32,7 +32,8 @@ namespace Intex2
 
             services.AddDbContext<CrashContext>(options =>
             {
-                options.UseMySql(Environment.GetEnvironmentVariable("CrashDbConnection"));
+                //options.UseMySql(Environment.GetEnvironmentVariable("CrashDbConnection"));
+                options.UseMySql(Configuration["ConnectionStrings:CrashDbConnection"]);
             });
 
             services.AddDbContext<AppIdentityDBContext>(options =>
@@ -76,6 +77,17 @@ namespace Intex2
                 //options.MinimumSameSitePolicy = SameSiteMode.None;
                 options.MinimumSameSitePolicy = SameSiteMode.Strict;
             });
+
+            //HSTS
+
+            services.AddHsts(options =>
+            {
+                options.Preload = true;
+                options.IncludeSubDomains = true;
+                options.MaxAge = TimeSpan.FromDays(60);
+                options.ExcludedHosts.Add("thecrashpatrol.com");
+                options.ExcludedHosts.Add("www.thecrashpatrol.com");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -84,13 +96,14 @@ namespace Intex2
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseHsts();
             }
-            //else
-            //{
-            //    app.UseExceptionHandler("/Home/Error");
-            //    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-            //    app.UseHsts();
-            //}
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
 
             app.UseHttpsRedirection(); // was commented out 
             app.UseStaticFiles();
