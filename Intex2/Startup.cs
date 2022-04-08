@@ -32,7 +32,7 @@ namespace Intex2
 
             services.AddDbContext<CrashContext>(options =>
             {
-                options.UseMySql(Configuration["ConnectionStrings:CrashDbConnection"]); 
+                options.UseMySql(Environment.GetEnvironmentVariable("CrashDbConnection"));
             });
 
             services.AddDbContext<AppIdentityDBContext>(options =>
